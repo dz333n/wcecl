@@ -9,17 +9,17 @@ namespace COREDLL
 	extern "C" {
 #endif
 
-		int GetGestureInfo()
+		int GetGestureInfo()  // unimplemented
 		{
 			return 0;
 		}
 
-		bool _declspec(dllexport) EnumSystemLocalesW(long lpLocaleEnumProc, DWORD dwFlags)
+		bool _declspec(dllexport) EnumSystemLocalesW(long lpLocaleEnumProc, DWORD dwFlags)  // unimplemented
 		{
 			return true;
 		}
 
-		bool ImmSIPanelState(UINT dwCmd, LPVOID pValue)
+		bool ImmSIPanelState(UINT dwCmd, LPVOID pValue) // unimplemented
 		{
 			return true;
 		}
@@ -42,6 +42,70 @@ namespace COREDLL
 		int ImageList_CopyDitherImage() // unimplemented
 		{
 			return 0;
+		}
+
+		int GetOwnerProcess() // unimplemented
+		{
+			return 0;
+		}
+
+		int __dtou() // unimplemented
+		{
+			return 0;
+		}
+
+		void NKDbgPrintfW(LPCWSTR lpszFmt, ...) 
+		{
+			va_list args;
+			va_start(args, lpszFmt);
+			 // todo
+			va_end(args);
+		}
+
+		int __rt_ursh() // unimplemented
+		{
+			return 0;
+		}
+
+		int SetDialogAutoScrollBar() // unimplemented
+		{
+			return 0;
+		}
+
+		int GetAnimateMessageInfo() // unimplemented
+		{
+			return 0;
+		}
+		
+		int GetWindowAutoGesture() // unimplemented
+		{
+			return 0;
+		}
+
+		bool SetWindowAutoGesture() // unimplemented
+		{
+			return true;
+		}
+
+		int GetMessageSource() // unimplemented
+		{
+			return 0;
+		}
+
+		int __GetUserKData() // unimplemented
+		{
+			return 0;
+		}
+
+		HRESULT StringCchCopyExW(
+			STRSAFE_LPWSTR  pszDest,
+			size_t          cchDest,
+			STRSAFE_LPCWSTR pszSrc,
+			STRSAFE_LPWSTR  *ppszDestEnd,
+			size_t          *pcchRemaining,
+			DWORD           dwFlags)
+		{
+			return ::StringCchCopyExW(pszDest, cchDest, pszSrc, ppszDestEnd, pcchRemaining, dwFlags);
 		}
 
 		HRESULT StringCchPrintfExW(STRSAFE_LPWSTR  pszDest,
@@ -90,9 +154,29 @@ namespace COREDLL
 			return result;
 		}*/
 
-		int Random()
+		int Random() // unimplemented
 		{
 			return ::rand();
+		}
+
+		bool CloseGestureInfoHandle() // unimplemented
+		{
+			return true;
+		}
+
+		bool Gesture() // unimplemented
+		{
+			return true;
+		}
+
+		bool GetGestureExtraArguments() // unimplemented
+		{
+			return false;
+		}
+
+		bool SetWindowPosOnRotate() // unimplemented
+		{
+			return true;
 		}
 
 		DWORD RasDial(LPRASDIALEXTENSIONS Arg1, LPCWSTR Arg2, LPRASDIALPARAMSW Arg3, DWORD Arg4, LPVOID Arg5, LPHRASCONN Arg6)

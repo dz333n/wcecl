@@ -43,7 +43,13 @@ EXPORTS
 	SetRectEmpty  @104
 	SubtractRect  @105
 	UnionRect     @106
+	CreateFileW @168
 	iswctype      @193
+	towlower @194
+	towupper @195
+	MultiByteToWideChar @196
+	WideCharToMultiByte @197
+	CompareStringW @198
 	LCMapStringW @199
 	SetLocaleInfoW @201
 	EnumCalendarInfoW @206
@@ -78,6 +84,8 @@ EXPORTS
 	IsChild @277
 	ValidateRect @278
 	SetScrollInfo @279
+	SetScrollPos @280
+	SetScrollRange @281
 	MapWindowPoints @284
 	CallWindowProcW @285
 	FindWindowW     @286
@@ -101,6 +109,15 @@ EXPORTS
 	RegQueryValueExW @463
 	RegSetValueExW @464
 	Sleep         @496
+	WaitForSingleObject @497
+	WaitForMultipleObjects @498
+	SuspendThread @499
+	ResumeThread @500
+	SetThreadContext @502
+	ReadProcessMemory @506
+	WriteProcessMemory @507
+	FlushInstructionCache @508
+	OpenProcess @509
 	SetLastError  @517
 	LoadLibraryW  @528
 	FreeLibrary   @529
@@ -108,9 +125,18 @@ EXPORTS
 	FindResourceW @532
 	LoadResource @533
 	SizeofResource @534
+	OutputDebugStringW @541
+	RaiseException @543
 	TerminateProcess @544
+	NKDbgPrintfW @545
+	CreateFileMappingW @548
+	MapViewOfFile @549
 	UnmapViewOfFile @550
 	CloseHandle @553
+	CreateMutexW @555
+	ReleaseMutex @556
+	CloseHandle @553
+	CloseClipboard @669
 	SetClipboardData @671
 	SetCursor   @682
 	LoadCursorW @683
@@ -208,6 +234,9 @@ EXPORTS
 	UnregisterClassW @884
 	IsWindowVisible @886
 	AdjustWindowRectEx @887
+	SetSysColors @890
+	RegisterWindowMessageW @891
+	; RegisterTaskBar @892
 	AddFontResourceW @893
 	; CeRemoveFontResource @894
 	CreateFontIndirectW @895
@@ -259,7 +288,10 @@ EXPORTS
 	RectInRegion  @978
 	SelectClipRgn @979
 	CreateRectRgn @980
-	RectVisible   @981
+	RectVisible   @981	
+	; SetRealTime @571
+	SetRect @103
+	SetRectEmpty @104
 	SetRectRgn    @982
 	SetViewportOrgEx @983
 	; SetObjectOwner @984
@@ -273,7 +305,7 @@ EXPORTS
 	memcpy        @1044
 	_memicmp      @1045
 	memmove       @1046
-	; memset        @1047
+	memset        @1047
 	modf          @1048
 	_msize        @1049
 	_nextafter    @1050
@@ -295,9 +327,6 @@ EXPORTS
 	SetTextAlign  @1654
 	GetTextAlign  @1655
 	RedrawWindow  @1672
-	StringCchCopyW @1689
-	StringCchPrintfW @1699
-	StringCbPrintfW @1700
 	DPA_Create    @1837
 	DPA_CreateEx @1838
 	DPA_Clone @1839
@@ -412,6 +441,14 @@ EXPORTS
 	; GetCallerProcess @607
 	; GetCallerProcessIndex @641
 	GetCapture @707
+	CreateCaret @658
+	DestroyCaret @659
+	DestroyCursor @724
+	DestroyIcon @725
+	DestroyMenu @844
+	DestroyWindow @265
+	HideCaret @660
+	ShowCaret @661
 	GetCaretBlinkTime @665
 	GetCaretPos @663
 	; GetCharABCWidths @1779
@@ -481,7 +518,7 @@ EXPORTS
 	; GetForegroundKeyboardLayoutHandle @1802
 	; GetForegroundKeyboardTarget @1225
 	GetForegroundWindow @701
-	; GetGestureExtraArguments @2926
+	GetGestureExtraArguments @2926
 	GetGestureInfo @2925 ; windows 7+ system
 	GetGweApiSetTables @1867
 	; GetHeapSnapshot @52
@@ -503,7 +540,7 @@ EXPORTS
 	GetMenuItemInfoW @854
 	GetMessagePos @862
 	; GetMessageQueueReadyTimeStamp @1477
-	; GetMessageSource @872
+	GetMessageSource @872
 	GetMessageW @861
 	; GetMessageWNoWait @863
 	GetModuleFileNameW @537
@@ -524,7 +561,7 @@ EXPORTS
 	GetOpenClipboardWindow @680
 	GetOpenFileNameW @488
 	GetOutlineTextMetricsW @1889
-	; GetOwnerProcess @606
+	GetOwnerProcess @606
 	GetPaletteEntries @949
 	GetParent @269
 	; GetPasswordActive @239
@@ -540,7 +577,7 @@ EXPORTS
 	; GetProcessIDFromIndex @1727
 	; GetProcessIndexFromID @640
 	GetProcessVersion @536
-	; GetProp @1498
+	GetPropW @1498
 	GetQueueStatus @1420
 	GetROP2 @1990
 	; GetRealTime @570
@@ -613,6 +650,60 @@ EXPORTS
 	; GetWindowTextWDirect @1454
 	GetWindowThreadProcessId @292
 
+	; String
+	StringCchCopyW @1689
+	StringCchPrintfExW @1701
+	StringCchPrintfW @1699
+	StringCbPrintfW @1700
+	StringCchCopyExW @1691
+
+	; Global
+	GlobalAddAtomW @1519
+	GlobalDeleteAtom @1520
+	GlobalFindAtomW @1521
+	GlobalMemoryStatus @88
+
+	; Wave
+	waveInAddBuffer @406
+	waveInClose @403
+	; waveInGetDevCaps @401
+	; waveInGetErrorText @402
+	waveInGetID @411
+	waveInGetNumDevs @400
+	waveInGetPosition @410
+	; waveInGetProperty @1815
+	waveInMessage @412
+	waveInOpen @413
+	waveInPrepareHeader @404
+	waveInReset @409
+	; waveInSetProperty @1816
+	waveInStart @407
+	waveInStop @408
+	waveInUnprepareHeader @405
+	waveOutBreakLoop @391
+	waveOutClose @384
+	; waveOutGetDevCaps @380
+	; waveOutGetErrorText @383
+	waveOutGetID @397
+	waveOutGetNumDevs @379
+	waveOutGetPitch @393
+	waveOutGetPlaybackRate @395
+	waveOutGetPosition @392
+	; waveOutGetProperty @1813
+	waveOutGetVolume @381
+	waveOutMessage @398
+	waveOutOpen @399
+	waveOutPause @388
+	waveOutPrepareHeader @385
+	waveOutReset @390
+	waveOutRestart @389
+	waveOutSetPitch @394
+	waveOutSetPlaybackRate @396
+	; waveOutSetProperty @1814
+	waveOutSetVolume @382
+	waveOutUnprepareHeader @386
+	waveOutWrite @387
+
 	MonitorFromPoint @1522
 	MonitorFromRect @1523
 	MonitorFromWindow @1524
@@ -621,6 +712,25 @@ EXPORTS
 	MulDiv @1877
 	MultiByteToWideChar @196
 
-	StringCchPrintfExW @1701
+	SetPropW @1497
+	RemovePropW @1499
 
+	StretchBlt @905
+	StretchDIBits @1667
+	GradientFill @1763
+	TransparentBlt @906 ; TransparentImage !!! maybe wrong
+
+	InvertRect @1770
+
+	__GetUserKData @2528
+	SetDialogAutoScrollBar @2705
+	SetWindowPosOnRotate @2706
+	SetWindowAutoGesture @2870
+	GetWindowAutoGesture @2869
+	GetAnimateMessageInfo @2871
+
+	__rt_ursh @2011
+	__dtou @2043
+
+	CloseGestureInfoHandle @2924
 	RegisterDefaultGestureHandler @2928 ; end of Windows CE 6.0 R3 coredll.dll
