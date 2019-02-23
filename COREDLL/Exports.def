@@ -482,7 +482,7 @@ EXPORTS
 	; GetForegroundKeyboardTarget @1225
 	GetForegroundWindow @701
 	; GetGestureExtraArguments @2926
-	GetGestureInfo @2925
+	GetGestureInfo @2925 ; windows 7+ system
 	GetGweApiSetTables @1867
 	; GetHeapSnapshot @52
 	GetIconInfo @1822
@@ -621,6 +621,6 @@ EXPORTS
 	MulDiv @1877
 	MultiByteToWideChar @196
 
-	; StringCchPrintfExW @1701
+	StringCchPrintfExW @1701
 
 	RegisterDefaultGestureHandler @2928 ; end of Windows CE 6.0 R3 coredll.dll

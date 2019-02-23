@@ -8,6 +8,12 @@ namespace COREDLL
 #ifdef __cplusplus
 	extern "C" {
 #endif
+
+		int GetGestureInfo()
+		{
+			return 0;
+		}
+
 		bool _declspec(dllexport) EnumSystemLocalesW(long lpLocaleEnumProc, DWORD dwFlags)
 		{
 			return true;
@@ -38,6 +44,21 @@ namespace COREDLL
 			return 0;
 		}
 
+		HRESULT StringCchPrintfExW(STRSAFE_LPWSTR  pszDest,
+			size_t          cchDest,
+			STRSAFE_LPWSTR  *ppszDestEnd,
+			size_t          *pcchRemaining,
+			DWORD           dwFlags,
+			STRSAFE_LPCWSTR pszFormat,
+			...)
+		{
+			va_list args;
+			va_start(args, pszFormat);
+			HRESULT result = ::StringCchPrintfExW(pszDest, cchDest, ppszDestEnd, pcchRemaining, dwFlags, pszFormat, args);
+			va_end(args);
+			return result;
+		}
+
 		HRESULT StringCchCopyW(STRSAFE_LPWSTR pszDest, size_t cchDest, STRSAFE_LPCWSTR pszSrc)
 		{
 			return ::StringCchCopyW(pszDest, cchDest, pszSrc);
@@ -50,7 +71,7 @@ namespace COREDLL
 
 		int RegisterDefaultGestureHandler() // @2928 // unimplemented
 		{
-			return 0;
+ 			return 0;
 		}
 
 		int lineAddProvider() // @375 // unimplemented

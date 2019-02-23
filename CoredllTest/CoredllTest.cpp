@@ -6,5 +6,6 @@
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	printf("%i\n", RegisterDefaultGestureHandler());
+	printf("%i\n", Random());
 }
