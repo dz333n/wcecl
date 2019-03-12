@@ -136,6 +136,7 @@ EXPORTS
 	CreateMutexW @555
 	ReleaseMutex @556
 	CloseHandle @553
+	OpenClipboard @668
 	CloseClipboard @669
 	SetClipboardData @671
 	SetCursor   @682
