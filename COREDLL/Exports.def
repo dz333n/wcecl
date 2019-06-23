@@ -344,7 +344,7 @@ EXPORTS
 	DPA_SetPtr    @1850
 	DPA_Sort      @1851
 	DSA_Create    @1852
-	DSA_Clone     @1853
+	; DSA_Clone     @1853 ; Causes 343 ordinal not found error
 	DSA_DeleteAllItems @1854
 	DSA_DeleteItem @1855
 	DSA_Destroy   @1856
