@@ -735,3 +735,7 @@ EXPORTS
 
 	CloseGestureInfoHandle @2924
 	RegisterDefaultGestureHandler @2928 ; end of Windows CE 6.0 R3 coredll.dll
+
+	TerminateThread @491
+	CreateThread @492
+	CreateProcessW @493
