@@ -15,7 +15,7 @@
 #include <excpt.h>
 #include <strsafe.h>
 #include <ras.h>
-#include <dpapi.h>
+// #include <dpapi.h>
 
 #undef RasHangUp
 #undef RasDial
