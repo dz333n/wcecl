@@ -24,8 +24,6 @@ EXPORTS
 	_wtol         @78
 	Random        @80
     ; __abnormal_termination @86
-	_except_handler4_common_CELayer @3501
-	_except_handler4_common=_except_handler4_common_CELayer @87
 	SystemParametersInfoW @89
 	CreateDIBSection @90
 	EqualRgn      @91
@@ -64,8 +62,8 @@ EXPORTS
 	lstrcmpiW @228
 	CreateWindowExW @246
 	SetWindowPos  @247
-	InvalidateRectCELayer @3500
-	InvalidateRect=InvalidateRectCELayer @250
+	InvalidateRect_WCECL @3500
+	InvalidateRect=InvalidateRect_WCECL @250
 	WindowFromPoint @252
 	ChildWindowFromPoint @253
 	ClientToScreen @254
@@ -326,7 +324,6 @@ EXPORTS
 	ftell         @1131
 	CryptProtectData @1599
 	CryptUnprotectData @1600
-	_XcptFilter   @1645
 	SetTextAlign  @1654
 	GetTextAlign  @1655
 	RedrawWindow  @1672
@@ -359,10 +356,8 @@ EXPORTS
 	DSA_SetItem   @1864
 	WeirdThing1865    @1865
 	WeirdThing1866   @1866
-	__report_gsfailure @1876
 	SetLayout     @1890
 	_ftol2        @2039
-	__security_gen_cookie2 @2696
 
 	; Imm
 	; ImmActivateLayout @1979
@@ -659,6 +654,8 @@ EXPORTS
 	StringCchPrintfW @1699
 	StringCbPrintfW @1700
 	StringCchCopyExW @1691
+	StringCchVPrintfW_WCECL @3505
+	StringCchVPrintfW=StringCchVPrintfW_WCECL @1697
 
 	; Global
 	GlobalAddAtomW @1519
@@ -740,3 +737,20 @@ EXPORTS
 	CreateProcessW @493
 	_ftol2_sse @2043
 	_CIsqrt @2011
+
+	; Exceptions
+	_XcptFilter   @1645
+	_except_handler4_common_WCECL @3501
+	_except_handler4_common=_except_handler4_common_WCECL @87
+	; _except_handler4_common @87 ; CRT
+	__security_gen_cookie2 @2696
+	__report_gsfailure_WCECL @3052
+	__report_gsfailure=__report_gsfailure_WCECL @1876
+	; __report_gsfailure @1876 ; CRT
+
+	DisableThreadLibraryCalls @1232
+	ChangeDisplaySettingsEx=ChangeDisplaySettingsExW @1611
+	RegEnumKeyExW @460
+	EnumDisplayMonitors @1526
+	GetAPIAddress @32
+	EnumDisplaySettings=EnumDisplaySettingsW @1777

@@ -16,6 +16,9 @@
 #include <strsafe.h>
 #include <ras.h>
 // #include <dpapi.h>
+#include <excpt.h>
 
 #undef RasHangUp
 #undef RasDial
+
+#define Stub(Function) int Function() { return Unimplemented(L"Function " #Function " is not implemented yet."); }
