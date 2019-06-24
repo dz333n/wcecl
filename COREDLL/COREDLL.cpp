@@ -8,93 +8,104 @@ namespace COREDLL
 #ifdef __cplusplus
 	extern "C" {
 #endif
+		BOOL Unimplemented(LPCWSTR Text);
+
+		BOOL _declspec(dllexport) __stdcall InvalidateRectCELayer(HWND hWnd, const RECT *lpRect, BOOL bErase)
+		{
+			// Source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms909857(v%3Dmsdn.10)
+			// if hWnd == NULL function must do nothing and return false;
+			if (hWnd == NULL)
+				return FALSE;
+			else
+				return ::InvalidateRect(hWnd, lpRect, bErase);
+		}
 
 		int GetGestureInfo()  // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"GetGestureInfo");
 		}
 
 		bool _declspec(dllexport) EnumSystemLocalesW(long lpLocaleEnumProc, DWORD dwFlags)  // unimplemented
 		{
-			return true;
+			return Unimplemented(L"EnumSystemLocalesW");
 		}
 
 		bool ImmSIPanelState(UINT dwCmd, LPVOID pValue) // unimplemented
 		{
-			return true;
+			return Unimplemented(L"ImmSIPanelState");
 		}
 
 		int StringCchPrintfW()  // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"StringCchPrintfW");
 		}
 
 		int SetAssociatedMenu() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"SetAssociatedMenu");
 		}
 
 		int GetAssociatedMenu() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"GetAssociatedMenu");
 		}
 
 		int ImageList_CopyDitherImage() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"ImageList_CopyDitherImage");
 		}
 
 		int GetOwnerProcess() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"GetOwnerProcess");
 		}
 
 		int __dtou() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"__dtou");
 		}
 
-		void NKDbgPrintfW(LPCWSTR lpszFmt, ...) 
+		void NKDbgPrintfW(LPCWSTR lpszFmt, ...)
 		{
 			va_list args;
 			va_start(args, lpszFmt);
-			 // todo
+			// todo
 			va_end(args);
 		}
 
 		int __rt_ursh() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"__rt_ursh");
 		}
 
 		int SetDialogAutoScrollBar() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"SetDialogAutoScrollBar");
 		}
 
 		int GetAnimateMessageInfo() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"GetAnimateMessageInfo");
 		}
-		
+
 		int GetWindowAutoGesture() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"GetWindowAutoGesture");
 		}
 
 		bool SetWindowAutoGesture() // unimplemented
 		{
-			return true;
+			return Unimplemented(L"SetWindowAutoGesture");
 		}
 
 		int GetMessageSource() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"GetMessageSource");
 		}
 
 		int __GetUserKData() // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"__GetUserKData");
 		}
 
 		HRESULT StringCchCopyExW(
@@ -130,17 +141,17 @@ namespace COREDLL
 
 		int GetGweApiSetTables()
 		{
-			return 0;
+			return Unimplemented(L"GetGweApiSetTables");
 		}
 
 		int RegisterDefaultGestureHandler() // @2928 // unimplemented
 		{
- 			return 0;
+			return Unimplemented(L"RegisterDefaultGestureHandler");
 		}
 
 		int lineAddProvider() // @375 // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"lineAddProvider");
 		}
 
 		/*int fwprintf(FILE* const _Stream, wchar_t const* const _Format, ...)
@@ -161,22 +172,22 @@ namespace COREDLL
 
 		bool CloseGestureInfoHandle() // unimplemented
 		{
-			return true;
+			return Unimplemented(L"CloseGestureInfoHandle");
 		}
 
 		bool Gesture() // unimplemented
 		{
-			return true;
+			return Unimplemented(L"Gesture");
 		}
 
 		bool GetGestureExtraArguments() // unimplemented
 		{
-			return false;
+			return Unimplemented(L"GetGestureExtraArguments");
 		}
 
 		bool SetWindowPosOnRotate() // unimplemented
 		{
-			return true;
+			return Unimplemented(L"SetWindowPosOnRotate");
 		}
 
 		DWORD RasDial(LPRASDIALEXTENSIONS Arg1, LPCWSTR Arg2, LPRASDIALPARAMSW Arg3, DWORD Arg4, LPVOID Arg5, LPHRASCONN Arg6)
@@ -196,7 +207,7 @@ namespace COREDLL
 
 		int sndPlaySoundW() // @377 // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"sndPlaySoundW");
 		}
 
 		HRESULT StringCbPrintfW(STRSAFE_LPWSTR pszDest, size_t cbDest, STRSAFE_LPCWSTR pszFormat, ...) // @1700
@@ -210,52 +221,73 @@ namespace COREDLL
 
 		int _XcptFilter(unsigned long xcptnum, long pxcptinfoptrs) // @1645 // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"_XcptFilter");
+		}
+
+		int _except_handler4_common_CELayer()
+		{
+			return Unimplemented(L"_except_handler4_common_CELayer");
+		}
+
+		int _ftol2() 
+		{
+			return Unimplemented(L"_ftol2");
+		}
+
+		int _ftol2_sse()
+		{
+			return Unimplemented(L"_ftol2_sse");
 		}
 
 		int __security_gen_cookie2() // @2696  // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"__security_gen_cookie2");
 		}
 
 		int __report_gsfailure() // @1876 // unimplemented
 		{
-			return 0;
+			return Unimplemented(L"__report_gsfailure");
 		}
 
 		int DSA_Search()
 		{
-			return 0;
+			return Unimplemented(L"DSA_Search");
 		}
 
 		int WeirdThing1865()
 		{
-			return 1;
+			return Unimplemented(L"WeirdThing1865");
 		}
 
 		int WeirdThing1866()
 		{
-			return 1;
+			return Unimplemented(L"WeirdThing1866");
 		}
 
 		int WeirdThing1846()
 		{
-			return 1;
+			return Unimplemented(L"WeirdThing1846");
 		}
 
 		int WeirdThing1849()
 		{
-			return 1;
+			return Unimplemented(L"WeirdThing1849");
 		}
 
 		int WeirdThing1841()
 		{
-			return 1;
+			return Unimplemented(L"WeirdThing1841");
 		}
 
 		int WeirdThing1840()
 		{
-			return 1;
+			return Unimplemented(L"WeirdThing1840");
+		}
+
+		BOOL Unimplemented(LPCWSTR Text)
+		{
+			MessageBox(NULL, Text, L"WCECL - Unimplemented Function", 0);
+			return FALSE;
 		}
 
 #ifdef __cplusplus

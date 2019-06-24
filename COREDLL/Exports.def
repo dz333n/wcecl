@@ -24,7 +24,8 @@ EXPORTS
 	_wtol         @78
 	Random        @80
     ; __abnormal_termination @86
-	_except_handler4_common @87
+	_except_handler4_common_CELayer @3501
+	_except_handler4_common=_except_handler4_common_CELayer @87
 	SystemParametersInfoW @89
 	CreateDIBSection @90
 	EqualRgn      @91
@@ -63,7 +64,8 @@ EXPORTS
 	lstrcmpiW @228
 	CreateWindowExW @246
 	SetWindowPos  @247
-	InvalidateRect @250
+	InvalidateRectCELayer @3500
+	InvalidateRect=InvalidateRectCELayer @250
 	WindowFromPoint @252
 	ChildWindowFromPoint @253
 	ClientToScreen @254
@@ -730,12 +732,11 @@ EXPORTS
 	GetWindowAutoGesture @2869
 	GetAnimateMessageInfo @2871
 
-	__rt_ursh @2011
-	__dtou @2043
-
 	CloseGestureInfoHandle @2924
 	RegisterDefaultGestureHandler @2928 ; end of Windows CE 6.0 R3 coredll.dll
 
 	TerminateThread @491
 	CreateThread @492
 	CreateProcessW @493
+	_ftol2_sse @2043
+	_CIsqrt @2011
