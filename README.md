@@ -2,13 +2,7 @@
 ## WinCE API <-> Win32 API Translator
 
 # What is this?
-Windows CE API is almost the same as Win32 API. Windows CE uses the same file format as Windows - Portable Executable. We can change subsystem in header to get it to work on any Windows-compatible OS. 
-
-## coredll and kernel32
-The 1st library is the clone of the 2nd - it contains all operating system's API functions. Currently this project realizes a translator of coredll callings to related Win32 libraries (kernel32, user32, etc.).
-
-# How to convert Windows CE ``.exe``s to Win32?
-See [Converting](CONVERTING.md)
+This library is designed to wrap Windows CE API with use of Win32 functions. This allows to run Windows CE executables in Win32 environment. Read details in [our wiki](https://github.com/feel-the-dz3n/wcecl/wiki).
 
 # Credits
  - Created by [Yaroslav Kibysh / Dz3n](https://github.com/feel-the-dz3n)
