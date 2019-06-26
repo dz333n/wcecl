@@ -105,7 +105,13 @@ namespace COREDLL
 			return result;
 		}*/
 
-		DWORD Random() { return ::rand(); }
+		DWORD Random() 
+		{
+			// sources: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms860353(v%3Dmsdn.10)
+			//          https://docs.microsoft.com/en-us/previous-versions/ms910957(v=msdn.10)
+			::srand(::GetTickCount());
+			return ::rand(); 
+		}
 
 		Stub(CloseGestureInfoHandle);
 		Stub(Gesture);
