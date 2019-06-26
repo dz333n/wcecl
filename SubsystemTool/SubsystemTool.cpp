@@ -182,6 +182,8 @@ int ProcessPath(_TCHAR* path, _TCHAR* subsys)
 			return 5;
 		}	
 		
+		LocalFree(fileBuf);
+
 		CloseHandle(hFile);
 	}
 
