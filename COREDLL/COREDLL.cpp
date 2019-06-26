@@ -8,7 +8,7 @@ namespace COREDLL
 #ifdef __cplusplus
 	extern "C" {
 #endif
-		BOOL Unimplemented(LPCWSTR Text);
+		BOOL ProgramErrorDialog(LPCWSTR Text);
 
 		BOOL __stdcall InvalidateRect_WCECL(HWND hWnd, const RECT *lpRect, BOOL bErase)
 		{
@@ -133,12 +133,21 @@ namespace COREDLL
 
 		DWORD _stdcall _except_handler4_common_WCECL(DWORD nBufferLength, LPWSTR lpBuffer)
 		{
-			MessageBox(NULL, L"WARNING: Exception happened!", L"WCECL Exception", 0);
-			return 0;// return Unimplemented(L"_except_handler4_common_WCECL");
+			int result = MessageBoxExW(
+				NULL, 
+				L"WARNING: Exception happened!\n\nYES - continue\nNO - exit", 
+				L"Windows CE Compatibility Layer",
+				MB_YESNO,
+				MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US));
+
+			if (result == IDYES) return 0;
+			else exit(1);
+
+			return 0;
 		}
 
 		Stub(_XcptFilter); // unsigned long xcptnum, long pxcptinfoptrs
-		Stub(__security_gen_cookie2);
+		StubSilent(__security_gen_cookie2);
 		Stub(__report_gsfailure_WCECL);
 		Stub(_ftol2);
 		Stub(_ftol2_sse);
@@ -150,9 +159,19 @@ namespace COREDLL
 		Stub(WeirdThing1841);
 		Stub(WeirdThing1840);
 
-		BOOL Unimplemented(LPCWSTR Text)
+		BOOL ProgramErrorDialog(LPCWSTR Text)
 		{
-			MessageBox(NULL, Text, L"WCECL - Unimplemented Function", 0);
+			int box = MessageBoxExW(
+				NULL,
+				Text, 
+				L"Windows CE Compatibility Layer", 
+				MB_YESNOCANCEL, 
+				MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US));
+
+			if (box == IDNO) return TRUE;
+			else if (box == IDCANCEL) exit(1);
+			else return FALSE; // yes/close
+
 			return FALSE;
 		}
 

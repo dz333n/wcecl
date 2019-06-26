@@ -21,4 +21,5 @@
 #undef RasHangUp
 #undef RasDial
 
-#define Stub(Function) int Function() { return Unimplemented(L"Function " #Function " is not implemented yet."); }
+#define Stub(Function) int Function() { return ProgramErrorDialog(L"Function " #Function " is not implemented yet.\n\nYES - return FALSE\nNO - return TRUE\nCANCEL - exit"); }
+#define StubSilent(Function) int Function() { return FALSE; }
