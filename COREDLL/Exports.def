@@ -105,7 +105,8 @@ EXPORTS
 	RegCreateKeyExW @456
 	RegDeleteKeyW @457
 	RegDeleteValueW @458
-	RegOpenKeyExW @461
+	RegOpenKeyExW_WCECL @3504
+	RegOpenKeyExW=RegOpenKeyExW_WCECL @461
 	RegQueryValueExW @463
 	RegSetValueExW @464
 	Sleep         @496
@@ -140,6 +141,7 @@ EXPORTS
 	CloseClipboard @669
 	SetClipboardData @671
 	SetCursor   @682
+	LoadCursorW_WCECL @3505
 	LoadCursorW=LoadCursorW_WCECL @683
 	CheckRadioButton @684
 	SendDlgItemMessageW @685

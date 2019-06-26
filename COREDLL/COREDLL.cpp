@@ -118,6 +118,18 @@ namespace COREDLL
 		Stub(GetGestureExtraArguments);
 		Stub(SetWindowPosOnRotate);
 
+		LONG RegOpenKeyExW_WCECL(
+			HKEY hKey,
+			LPCWSTR lpSubKey,
+			DWORD ulOptions,
+			REGSAM samDesired,
+			PHKEY phkResult)
+		{
+			// source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms891460(v%3Dmsdn.10)
+			// samDesired and ulOptions are 0 always
+			return ::RegOpenKeyExW(hKey, lpSubKey, 0, 0, phkResult);
+		}
+
 		DWORD RasDial(LPRASDIALEXTENSIONS Arg1, LPCWSTR Arg2, LPRASDIALPARAMSW Arg3, DWORD Arg4, LPVOID Arg5, LPHRASCONN Arg6)
 		{
 			return ::RasDialW(Arg1, Arg2, Arg3, Arg4, Arg5, Arg6);
