@@ -82,7 +82,8 @@ namespace COREDLL
 
 		HCURSOR LoadCursorW_WCECL(HINSTANCE hInstance, LPCWSTR lpCursorName)
 		{
-			return NULL;
+			return NULL; // FIX ME currently fails in Solitare (https://github.com/feel-the-dz3n/wcecl/issues/6) so return NULL
+
 			// This functions was replaced by LoadImage, so
 			return (HCURSOR)::LoadImageW(hInstance, lpCursorName, IMAGE_CURSOR, 0, 0, LR_SHARED);
 		}
