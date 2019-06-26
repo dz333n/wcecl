@@ -180,9 +180,9 @@ int ProcessPath(_TCHAR* path, _TCHAR* subsys)
 		{
 			_tprintf(TEXT("Failed to save file (%d)\n"), GetLastError());
 			return 5;
-		}	
+		}
 		
-		LocalFree(fileBuf);
+		delete fileBuf;
 
 		CloseHandle(hFile);
 	}
