@@ -1,10 +1,12 @@
 #ifndef PCH_H
 #define PCH_H
 
+#include <windows.h>
+
 extern "C" 
 {
 	int RegisterDefaultGestureHandler();
-	int Random();
+	DWORD Random();
 }
 
 #endif 

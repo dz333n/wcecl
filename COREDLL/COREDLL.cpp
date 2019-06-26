@@ -105,7 +105,7 @@ namespace COREDLL
 			return result;
 		}*/
 
-		int Random() { return ::rand(); }
+		DWORD Random() { return ::rand(); }
 
 		Stub(CloseGestureInfoHandle);
 		Stub(Gesture);
