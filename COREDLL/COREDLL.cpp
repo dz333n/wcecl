@@ -80,6 +80,13 @@ namespace COREDLL
 		Stub(RegisterDefaultGestureHandler);
 		Stub(lineAddProvider);
 
+		HCURSOR LoadCursorW_WCECL(HINSTANCE hInstance, LPCWSTR lpCursorName)
+		{
+			return NULL;
+			// This functions was replaced by LoadImage, so
+			return (HCURSOR)::LoadImageW(hInstance, lpCursorName, IMAGE_CURSOR, 0, 0, LR_SHARED);
+		}
+
 		int GetObjectW_WCECL(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject)
 		{
 			// source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ee506071(v%3dwinembedded.60)

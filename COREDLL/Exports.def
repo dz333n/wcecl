@@ -140,7 +140,7 @@ EXPORTS
 	CloseClipboard @669
 	SetClipboardData @671
 	SetCursor   @682
-	LoadCursorW @683
+	LoadCursorW=LoadCursorW_WCECL @683
 	CheckRadioButton @684
 	SendDlgItemMessageW @685
 	SetDlgItemTextW @686
