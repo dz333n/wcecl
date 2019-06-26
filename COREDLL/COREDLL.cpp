@@ -10,7 +10,7 @@ namespace COREDLL
 #endif
 		BOOL ProgramErrorDialog(LPCWSTR Text);
 
-		BOOL __stdcall InvalidateRect_WCECL(HWND hWnd, const RECT *lpRect, BOOL bErase)
+		BOOL InvalidateRect_WCECL(HWND hWnd, const RECT *lpRect, BOOL bErase)
 		{
 			// Source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms909857(v%3Dmsdn.10)
 			// if hWnd == NULL function must do nothing and return false;
