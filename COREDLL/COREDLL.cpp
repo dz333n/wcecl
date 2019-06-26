@@ -80,6 +80,12 @@ namespace COREDLL
 		Stub(RegisterDefaultGestureHandler);
 		Stub(lineAddProvider);
 
+		int GetObjectW_WCECL(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject)
+		{
+			// source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ee506071(v%3dwinembedded.60)
+			return ::GetObjectW(hgdiobj, cbBuffer, lpvObject);
+		}
+
 		/*int fwprintf(FILE* const _Stream, wchar_t const* const _Format, ...)
 		{
 			va_list args;
