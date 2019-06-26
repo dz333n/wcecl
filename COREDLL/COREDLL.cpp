@@ -130,6 +130,35 @@ namespace COREDLL
 			return ::RegOpenKeyExW(hKey, lpSubKey, 0, 0, phkResult);
 		}
 
+		HWND CreateWindowExW_WCECL(
+			DWORD dwExStyle,
+			LPCWSTR lpClassName,
+			LPCWSTR lpWindowName,
+			DWORD dwStyle,
+			int x,
+			int y,
+			int nWidth,
+			int nHeight,
+			HWND hWndParent,
+			HMENU hMenu,
+			HINSTANCE hInstance,
+			LPVOID lpParam)
+		{
+			return ::CreateWindowExW(
+				dwExStyle, 
+				lpClassName, 
+				lpWindowName,
+				dwStyle, 
+				x,
+				y,
+				nWidth, 
+				nHeight,
+				hWndParent,
+				hMenu,
+				hInstance,
+				lpParam);
+		}
+
 		DWORD RasDial(LPRASDIALEXTENSIONS Arg1, LPCWSTR Arg2, LPRASDIALPARAMSW Arg3, DWORD Arg4, LPVOID Arg5, LPHRASCONN Arg6)
 		{
 			return ::RasDialW(Arg1, Arg2, Arg3, Arg4, Arg5, Arg6);

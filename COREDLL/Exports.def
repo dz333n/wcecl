@@ -60,7 +60,8 @@ EXPORTS
 	CharUpperW @224
 	lstrcmpW @227
 	lstrcmpiW @228
-	CreateWindowExW @246
+	CreateWindowExW_WCECL @3506
+	CreateWindowExW=CreateWindowExW_WCECL @246
 	SetWindowPos  @247
 	InvalidateRect_WCECL @3500
 	InvalidateRect=InvalidateRect_WCECL @250
