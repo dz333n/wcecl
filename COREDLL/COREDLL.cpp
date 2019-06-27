@@ -85,11 +85,15 @@ namespace COREDLL
 
 		HCURSOR LoadCursorW_WCECL(HINSTANCE hInstance, LPCWSTR lpCursorName)
 		{
-			return NULL; // FIX ME currently fails in Solitare (https://github.com/feel-the-dz3n/wcecl/issues/6) so return NULL
-
+#ifdef LOADCURSOR_WORS
 			// This functions was replaced by LoadImage, so
 			auto result = (HCURSOR)::LoadImageW(hInstance, lpCursorName, IMAGE_CURSOR, 0, 0, LR_SHARED);
 			return result;
+#else
+			// FIX ME currently fails in Solitare (https://github.com/feel-the-dz3n/wcecl/issues/6) so force default cursor
+			auto result = (HCURSOR)LoadImageW(NULL, IDC_ARROW, IMAGE_CURSOR, 0, 0, LR_SHARED);
+			return result;
+#endif
 		}
 
 		int GetObjectW_WCECL(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject)
