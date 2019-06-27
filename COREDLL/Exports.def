@@ -123,7 +123,7 @@ EXPORTS
 	FlushInstructionCache @508
 	OpenProcess @509
 	SetLastError  @517
-	LoadLibraryW  @528
+	LoadLibraryW=LoadLibraryW_WCECL  @528
 	FreeLibrary   @529
 	; FindResource @531
 	FindResourceW @532

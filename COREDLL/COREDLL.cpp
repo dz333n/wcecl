@@ -177,6 +177,12 @@ namespace COREDLL
 			return result;
 		}
 
+		HINSTANCE LoadLibraryW_WCECL(LPCWSTR lpLibFileName)
+		{
+			auto result = ::LoadLibraryW(lpLibFileName);
+			return result;
+		}
+
 		HDC GetDC_WCECL(HWND hWnd)
 		{
 			auto result = ::GetDC(hWnd);
