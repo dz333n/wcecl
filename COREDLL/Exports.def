@@ -30,7 +30,8 @@ EXPORTS
 	CreateAcceleratorTableW @92
 	DestroyAcceleratorTable @93
 	LoadAcceleratorsW @94
-	RegisterClassW  @95
+	RegisterClassW_WCECL @3511
+	RegisterClassW=RegisterClassW_WCECL @95
 	CopyRect      @96
 	EqualRect     @97
 	InflateRect   @98
@@ -73,7 +74,8 @@ EXPORTS
 	SetWindowLongW @258
 	BeginPaint    @260
 	EndPaint      @261
-	ReleaseDC     @263
+	ReleaseDC_WCECL @3507
+	ReleaseDC=ReleaseDC_WCECL @263
 	DefWindowProcW @264
 	DestroyWindow @265
 	ShowWindow    @266
@@ -165,7 +167,8 @@ EXPORTS
 	DestroyIcon   @725
 	DrawIconEx    @726
 	ExtractIconExW @727
-	LoadIconW     @728
+	LoadIconW_WCECL @3510
+	LoadIconW=LoadIconW_WCECL @728
 	LoadImageW    @730
 	ClipCursor    @731
 	SetCursorPos  @736
@@ -231,7 +234,8 @@ EXPORTS
 	MsgWaitForMultipleObjectsEx @871
 	LoadBitmapW   @873
 	LoadStringW   @874
-	SetTimer      @875
+	SetTimer_WCECL @3512
+	SetTimer=SetTimer_WCECL @875
 	KillTimer     @876
 	SetClassLongW @880
 	; SetClassLong  @882
@@ -267,7 +271,8 @@ EXPORTS
 	SetROP2       @928
 	CreateDIBPatternBrushPt @929
 	CreatePenIndirect @930
-	CreateSolidBrush @931
+	CreateSolidBrush_WCECL @3509
+	CreateSolidBrush=CreateSolidBrush_WCECL @931
 	DrawEdge      @932
 	DrawFocusRect @933
 	Ellipse       @934
@@ -481,13 +486,15 @@ EXPORTS
 	GetCurrentPositionEx @1653
 	GetCursor @733
 	GetCursorPos @734
-	GetDC @262
+	GetDC_WCECL @3508
+	GetDC=GetDC_WCECL @262
 	GetDCEx @1185
 	GetDIBColorTable @1665
 	GetDateFormatW @203
 	GetDesktopWindow @1397
 	; GetDeviceByIndex @1236
-	GetDeviceCaps @916
+	GetDeviceCaps_WCECL @3513
+	GetDeviceCaps=GetDeviceCaps_WCECL @916
 	; GetDeviceHandleFromContext @1961
 	; GetDeviceInformationByDeviceHandle @1870
 	; GetDeviceInformationByFileHandle @1871

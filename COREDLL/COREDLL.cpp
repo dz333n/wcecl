@@ -17,7 +17,10 @@ namespace COREDLL
 			if (hWnd == NULL)
 				return FALSE;
 			else
-				return ::InvalidateRect(hWnd, lpRect, bErase);
+			{
+				auto result = ::InvalidateRect(hWnd, lpRect, bErase);
+				return result;
+			}
 		}
 
 		Stub(GetGestureInfo);
@@ -85,13 +88,15 @@ namespace COREDLL
 			return NULL; // FIX ME currently fails in Solitare (https://github.com/feel-the-dz3n/wcecl/issues/6) so return NULL
 
 			// This functions was replaced by LoadImage, so
-			return (HCURSOR)::LoadImageW(hInstance, lpCursorName, IMAGE_CURSOR, 0, 0, LR_SHARED);
+			auto result = (HCURSOR)::LoadImageW(hInstance, lpCursorName, IMAGE_CURSOR, 0, 0, LR_SHARED);
+			return result;
 		}
 
 		int GetObjectW_WCECL(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject)
 		{
 			// source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ee506071(v%3dwinembedded.60)
-			return ::GetObjectW(hgdiobj, cbBuffer, lpvObject);
+			auto result = ::GetObjectW(hgdiobj, cbBuffer, lpvObject);
+			return result;
 		}
 
 		/*int fwprintf(FILE* const _Stream, wchar_t const* const _Format, ...)
@@ -110,7 +115,8 @@ namespace COREDLL
 			// sources: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms860353(v%3Dmsdn.10)
 			//          https://docs.microsoft.com/en-us/previous-versions/ms910957(v=msdn.10)
 			::srand(::GetTickCount());
-			return ::rand(); 
+			auto result = ::rand();
+			return result;
 		}
 
 		Stub(CloseGestureInfoHandle);
@@ -127,7 +133,50 @@ namespace COREDLL
 		{
 			// source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms891460(v%3Dmsdn.10)
 			// samDesired and ulOptions are 0 always
-			return ::RegOpenKeyExW(hKey, lpSubKey, 0, 0, phkResult);
+			auto result = ::RegOpenKeyExW(hKey, lpSubKey, 0, 0, phkResult);
+			return result;
+		}
+
+		HBRUSH CreateSolidBrush_WCECL(COLORREF crColor) 
+		{
+			auto result = ::CreateSolidBrush(crColor);
+			return result;
+		}
+
+		HICON LoadIconW_WCECL(HINSTANCE hInstance, LPCWSTR lpIconName) 
+		{
+			auto result = ::LoadIconW(hInstance, lpIconName);
+			return result;
+		}
+
+		ATOM RegisterClassW_WCECL(const WNDCLASS *lpWndClass)
+		{
+			auto result = ::RegisterClass(lpWndClass);
+			return result;
+		}
+
+		UINT SetTimer_WCECL(HWND hWnd, UINT nIDEvent, UINT uElapse, TIMERPROC lpTimerFunc)
+		{
+			auto result = ::SetTimer(hWnd, nIDEvent, uElapse, lpTimerFunc);
+			return result;
+		}
+
+		int GetDeviceCaps_WCECL(HDC hdc, int nIndex)
+		{
+			auto result = ::GetDeviceCaps(hdc, nIndex);
+			return result;
+		}
+
+		int ReleaseDC_WCECL(HWND hWnd, HDC hDC)
+		{
+			auto result = ::ReleaseDC(hWnd, hDC);
+			return result;
+		}
+
+		HDC GetDC_WCECL(HWND hWnd)
+		{
+			auto result = ::GetDC(hWnd);
+			return result;
 		}
 
 		HWND CreateWindowExW_WCECL(
@@ -144,19 +193,21 @@ namespace COREDLL
 			HINSTANCE hInstance,
 			LPVOID lpParam)
 		{
-			return ::CreateWindowExW(
-				dwExStyle, 
-				lpClassName, 
+			auto result = ::CreateWindowExW(
+				dwExStyle,
+				lpClassName,
 				lpWindowName,
-				dwStyle, 
+				dwStyle,
 				x,
 				y,
-				nWidth, 
+				nWidth,
 				nHeight,
 				hWndParent,
 				hMenu,
 				hInstance,
 				lpParam);
+
+			return result;
 		}
 
 		DWORD RasDial(LPRASDIALEXTENSIONS Arg1, LPCWSTR Arg2, LPRASDIALPARAMSW Arg3, DWORD Arg4, LPVOID Arg5, LPHRASCONN Arg6)
