@@ -30,7 +30,6 @@ EXPORTS
 	CreateAcceleratorTableW @92
 	DestroyAcceleratorTable @93
 	LoadAcceleratorsW @94
-	RegisterClassW_WCECL @3511
 	RegisterClassW=RegisterClassW_WCECL @95
 	CopyRect      @96
 	EqualRect     @97
@@ -61,10 +60,8 @@ EXPORTS
 	CharUpperW @224
 	lstrcmpW @227
 	lstrcmpiW @228
-	CreateWindowExW_WCECL @3506
 	CreateWindowExW=CreateWindowExW_WCECL @246
 	SetWindowPos  @247
-	InvalidateRect_WCECL @3500
 	InvalidateRect=InvalidateRect_WCECL @250
 	WindowFromPoint @252
 	ChildWindowFromPoint @253
@@ -74,7 +71,6 @@ EXPORTS
 	SetWindowLongW @258
 	BeginPaint    @260
 	EndPaint      @261
-	ReleaseDC_WCECL @3507
 	ReleaseDC=ReleaseDC_WCECL @263
 	DefWindowProcW @264
 	DestroyWindow @265
@@ -108,7 +104,6 @@ EXPORTS
 	RegCreateKeyExW @456
 	RegDeleteKeyW @457
 	RegDeleteValueW @458
-	RegOpenKeyExW_WCECL @3504
 	RegOpenKeyExW=RegOpenKeyExW_WCECL @461
 	RegQueryValueExW @463
 	RegSetValueExW @464
@@ -143,8 +138,7 @@ EXPORTS
 	OpenClipboard @668
 	CloseClipboard @669
 	SetClipboardData @671
-	SetCursor   @682
-	LoadCursorW_WCECL @3505
+	SetCursor @682
 	LoadCursorW=LoadCursorW_WCECL @683
 	CheckRadioButton @684
 	SendDlgItemMessageW @685
@@ -167,7 +161,6 @@ EXPORTS
 	DestroyIcon   @725
 	DrawIconEx    @726
 	ExtractIconExW @727
-	LoadIconW_WCECL @3510
 	LoadIconW=LoadIconW_WCECL @728
 	LoadImageW    @730
 	ClipCursor    @731
@@ -234,7 +227,6 @@ EXPORTS
 	MsgWaitForMultipleObjectsEx @871
 	LoadBitmapW   @873
 	LoadStringW   @874
-	SetTimer_WCECL @3512
 	SetTimer=SetTimer_WCECL @875
 	KillTimer     @876
 	SetClassLongW @880
@@ -271,7 +263,6 @@ EXPORTS
 	SetROP2       @928
 	CreateDIBPatternBrushPt @929
 	CreatePenIndirect @930
-	CreateSolidBrush_WCECL @3509
 	CreateSolidBrush=CreateSolidBrush_WCECL @931
 	DrawEdge      @932
 	DrawFocusRect @933
@@ -486,14 +477,12 @@ EXPORTS
 	GetCurrentPositionEx @1653
 	GetCursor @733
 	GetCursorPos @734
-	GetDC_WCECL @3508
 	GetDC=GetDC_WCECL @262
 	GetDCEx @1185
 	GetDIBColorTable @1665
 	GetDateFormatW @203
 	GetDesktopWindow @1397
 	; GetDeviceByIndex @1236
-	GetDeviceCaps_WCECL @3513
 	GetDeviceCaps=GetDeviceCaps_WCECL @916
 	; GetDeviceHandleFromContext @1961
 	; GetDeviceInformationByDeviceHandle @1870
@@ -565,7 +554,6 @@ EXPORTS
 	GetNumberFormatW @204
 	GetOEMCP @187
 	GetObjectType @917
-	GetObjectW_WCECL @3503
 	GetObjectW=GetObjectW_WCECL @918
 	GetOpenClipboardWindow @680
 	GetOpenFileNameW @488
@@ -665,7 +653,6 @@ EXPORTS
 	StringCchPrintfW @1699
 	StringCbPrintfW @1700
 	StringCchCopyExW @1691
-	StringCchVPrintfW_WCECL @3502
 	StringCchVPrintfW=StringCchVPrintfW_WCECL @1697
 
 	; Global
@@ -751,11 +738,9 @@ EXPORTS
 
 	; Exceptions
 	_XcptFilter   @1645
-	_except_handler4_common_WCECL @3501
 	_except_handler4_common=_except_handler4_common_WCECL @87
 	; _except_handler4_common @87 ; CRT
 	__security_gen_cookie2 @2696
-	__report_gsfailure_WCECL @3052
 	__report_gsfailure=__report_gsfailure_WCECL @1876
 	; __report_gsfailure @1876 ; CRT
 
