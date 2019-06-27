@@ -87,7 +87,7 @@ EXPORTS
 	SetScrollRange @281
 	MapWindowPoints @284
 	CallWindowProcW @285
-	FindWindowW     @286
+	FindWindowW=FindWindowW_WCECL @286
 	EnableWindow    @287
 	IsWindowEnabled @288
 	ScrollWindowEx  @289
@@ -126,7 +126,7 @@ EXPORTS
 	SizeofResource @534
 	OutputDebugStringW @541
 	RaiseException @543
-	TerminateProcess @544
+	TerminateProcess=TerminateProcess_WCECL @544
 	NKDbgPrintfW @545
 	CreateFileMappingW @548
 	MapViewOfFile @549
@@ -150,7 +150,7 @@ EXPORTS
 	IsDialogMessageW @698
 	MapDialogRect @699
 	SetDlgItemInt @700
-	SetForegroundWindow @702
+	SetForegroundWindow=SetForegroundWindow_WCECL @702
 	SetActiveWindow @703
 	SetFocus      @704
 	SetCapture    @708

@@ -8,7 +8,7 @@ namespace COREDLL
 #ifdef __cplusplus
 	extern "C" {
 #endif
-		BOOL ProgramErrorDialog(LPCWSTR Text);
+		BOOL ProgramErrorDialog(LPCWSTR Text, BOOL YesNo);
 
 		BOOL InvalidateRect_WCECL(HWND hWnd, const RECT *lpRect, BOOL bErase)
 		{
@@ -85,15 +85,9 @@ namespace COREDLL
 
 		HCURSOR LoadCursorW_WCECL(HINSTANCE hInstance, LPCWSTR lpCursorName)
 		{
-#ifdef LOADCURSOR_WORS
 			// This functions was replaced by LoadImage, so
-			auto result = (HCURSOR)::LoadImageW(hInstance, lpCursorName, IMAGE_CURSOR, 0, 0, LR_SHARED);
+			auto result = (HCURSOR)::LoadImageW(NULL, lpCursorName, IMAGE_CURSOR, 0, 0, LR_SHARED);
 			return result;
-#else
-			// FIX ME currently fails in Solitare (https://github.com/feel-the-dz3n/wcecl/issues/6) so force default cursor
-			auto result = (HCURSOR)LoadImageW(NULL, IDC_ARROW, IMAGE_CURSOR, 0, 0, LR_SHARED);
-			return result;
-#endif
 		}
 
 		int LoadStringW_WCECL(
@@ -102,7 +96,14 @@ namespace COREDLL
 			LPWSTR lpBuffer,
 			int cchBufferMax)
 		{
-			auto result = ::LoadStringW(hInstance, uID, lpBuffer, cchBufferMax);
+			auto result = ::LoadStringW(NULL, uID, lpBuffer, cchBufferMax);
+
+			if (w32err(result == NULL))
+			{
+				auto win32error = GetLastError();
+				DebugBreak();
+			}
+
 			return result;
 		}
 
@@ -173,13 +174,31 @@ namespace COREDLL
 
 		HICON LoadIconW_WCECL(HINSTANCE hInstance, LPCWSTR lpIconName) 
 		{
-			auto result = ::LoadIconW(hInstance, lpIconName);
+			auto result = ::LoadIconW(NULL, lpIconName);
+			return result;
+		}
+
+		HWND FindWindowW_WCECL(LPCWSTR lpClassName, LPCWSTR lpWindowName)
+		{
+			auto result = ::FindWindowW(lpClassName, lpWindowName);
+			return result;
+		}
+
+		BOOL SetForegroundWindow_WCECL(HWND hWnd)
+		{
+			auto result = ::SetForegroundWindow(hWnd);
+			return result;
+		}
+
+		BOOL TerminateProcess_WCECL(HANDLE hProcess, DWORD uExitCode)
+		{
+			auto result = ::TerminateProcess(hProcess, uExitCode);
 			return result;
 		}
 
 		ATOM RegisterClassW_WCECL(const WNDCLASS *lpWndClass)
 		{
-			auto result = ::RegisterClass(lpWndClass);
+			auto result = ::RegisterClassW(lpWndClass);
 			return result;
 		}
 
@@ -240,6 +259,12 @@ namespace COREDLL
 				hMenu,
 				hInstance,
 				lpParam);
+
+			if (w32err(result == NULL))
+			{
+				auto win32error = GetLastError();
+				DebugBreak();
+			}
 
 			return result;
 		}
@@ -305,18 +330,18 @@ namespace COREDLL
 		Stub(WeirdThing1841);
 		Stub(WeirdThing1840);
 
-		BOOL ProgramErrorDialog(LPCWSTR Text)
+		BOOL ProgramErrorDialog(LPCWSTR Text, BOOL YesNo)
 		{
 			int box = MessageBoxExW(
 				NULL,
 				Text, 
 				L"Windows CE Compatibility Layer", 
-				MB_YESNOCANCEL, 
+				(YesNo ? MB_YESNO : MB_YESNOCANCEL), 
 				MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US));
 
-			if (box == IDNO) return TRUE;
-			else if (box == IDCANCEL) exit(1);
-			else return FALSE; // yes/close
+				if (box == IDNO && !YesNo) return TRUE;
+				else if ((box == IDCANCEL) || (box == IDNO && YesNo)) exit(1);
+				else return FALSE; // yes/close
 
 			return FALSE;
 		}
