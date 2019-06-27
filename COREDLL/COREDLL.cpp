@@ -96,10 +96,26 @@ namespace COREDLL
 #endif
 		}
 
+		int LoadStringW_WCECL(
+			HINSTANCE hInstance,
+			UINT uID,
+			LPWSTR lpBuffer,
+			int cchBufferMax)
+		{
+			auto result = ::LoadStringW(hInstance, uID, lpBuffer, cchBufferMax);
+			return result;
+		}
+
 		int GetObjectW_WCECL(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject)
 		{
 			// source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ee506071(v%3dwinembedded.60)
 			auto result = ::GetObjectW(hgdiobj, cbBuffer, lpvObject);
+			return result;
+		}
+
+		BOOL DeleteObject_WCECL(HGDIOBJ hObject)
+		{
+			auto result = ::DeleteObject(hObject);
 			return result;
 		}
 
@@ -138,6 +154,14 @@ namespace COREDLL
 			// source: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms891460(v%3Dmsdn.10)
 			// samDesired and ulOptions are 0 always
 			auto result = ::RegOpenKeyExW(hKey, lpSubKey, 0, 0, phkResult);
+			return result;
+		}
+
+		HLOCAL LocalAlloc_WCECL(
+			UINT uFlags,
+			UINT uBytes)
+		{
+			auto result = ::LocalAlloc(uFlags, uBytes);
 			return result;
 		}
 
@@ -217,6 +241,12 @@ namespace COREDLL
 				hInstance,
 				lpParam);
 
+			return result;
+		}
+
+		HBITMAP LoadBitmapW_WCECL(HINSTANCE hInstance, LPCWSTR lpBitmapName)
+		{
+			auto result = ::LoadBitmapW(hInstance, lpBitmapName);
 			return result;
 		}
 

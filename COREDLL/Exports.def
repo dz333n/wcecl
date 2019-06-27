@@ -16,7 +16,7 @@ EXPORTS
 	HeapReAlloc @47
 	HeapSize @48
 	HeapValidate @51
-	LocalAlloc    @33
+	LocalAlloc=LocalAlloc_WCECL @33
 	LocalReAlloc  @34
 	LocalSize     @35
 	LocalFree     @36
@@ -225,8 +225,8 @@ EXPORTS
 	SendNotifyMessageW @869
 	TranslateMessage @870
 	MsgWaitForMultipleObjectsEx @871
-	LoadBitmapW   @873
-	LoadStringW   @874
+	LoadBitmapW=LoadBitmapW_WCECL   @873
+	LoadStringW=LoadStringW_WCECL   @874
 	SetTimer=SetTimer_WCECL @875
 	KillTimer     @876
 	SetClassLongW @880
@@ -252,7 +252,7 @@ EXPORTS
 	CreateDCW     @909
 	CreateCompatibleDC @910
 	DeleteDC      @911
-	DeleteObject  @912
+	DeleteObject=DeleteObject_WCECL  @912
 	SelectObject  @921
 	SetBkColor    @922
 	SetBkMode     @923
