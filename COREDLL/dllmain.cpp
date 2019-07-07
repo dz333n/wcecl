@@ -10,7 +10,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 	{
-		MessageBox(NULL, L"Windows CE Compatibility Layer is working.", L"WCECL: Startup", 0);
+		MessageBox(NULL, L"Windows CE Compatibility Layer is working. You can attach debugger or continue.", L"WCECL: Startup", 0);
 		break;
 	};
 	//

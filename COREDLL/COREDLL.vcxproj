@@ -90,6 +90,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;COREDLL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -129,6 +130,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;COREDLL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -169,12 +171,22 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="COREDLL.cpp" />
+    <ClCompile Include="additional.cpp" />
+    <ClCompile Include="commctrl_wcecl.cpp" />
+    <ClCompile Include="dbgapi_wcecl.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="excpt_wcecl.cpp" />
+    <ClCompile Include="imm_wcecl.cpp" />
+    <ClCompile Include="other.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="strsafe_wcecl.cpp" />
+    <ClCompile Include="winbase_wcecl.cpp" />
+    <ClCompile Include="wingdi_wcecl.cpp" />
+    <ClCompile Include="winreg_wcecl.cpp" />
+    <ClCompile Include="winuser_wcecl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Exports.def" />

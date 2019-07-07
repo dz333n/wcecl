@@ -1,752 +1,752 @@
 LIBRARY COREDLL
 EXPORTS
-	InitializeCriticalSection @2
-	DeleteCriticalSection @3
-	EnterCriticalSection @4
-	LeaveCriticalSection @5
-	ExitThread @6
-	; InitLocale @8
-	SystemTimeToFileTime @19
-	HeapAlloc @46
-	; HeapAllocTrace @1999
-	HeapCompact @1884
-	HeapCreate @44
-	HeapDestroy @45
-	HeapFree @49
-	HeapReAlloc @47
-	HeapSize @48
-	HeapValidate @51
-	LocalAlloc=LocalAlloc_WCECL @33
-	LocalReAlloc  @34
-	LocalSize     @35
-	LocalFree     @36
-	wsprintfW	  @56
-	_wtol         @78
-	Random        @80
+    InitializeCriticalSection @2
+    DeleteCriticalSection @3
+    EnterCriticalSection @4
+    LeaveCriticalSection @5
+    ExitThread @6
+    ; InitLocale @8
+    SystemTimeToFileTime @19
+    HeapAlloc @46
+    ; HeapAllocTrace @1999
+    HeapCompact @1884
+    HeapCreate @44
+    HeapDestroy @45
+    HeapFree @49
+    HeapReAlloc @47
+    HeapSize @48
+    HeapValidate @51
+    LocalAlloc=LocalAlloc_WCECL @33
+    LocalReAlloc  @34
+    LocalSize     @35
+    LocalFree     @36
+    wsprintfW      @56
+    _wtol         @78
+    Random        @80
     ; __abnormal_termination @86
-	SystemParametersInfoW @89
-	CreateDIBSection @90
-	EqualRgn      @91
-	CreateAcceleratorTableW @92
-	DestroyAcceleratorTable @93
-	LoadAcceleratorsW @94
-	RegisterClassW=RegisterClassW_WCECL @95
-	CopyRect      @96
-	EqualRect     @97
-	InflateRect   @98
-	IntersectRect @99
-	IsRectEmpty   @100
-	OffsetRect    @101
-	PtInRect      @102
-	SetRect       @103
-	SetRectEmpty  @104
-	SubtractRect  @105
-	UnionRect     @106
-	CreateFileW @168
-	iswctype      @193
-	towlower @194
-	towupper @195
-	MultiByteToWideChar @196
-	WideCharToMultiByte @197
-	CompareStringW @198
-	LCMapStringW @199
-	SetLocaleInfoW @201
-	EnumCalendarInfoW @206
-	CharLowerBuffW @222
-	CharLowerW @221
-	CharNextW @226
-	CharPrevW @225
-	CharUpperBuffW @223
-	CharUpperW @224
-	lstrcmpW @227
-	lstrcmpiW @228
-	CreateWindowExW=CreateWindowExW_WCECL @246
-	SetWindowPos  @247
-	InvalidateRect=InvalidateRect_WCECL @250
-	WindowFromPoint @252
-	ChildWindowFromPoint @253
-	ClientToScreen @254
-	ScreenToClient @255
-	SetWindowTextW @256
-	SetWindowLongW @258
-	BeginPaint    @260
-	EndPaint      @261
-	ReleaseDC=ReleaseDC_WCECL @263
-	DefWindowProcW @264
-	DestroyWindow @265
-	ShowWindow    @266
-	UpdateWindow  @267
-	SetParent     @268
-	IsWindow      @271
-	MoveWindow @272
-	BringWindowToTop @275
-	IsChild @277
-	ValidateRect @278
-	SetScrollInfo @279
-	SetScrollPos @280
-	SetScrollRange @281
-	MapWindowPoints @284
-	CallWindowProcW @285
-	FindWindowW=FindWindowW_WCECL @286
-	EnableWindow    @287
-	IsWindowEnabled @288
-	ScrollWindowEx  @289
-	PostThreadMessageW @290
-	EnumWindows     @291
-	SetAssociatedMenu @299
-	RasDial       @342
-	RasHangup     @343
-	RasHangUp     @344
-	lineAddProvider @375
-	sndPlaySoundW @377
-	; PlaySoundW    @378
-	RegCloseKey   @455
-	RegCreateKeyExW @456
-	RegDeleteKeyW @457
-	RegDeleteValueW @458
-	RegOpenKeyExW=RegOpenKeyExW_WCECL @461
-	RegQueryValueExW @463
-	RegSetValueExW @464
-	Sleep         @496
-	WaitForSingleObject @497
-	WaitForMultipleObjects @498
-	SuspendThread @499
-	ResumeThread @500
-	SetThreadContext @502
-	ReadProcessMemory @506
-	WriteProcessMemory @507
-	FlushInstructionCache @508
-	OpenProcess @509
-	SetLastError  @517
-	LoadLibraryW=LoadLibraryW_WCECL  @528
-	FreeLibrary   @529
-	; FindResource @531
-	FindResourceW @532
-	LoadResource @533
-	SizeofResource @534
-	OutputDebugStringW @541
-	RaiseException @543
-	TerminateProcess=TerminateProcess_WCECL @544
-	NKDbgPrintfW @545
-	CreateFileMappingW @548
-	MapViewOfFile @549
-	UnmapViewOfFile @550
-	CloseHandle @553
-	CreateMutexW @555
-	ReleaseMutex @556
-	CloseHandle @553
-	OpenClipboard @668
-	CloseClipboard @669
-	SetClipboardData @671
-	SetCursor @682
-	LoadCursorW=LoadCursorW_WCECL @683
-	CheckRadioButton @684
-	SendDlgItemMessageW @685
-	SetDlgItemTextW @686
-	CreateDialogIndirectParamW @688
-	DefDlgProcW   @689
-	DialogBoxIndirectParamW @690
-	EndDialog     @691
-	IsDialogMessageW @698
-	MapDialogRect @699
-	SetDlgItemInt @700
-	SetForegroundWindow=SetForegroundWindow_WCECL @702
-	SetActiveWindow @703
-	SetFocus      @704
-	SetCapture    @708
-	ReleaseCapture @709
-	CreateCursor  @722
-	CreateIconIndirect @723
-	DestroyCursor @724
-	DestroyIcon   @725
-	DrawIconEx    @726
-	ExtractIconExW @727
-	LoadIconW=LoadIconW_WCECL @728
-	LoadImageW    @730
-	ClipCursor    @731
-	SetCursorPos  @736
-	ShowCursor    @737
-	ImageList_Add @738
-	ImageList_AddMasked @739
-	ImageList_BeginDrag @740
-	ImageList_CopyDitherImage @741
-	ImageList_Create @742
-	ImageList_Destroy @743
-	ImageList_DragEnter @744
-	ImageList_DragLeave @745
-	ImageList_DragMove @746
-	ImageList_DragShowNolock @747
-	ImageList_Draw @748
-	ImageList_DrawEx @749
-	ImageList_DrawIndirect @750
-	ImageList_EndDrag @751
-	ImageList_GetBkColor @752
-	ImageList_GetDragImage @753
-	ImageList_GetIcon @754
-	ImageList_GetIconSize @755
-	ImageList_GetImageCount @756
-	ImageList_GetImageInfo @757
-	ImageList_LoadImage @758
-	ImageList_Merge @759
-	ImageList_Remove @760
-	ImageList_Replace @761
-	ImageList_ReplaceIcon @762
-	ImageList_SetBkColor @763
-	ImageList_SetDragCursorImage @764
-	ImageList_SetIconSize @765
-	ImageList_SetOverlayImage @766
-	ImageList_Copy @767
-	ImageList_Duplicate @768
-	ImageList_SetImageCount @769
-	RegisterHotKey @835
-	TranslateAcceleratorW @838
-	InsertMenuW   @841
-	AppendMenuW   @842
-	RemoveMenu    @843
-	DestroyMenu   @844
-	TrackPopupMenuEx @845
-	LoadMenuW     @846
-	EnableMenuItem @847
-	CheckMenuItem @848
-	CheckMenuRadioItem @849
-	DeleteMenu    @850
-	CreateMenu    @851
-	CreatePopupMenu @852
-	SetMenuItemInfoW @853
-	DrawMenuBar   @856
-	MessageBeep   @857
-	MessageBoxW   @858
-	DispatchMessageW @859
-	PeekMessageW  @864
-	PostMessageW  @865
-	PostQuitMessage @866
-	; fwprintf      @867
-	SendMessageW  @868
-	SendNotifyMessageW @869
-	TranslateMessage @870
-	MsgWaitForMultipleObjectsEx @871
-	LoadBitmapW=LoadBitmapW_WCECL   @873
-	LoadStringW=LoadStringW_WCECL   @874
-	SetTimer=SetTimer_WCECL @875
-	KillTimer     @876
-	SetClassLongW @880
-	; SetClassLong  @882
-	UnregisterClassW @884
-	IsWindowVisible @886
-	AdjustWindowRectEx @887
-	SetSysColors @890
-	RegisterWindowMessageW @891
-	; RegisterTaskBar @892
-	AddFontResourceW @893
-	; CeRemoveFontResource @894
-	CreateFontIndirectW @895
-	ExtTextOutW   @896
-	CreateBitmap  @901
-	CreateCompatibleBitmap @902
-	BitBlt        @903
-	MaskBlt       @904
-	StretchBlt    @905
-	; TransparentImage @906
-	RestoreDC     @907
-	SaveDC        @908
-	CreateDCW     @909
-	CreateCompatibleDC @910
-	DeleteDC      @911
-	DeleteObject=DeleteObject_WCECL  @912
-	SelectObject  @921
-	SetBkColor    @922
-	SetBkMode     @923
-	SetTextColor  @924
-	CreatePatternBrush @925
-	CreatePen     @926
-	FillRgn       @927
-	SetROP2       @928
-	CreateDIBPatternBrushPt @929
-	CreatePenIndirect @930
-	CreateSolidBrush=CreateSolidBrush_WCECL @931
-	DrawEdge      @932
-	DrawFocusRect @933
-	Ellipse       @934
-	FillRect      @935
-	PatBlt        @938
-	Polygon       @939
-	Polyline      @940
-	Rectangle     @941
-	RoundRect     @942
-	SetBrushOrgEx @943
-	SetPixel      @944
-	DrawTextW     @945
-	; CreateBitmapFromPointer @946
-	RealizePalette @953
-	SelectPalette @954
-	CombineRgn    @968
-	CreateRectRgnIndirect @969
-	ExcludeClipRect @970
-	IntersectClipRect @975
-	OffsetRgn     @976
-	PtInRegion    @977
-	RectInRegion  @978
-	SelectClipRgn @979
-	CreateRectRgn @980
-	RectVisible   @981	
-	; SetRealTime @571
-	SetRect @103
-	SetRectEmpty @104
-	SetRectRgn    @982
-	SetViewportOrgEx @983
-	; SetObjectOwner @984
-	ScrollDC      @985
-	EnableEUDC    @986
-	DrawFrameControl @987
-	free          @1018
-	malloc        @1041
-	_memccpy      @1042
-	memcmp        @1043
-	memcpy        @1044
-	_memicmp      @1045
-	memmove       @1046
-	memset        @1047
-	modf          @1048
-	_msize        @1049
-	_nextafter    @1050
-	pow           @1051
-	qsort         @1052
-	rand          @1053
-	realloc       @1054
-	_fileno       @1124
-	feof          @1125
-	ferror        @1126
-	clearerr      @1127
-	fgetpos       @1128
-	fsetpos       @1129
-	fseek         @1130
-	ftell         @1131
-	CryptProtectData @1599
-	CryptUnprotectData @1600
-	SetTextAlign  @1654
-	GetTextAlign  @1655
-	RedrawWindow  @1672
-	DPA_Create    @1837
-	DPA_CreateEx @1838
-	DPA_Clone @1839
-	WeirdThing1840 @1840
-	WeirdThing1841   @1841
-	DPA_Destroy   @1842
-	DPA_DestroyCallback @1843
-	DPA_EnumCallback @1844
-	DPA_GetPtr    @1845
-	WeirdThing1846   @1846
-	DPA_Grow      @1847
-	DPA_InsertPtr @1848
-	WeirdThing1849 @1849
-	DPA_SetPtr    @1850
-	DPA_Sort      @1851
-	DSA_Create    @1852
-	; DSA_Clone     @1853 ; Causes 343 ordinal not found error
-	DSA_DeleteAllItems @1854
-	DSA_DeleteItem @1855
-	DSA_Destroy   @1856
-	DSA_DestroyCallback @1857
-	DSA_EnumCallback @1858
-	DSA_GetItem   @1859
-	DSA_GetItemPtr @1860
-	DSA_InsertItem @1862
-	DSA_Search    @1863
-	DSA_SetItem   @1864
-	WeirdThing1865    @1865
-	WeirdThing1866   @1866
-	SetLayout     @1890
-	_ftol2        @2039
+    SystemParametersInfoW @89
+    CreateDIBSection @90
+    EqualRgn      @91
+    CreateAcceleratorTableW @92
+    DestroyAcceleratorTable @93
+    LoadAcceleratorsW @94
+    RegisterClassW=RegisterClassW_WCECL @95
+    CopyRect      @96
+    EqualRect     @97
+    InflateRect   @98
+    IntersectRect @99
+    IsRectEmpty   @100
+    OffsetRect    @101
+    PtInRect      @102
+    SetRect       @103
+    SetRectEmpty  @104
+    SubtractRect  @105
+    UnionRect     @106
+    CreateFileW @168
+    iswctype      @193
+    towlower @194
+    towupper @195
+    MultiByteToWideChar @196
+    WideCharToMultiByte @197
+    CompareStringW @198
+    LCMapStringW @199
+    SetLocaleInfoW @201
+    EnumCalendarInfoW @206
+    CharLowerBuffW @222
+    CharLowerW @221
+    CharNextW @226
+    CharPrevW @225
+    CharUpperBuffW @223
+    CharUpperW @224
+    lstrcmpW @227
+    lstrcmpiW @228
+    CreateWindowExW=CreateWindowExW_WCECL @246
+    SetWindowPos  @247
+    InvalidateRect=InvalidateRect_WCECL @250
+    WindowFromPoint @252
+    ChildWindowFromPoint @253
+    ClientToScreen @254
+    ScreenToClient @255
+    SetWindowTextW @256
+    SetWindowLongW @258
+    BeginPaint    @260
+    EndPaint      @261
+    ReleaseDC=ReleaseDC_WCECL @263
+    DefWindowProcW @264
+    DestroyWindow @265
+    ShowWindow    @266
+    UpdateWindow  @267
+    SetParent     @268
+    IsWindow      @271
+    MoveWindow @272
+    BringWindowToTop @275
+    IsChild @277
+    ValidateRect @278
+    SetScrollInfo @279
+    SetScrollPos @280
+    SetScrollRange @281
+    MapWindowPoints @284
+    CallWindowProcW @285
+    FindWindowW=FindWindowW_WCECL @286
+    EnableWindow    @287
+    IsWindowEnabled @288
+    ScrollWindowEx  @289
+    PostThreadMessageW @290
+    EnumWindows     @291
+    SetAssociatedMenu @299
+    RasDial=RasDial_WCECL  @342
+    RasHangup=RasHangup_WCECL @343
+    RasHangUp=RasHangUp_WCECL  @344
+    lineAddProvider @375
+    sndPlaySoundW @377
+    ; PlaySoundW    @378
+    RegCloseKey   @455
+    RegCreateKeyExW @456
+    RegDeleteKeyW @457
+    RegDeleteValueW @458
+    RegOpenKeyExW=RegOpenKeyExW_WCECL @461
+    RegQueryValueExW @463
+    RegSetValueExW @464
+    Sleep         @496
+    WaitForSingleObject @497
+    WaitForMultipleObjects @498
+    SuspendThread @499
+    ResumeThread @500
+    SetThreadContext @502
+    ReadProcessMemory @506
+    WriteProcessMemory @507
+    FlushInstructionCache @508
+    OpenProcess @509
+    SetLastError  @517
+    LoadLibraryW=LoadLibraryW_WCECL  @528
+    FreeLibrary   @529
+    ; FindResource @531
+    FindResourceW @532
+    LoadResource @533
+    SizeofResource @534
+    OutputDebugStringW @541
+    RaiseException @543
+    TerminateProcess=TerminateProcess_WCECL @544
+    NKDbgPrintfW @545
+    CreateFileMappingW @548
+    MapViewOfFile @549
+    UnmapViewOfFile @550
+    CloseHandle @553
+    CreateMutexW @555
+    ReleaseMutex @556
+    CloseHandle @553
+    OpenClipboard @668
+    CloseClipboard @669
+    SetClipboardData @671
+    SetCursor @682
+    LoadCursorW=LoadCursorW_WCECL @683
+    CheckRadioButton @684
+    SendDlgItemMessageW @685
+    SetDlgItemTextW @686
+    CreateDialogIndirectParamW @688
+    DefDlgProcW   @689
+    DialogBoxIndirectParamW @690
+    EndDialog     @691
+    IsDialogMessageW @698
+    MapDialogRect @699
+    SetDlgItemInt @700
+    SetForegroundWindow=SetForegroundWindow_WCECL @702
+    SetActiveWindow @703
+    SetFocus      @704
+    SetCapture    @708
+    ReleaseCapture @709
+    CreateCursor  @722
+    CreateIconIndirect @723
+    DestroyCursor @724
+    DestroyIcon   @725
+    DrawIconEx    @726
+    ExtractIconExW @727
+    LoadIconW=LoadIconW_WCECL @728
+    LoadImageW    @730
+    ClipCursor    @731
+    SetCursorPos  @736
+    ShowCursor    @737
+    ImageList_Add @738
+    ImageList_AddMasked @739
+    ImageList_BeginDrag @740
+    ImageList_CopyDitherImage @741
+    ImageList_Create @742
+    ImageList_Destroy @743
+    ImageList_DragEnter @744
+    ImageList_DragLeave @745
+    ImageList_DragMove @746
+    ImageList_DragShowNolock @747
+    ImageList_Draw @748
+    ImageList_DrawEx @749
+    ImageList_DrawIndirect @750
+    ImageList_EndDrag @751
+    ImageList_GetBkColor @752
+    ImageList_GetDragImage @753
+    ImageList_GetIcon @754
+    ImageList_GetIconSize @755
+    ImageList_GetImageCount @756
+    ImageList_GetImageInfo @757
+    ImageList_LoadImage @758
+    ImageList_Merge @759
+    ImageList_Remove @760
+    ImageList_Replace @761
+    ImageList_ReplaceIcon @762
+    ImageList_SetBkColor @763
+    ImageList_SetDragCursorImage @764
+    ImageList_SetIconSize @765
+    ImageList_SetOverlayImage @766
+    ImageList_Copy @767
+    ImageList_Duplicate @768
+    ImageList_SetImageCount @769
+    RegisterHotKey @835
+    TranslateAcceleratorW @838
+    InsertMenuW   @841
+    AppendMenuW   @842
+    RemoveMenu    @843
+    DestroyMenu   @844
+    TrackPopupMenuEx @845
+    LoadMenuW     @846
+    EnableMenuItem @847
+    CheckMenuItem @848
+    CheckMenuRadioItem @849
+    DeleteMenu    @850
+    CreateMenu    @851
+    CreatePopupMenu @852
+    SetMenuItemInfoW @853
+    DrawMenuBar   @856
+    MessageBeep   @857
+    MessageBoxW   @858
+    DispatchMessageW @859
+    PeekMessageW  @864
+    PostMessageW  @865
+    PostQuitMessage @866
+    ; fwprintf      @867
+    SendMessageW  @868
+    SendNotifyMessageW @869
+    TranslateMessage @870
+    MsgWaitForMultipleObjectsEx @871
+    LoadBitmapW=LoadBitmapW_WCECL   @873
+    LoadStringW=LoadStringW_WCECL   @874
+    SetTimer=SetTimer_WCECL @875
+    KillTimer=KillTimer_WCECL @876
+    SetClassLongW @880
+    ; SetClassLong  @882
+    UnregisterClassW @884
+    IsWindowVisible @886
+    AdjustWindowRectEx @887
+    SetSysColors @890
+    RegisterWindowMessageW @891
+    ; RegisterTaskBar @892
+    AddFontResourceW @893
+    ; CeRemoveFontResource @894
+    CreateFontIndirectW @895
+    ExtTextOutW   @896
+    CreateBitmap  @901
+    CreateCompatibleBitmap @902
+    BitBlt        @903
+    MaskBlt       @904
+    StretchBlt    @905
+    ; TransparentImage @906
+    RestoreDC     @907
+    SaveDC        @908
+    CreateDCW     @909
+    CreateCompatibleDC @910
+    DeleteDC      @911
+    DeleteObject=DeleteObject_WCECL  @912
+    SelectObject  @921
+    SetBkColor    @922
+    SetBkMode     @923
+    SetTextColor  @924
+    CreatePatternBrush @925
+    CreatePen     @926
+    FillRgn       @927
+    SetROP2       @928
+    CreateDIBPatternBrushPt @929
+    CreatePenIndirect @930
+    CreateSolidBrush=CreateSolidBrush_WCECL @931
+    DrawEdge      @932
+    DrawFocusRect @933
+    Ellipse       @934
+    FillRect      @935
+    PatBlt        @938
+    Polygon       @939
+    Polyline      @940
+    Rectangle     @941
+    RoundRect     @942
+    SetBrushOrgEx @943
+    SetPixel      @944
+    DrawTextW     @945
+    ; CreateBitmapFromPointer @946
+    RealizePalette @953
+    SelectPalette @954
+    CombineRgn    @968
+    CreateRectRgnIndirect @969
+    ExcludeClipRect @970
+    IntersectClipRect @975
+    OffsetRgn     @976
+    PtInRegion    @977
+    RectInRegion  @978
+    SelectClipRgn @979
+    CreateRectRgn @980
+    RectVisible   @981
+    ; SetRealTime @571
+    SetRect @103
+    SetRectEmpty @104
+    SetRectRgn    @982
+    SetViewportOrgEx @983
+    ; SetObjectOwner @984
+    ScrollDC      @985
+    EnableEUDC    @986
+    DrawFrameControl @987
+    free          @1018
+    malloc        @1041
+    _memccpy      @1042
+    memcmp        @1043
+    memcpy        @1044
+    _memicmp      @1045
+    memmove       @1046
+    memset        @1047
+    modf          @1048
+    _msize        @1049
+    _nextafter    @1050
+    pow           @1051
+    qsort         @1052
+    rand          @1053
+    realloc       @1054
+    _fileno       @1124
+    feof          @1125
+    ferror        @1126
+    clearerr      @1127
+    fgetpos       @1128
+    fsetpos       @1129
+    fseek         @1130
+    ftell         @1131
+    CryptProtectData @1599
+    CryptUnprotectData @1600
+    SetTextAlign  @1654
+    GetTextAlign  @1655
+    RedrawWindow  @1672
+    DPA_Create    @1837
+    DPA_CreateEx @1838
+    DPA_Clone @1839
+    WeirdThing1840 @1840
+    WeirdThing1841   @1841
+    DPA_Destroy   @1842
+    DPA_DestroyCallback @1843
+    DPA_EnumCallback @1844
+    DPA_GetPtr    @1845
+    WeirdThing1846   @1846
+    DPA_Grow      @1847
+    DPA_InsertPtr @1848
+    WeirdThing1849 @1849
+    DPA_SetPtr    @1850
+    DPA_Sort      @1851
+    DSA_Create    @1852
+    ; DSA_Clone     @1853 ; Causes 343 ordinal not found error
+    DSA_DeleteAllItems @1854
+    DSA_DeleteItem @1855
+    DSA_Destroy   @1856
+    DSA_DestroyCallback @1857
+    DSA_EnumCallback @1858
+    DSA_GetItem   @1859
+    DSA_GetItemPtr @1860
+    DSA_InsertItem @1862
+    DSA_Search    @1863
+    DSA_SetItem   @1864
+    WeirdThing1865    @1865
+    WeirdThing1866   @1866
+    SetLayout     @1890
+    _ftol2 @2039
 
-	; Imm
-	; ImmActivateLayout @1979
-	ImmAssociateContext @770
-	ImmAssociateContextEx @1205
-	ImmConfigureIMEW @771
-	ImmCreateContext @1198
-	ImmCreateIMCC @772
-	ImmDestroyContext @1199
-	ImmDestroyIMCC @773
-	ImmDisableIME @1206
-	; ImmEnableIME @1541
-	ImmEnumRegisterWordW @774
-	ImmEscapeW @775
-	ImmGenerateMessage @776
-	ImmGetCandidateListCountW @778
-	ImmGetCandidateListW @777
-	ImmGetCandidateWindow @779
-	ImmGetCompositionFontW @780
-	ImmGetCompositionStringW @781
-	ImmGetCompositionWindow @782
-	ImmGetContext @783
-	ImmGetConversionListW @784
-	ImmGetConversionStatus @785
-	ImmGetDefaultIMEWnd @786
-	ImmGetDescriptionW @787
-	ImmGetGuideLineW @788
-	ImmGetHotKey @813
-	ImmGetIMCCLockCount @789
-	ImmGetIMCCSize @790
-	ImmGetIMCLockCount @791
-	ImmGetIMEFileNameW @1207
-	ImmGetImeMenuItemsW @1211
-	; ImmGetKeyboardLayout @1769
-	ImmGetOpenStatus @792
-	ImmGetProperty @793
-	ImmGetRegisterWordStyleW @794
-	ImmGetStatusWindowPos @1200
-	ImmGetVirtualKey @1210
-	ImmIsIME @1209
-	ImmIsUIMessageW @796
-	ImmLockIMC @797
-	ImmLockIMCC @798
-	ImmNotifyIME @800
-	ImmReSizeIMCC @801
-	ImmRegisterWordW @802
-	ImmReleaseContext @803
-	ImmRequestMessageW @1242
-	ImmSIPanelState @804
-	; ImmSendNotification @1980
-	ImmSetCandidateWindow @807
-	ImmSetCompositionFontW @808
-	ImmSetCompositionStringW @809
-	ImmSetCompositionWindow @810
-	ImmSetConversionStatus @811
-	ImmSetHotKey @812
-	; ImmSetImeWndIMC @1222
-	ImmSetOpenStatus @814
-	ImmSetStatusWindowPos @815
-	ImmSimulateHotKey @816
-	ImmUnlockIMC @817
-	ImmUnlockIMCC @818
-	ImmUnregisterWordW @819
+    ; Imm
+    ; ImmActivateLayout @1979
+    ImmAssociateContext @770
+    ImmAssociateContextEx @1205
+    ImmConfigureIMEW @771
+    ImmCreateContext @1198
+    ImmCreateIMCC @772
+    ImmDestroyContext @1199
+    ImmDestroyIMCC @773
+    ImmDisableIME @1206
+    ; ImmEnableIME @1541
+    ImmEnumRegisterWordW @774
+    ImmEscapeW @775
+    ImmGenerateMessage @776
+    ImmGetCandidateListCountW @778
+    ImmGetCandidateListW @777
+    ImmGetCandidateWindow @779
+    ImmGetCompositionFontW @780
+    ImmGetCompositionStringW @781
+    ImmGetCompositionWindow @782
+    ImmGetContext @783
+    ImmGetConversionListW @784
+    ImmGetConversionStatus @785
+    ImmGetDefaultIMEWnd @786
+    ImmGetDescriptionW @787
+    ImmGetGuideLineW @788
+    ImmGetHotKey @813
+    ImmGetIMCCLockCount @789
+    ImmGetIMCCSize @790
+    ImmGetIMCLockCount @791
+    ImmGetIMEFileNameW @1207
+    ImmGetImeMenuItemsW @1211
+    ; ImmGetKeyboardLayout @1769
+    ImmGetOpenStatus @792
+    ImmGetProperty @793
+    ImmGetRegisterWordStyleW @794
+    ImmGetStatusWindowPos @1200
+    ImmGetVirtualKey @1210
+    ImmIsIME @1209
+    ImmIsUIMessageW @796
+    ImmLockIMC @797
+    ImmLockIMCC @798
+    ImmNotifyIME @800
+    ImmReSizeIMCC @801
+    ImmRegisterWordW @802
+    ImmReleaseContext @803
+    ImmRequestMessageW @1242
+    ImmSIPanelState @804
+    ; ImmSendNotification @1980
+    ImmSetCandidateWindow @807
+    ImmSetCompositionFontW @808
+    ImmSetCompositionStringW @809
+    ImmSetCompositionWindow @810
+    ImmSetConversionStatus @811
+    ImmSetHotKey @812
+    ; ImmSetImeWndIMC @1222
+    ImmSetOpenStatus @814
+    ImmSetStatusWindowPos @815
+    ImmSimulateHotKey @816
+    ImmUnlockIMC @817
+    ImmUnlockIMCC @818
+    ImmUnregisterWordW @819
 
-	; Get...
-	GetACP @186
-	; GetAPIAddress @32
-	GetActiveWindow @706
-	; GetAnimateMessageInfo @2871
-	GetAssociatedMenu @300
-	GetAsyncKeyState @826
-	; GetAsyncShiftFlags @834
-	GetBkColor @913
-	GetBkMode @914
-	GetCPInfo @188
-	; GetCRTFlags @1228
-	; GetCRTStorageEx @1227
-	; GetCallStackSnapshot @1760
-	; GetCallerProcess @607
-	; GetCallerProcessIndex @641
-	GetCapture @707
-	CreateCaret @658
-	DestroyCaret @659
-	DestroyCursor @724
-	DestroyIcon @725
-	DestroyMenu @844
-	DestroyWindow @265
-	HideCaret @660
-	ShowCaret @661
-	GetCaretBlinkTime @665
-	GetCaretPos @663
-	; GetCharABCWidths @1779
-	GetCharABCWidthsI @1887
-	; GetCharWidth32 @1664
-	GetClassInfoW @878
-	; GetClassLong @881
-	GetClassLongW @879
-	GetClassNameW @283
-	GetClientRect @249
-	GetClipBox @971
-	GetClipCursor @732
-	GetClipRgn @972
-	GetClipboardData @672
-	; GetClipboardDataAlloc @681
-	GetClipboardFormatNameW @676
-	GetClipboardOwner @670
-	GetCommMask @110
-	GetCommModemStatus @111
-	GetCommProperties @112
-	GetCommState @113
-	GetCommTimeouts @114
-	GetCommandLineW @1231
-	GetCurrencyFormatW @205
-	; GetCurrentFT @29
-	; GetCurrentFiber @1481
-	GetCurrentObject @915
-	; GetCurrentPermissions @612
-	GetCurrentPositionEx @1653
-	GetCursor @733
-	GetCursorPos @734
-	GetDC=GetDC_WCECL @262
-	GetDCEx @1185
-	GetDIBColorTable @1665
-	GetDateFormatW @203
-	GetDesktopWindow @1397
-	; GetDeviceByIndex @1236
-	GetDeviceCaps=GetDeviceCaps_WCECL @916
-	; GetDeviceHandleFromContext @1961
-	; GetDeviceInformationByDeviceHandle @1870
-	; GetDeviceInformationByFileHandle @1871
-	; GetDeviceKeys @125
-	; GetDevicePower @1679
-	; GetDeviceUniqueID @1993
-	GetDialogBaseUnits @694
-	GetDiskFreeSpaceExW @184
-	GetDlgCtrlID @693
-	GetDlgItem @692
-	GetDlgItemInt @695
-	GetDlgItemTextW @687
-	GetDoubleClickTime @888
-	; GetEventData @1527
-	GetExitCodeProcess @519
-	GetExitCodeThread @518
-	; GetFSHeapInfo @603
-	; GetFiberData @1482
-	GetFileAttributesExW @1237
-	GetFileAttributesW @166
-	GetFileInformationByHandle @174
-	GetFileSize @172
-	GetFileTime @176
-	; GetFileVersionInfoSizeW @1461
-	; GetFileVersionInfoW @1460
-	GetFocus @705
-	GetFontData @1888
-	; GetForegroundInfo @1224
-	; GetForegroundKeyboardLayoutHandle @1802
-	; GetForegroundKeyboardTarget @1225
-	GetForegroundWindow @701
-	GetGestureExtraArguments @2926
-	GetGestureInfo @2925 ; windows 7+ system
-	GetGweApiSetTables @1867
-	; GetHeapSnapshot @52
-	GetIconInfo @1822
-	; GetIdleTime @608
-	; GetKPhys @581
-	GetKeyState @860
-	GetKeyboardLayout @1229
-	GetKeyboardLayoutList @1767
-	GetKeyboardLayoutNameW @1160
-	; GetKeyboardStatus @827
-	; GetKeyboardTarget @711
-	GetKeyboardType @1771
-	GetLastError @516
-	GetLayeredWindowAttributes @2715
-	GetLayout @1891
-	GetLocalTime @23
-	GetLocaleInfoW @200
-	GetMenuItemInfoW @854
-	GetMessagePos @862
-	; GetMessageQueueReadyTimeStamp @1477
-	GetMessageSource @872
-	GetMessageW @861
-	; GetMessageWNoWait @863
-	GetModuleFileNameW @537
-	GetModuleHandleW @1177
-	; GetModuleInformation @1721
-	GetMonitorInfoA @1525
-	; GetMouseMovePoints @820
-	; GetMsgQueueInfo @1532
-	GetNearestColor @952
-	GetNearestPaletteIndex @948
-	GetNextDlgGroupItem @697
-	GetNextDlgTabItem @696
-	; GetNlsTables @1886
-	GetNumberFormatW @204
-	GetOEMCP @187
-	GetObjectType @917
-	GetObjectW=GetObjectW_WCECL @918
-	GetOpenClipboardWindow @680
-	GetOpenFileNameW @488
-	GetOutlineTextMetricsW @1889
-	GetOwnerProcess @606
-	GetPaletteEntries @949
-	GetParent @269
-	; GetPasswordActive @239
-	; GetPasswordStatus @1538
-	GetPixel @936
-	GetPriorityClipboardFormat @679
-	; GetProcAddrBits @602
-	; GetProcAddressA @1230
-	GetProcAddress @530
-	; GetProcFromPtr @600
-	; GetProcName @624
-	GetProcessHeap @50
-	; GetProcessIDFromIndex @1727
-	; GetProcessIndexFromID @640
-	GetProcessVersion @536
-	GetPropW @1498
-	GetQueueStatus @1420
-	GetROP2 @1990
-	; GetRealTime @570
-	GetRegionData @973
-	GetRgnBox @974
-	; GetRomFileBytes @576
-	; GetRomFileInfo @575
-	GetSaveFileNameW @489
-	GetScrollInfo @282
-	; GetServiceByIndex @1513
-	; GetServiceHandle @1518
-	; GetStdioPathW @1149
-	GetStockObject @919
-	; GetStoreInformation @323
-	GetStretchBltMode @1824
-	GetStringTypeExW @217
-	GetStringTypeW @216
-	GetSubMenu @855
-	GetSysColor @889
-	GetSysColorBrush @937
-	; GetSystemCursorPreference @2868
-	GetSystemDefaultLCID @213
-	GetSystemDefaultLangID @211
-	GetSystemDefaultUILanguage @1317
-	GetSystemInfo @542
-	; GetSystemMemoryDivision @336
-	GetSystemMetrics @885
-	GetSystemPaletteEntries @950
-	; GetSystemPowerState @1581
-	; GetSystemPowerStatusEx @715
-	; GetSystemPowerStatusEx2 @1358
-	GetSystemTime @25
-	GetTempFileNameW @1234
-	GetTempPathW @162
-	GetTextAlign @1655
-	GetTextCharacterExtra @1963
-	GetTextColor @920
-	GetTextExtentExPointW @897
-	GetTextFaceW @967
-	GetTextMetricsW @898
-	; GetThreadCallStack @1811
-	GetThreadContext @1148
-	GetThreadPriority @515
-	GetThreadTimes @1186
-	GetTickCount @535
-	GetTimeFormatW @202
-	GetTimeZoneInformation @27
-	GetUpdateRect @274
-	GetUpdateRgn @273
-	GetUserDefaultLCID @215
-	GetUserDefaultLangID @212
-	GetUserDefaultUILanguage @1318
-	; GetUserDirectory @1686
-	; GetUserNameExW @1503
-	; GetVersionEx @17
-	GetVersionExW @717
-	GetViewportExtEx @1989
-	GetViewportOrgEx @1988
-	GetWindow @251
-	; GetWindowAutoGesture @2869
-	; GetWindowCursorPreference @2866
-	GetWindowDC @270
-	GetWindowExtEx @1986
-	GetWindowLongW @259
-	GetWindowOrgEx @1985
-	GetWindowRect @248
-	GetWindowRgn @1399
-	GetWindowTextLengthW @276
-	GetWindowTextW @257
-	; GetWindowTextWDirect @1454
-	GetWindowThreadProcessId @292
+    ; Get...
+    GetACP @186
+    ; GetAPIAddress @32
+    GetActiveWindow @706
+    ; GetAnimateMessageInfo @2871
+    GetAssociatedMenu @300
+    GetAsyncKeyState @826
+    ; GetAsyncShiftFlags @834
+    GetBkColor @913
+    GetBkMode @914
+    GetCPInfo @188
+    ; GetCRTFlags @1228
+    ; GetCRTStorageEx @1227
+    ; GetCallStackSnapshot @1760
+    ; GetCallerProcess @607
+    ; GetCallerProcessIndex @641
+    GetCapture @707
+    CreateCaret @658
+    DestroyCaret @659
+    DestroyCursor @724
+    DestroyIcon @725
+    DestroyMenu @844
+    DestroyWindow @265
+    HideCaret @660
+    ShowCaret @661
+    GetCaretBlinkTime @665
+    GetCaretPos @663
+    ; GetCharABCWidths @1779
+    GetCharABCWidthsI @1887
+    ; GetCharWidth32 @1664
+    GetClassInfoW @878
+    ; GetClassLong @881
+    GetClassLongW @879
+    GetClassNameW @283
+    GetClientRect @249
+    GetClipBox @971
+    GetClipCursor @732
+    GetClipRgn @972
+    GetClipboardData @672
+    ; GetClipboardDataAlloc @681
+    GetClipboardFormatNameW @676
+    GetClipboardOwner @670
+    GetCommMask @110
+    GetCommModemStatus @111
+    GetCommProperties @112
+    GetCommState @113
+    GetCommTimeouts @114
+    GetCommandLineW @1231
+    GetCurrencyFormatW @205
+    ; GetCurrentFT @29
+    ; GetCurrentFiber @1481
+    GetCurrentObject @915
+    ; GetCurrentPermissions @612
+    GetCurrentPositionEx @1653
+    GetCursor @733
+    GetCursorPos @734
+    GetDC=GetDC_WCECL @262
+    GetDCEx @1185
+    GetDIBColorTable @1665
+    GetDateFormatW @203
+    GetDesktopWindow @1397
+    ; GetDeviceByIndex @1236
+    GetDeviceCaps=GetDeviceCaps_WCECL @916
+    ; GetDeviceHandleFromContext @1961
+    ; GetDeviceInformationByDeviceHandle @1870
+    ; GetDeviceInformationByFileHandle @1871
+    ; GetDeviceKeys @125
+    ; GetDevicePower @1679
+    ; GetDeviceUniqueID @1993
+    GetDialogBaseUnits @694
+    GetDiskFreeSpaceExW @184
+    GetDlgCtrlID @693
+    GetDlgItem @692
+    GetDlgItemInt @695
+    GetDlgItemTextW @687
+    GetDoubleClickTime @888
+    ; GetEventData @1527
+    GetExitCodeProcess @519
+    GetExitCodeThread @518
+    ; GetFSHeapInfo @603
+    ; GetFiberData @1482
+    GetFileAttributesExW @1237
+    GetFileAttributesW @166
+    GetFileInformationByHandle @174
+    GetFileSize @172
+    GetFileTime @176
+    ; GetFileVersionInfoSizeW @1461
+    ; GetFileVersionInfoW @1460
+    GetFocus @705
+    GetFontData @1888
+    ; GetForegroundInfo @1224
+    ; GetForegroundKeyboardLayoutHandle @1802
+    ; GetForegroundKeyboardTarget @1225
+    GetForegroundWindow @701
+    GetGestureExtraArguments @2926
+    GetGestureInfo @2925 ; windows 7+ system
+    GetGweApiSetTables @1867
+    ; GetHeapSnapshot @52
+    GetIconInfo @1822
+    ; GetIdleTime @608
+    ; GetKPhys @581
+    GetKeyState @860
+    GetKeyboardLayout @1229
+    GetKeyboardLayoutList @1767
+    GetKeyboardLayoutNameW @1160
+    ; GetKeyboardStatus @827
+    ; GetKeyboardTarget @711
+    GetKeyboardType @1771
+    GetLastError @516
+    GetLayeredWindowAttributes @2715
+    GetLayout @1891
+    GetLocalTime @23
+    GetLocaleInfoW @200
+    GetMenuItemInfoW @854
+    GetMessagePos @862
+    ; GetMessageQueueReadyTimeStamp @1477
+    GetMessageSource @872
+    GetMessageW @861
+    ; GetMessageWNoWait @863
+    GetModuleFileNameW @537
+    GetModuleHandleW @1177
+    ; GetModuleInformation @1721
+    GetMonitorInfoA @1525
+    ; GetMouseMovePoints @820
+    ; GetMsgQueueInfo @1532
+    GetNearestColor @952
+    GetNearestPaletteIndex @948
+    GetNextDlgGroupItem @697
+    GetNextDlgTabItem @696
+    ; GetNlsTables @1886
+    GetNumberFormatW @204
+    GetOEMCP @187
+    GetObjectType @917
+    GetObjectW=GetObjectW_WCECL @918
+    GetOpenClipboardWindow @680
+    GetOpenFileNameW @488
+    GetOutlineTextMetricsW @1889
+    GetOwnerProcess @606
+    GetPaletteEntries @949
+    GetParent @269
+    ; GetPasswordActive @239
+    ; GetPasswordStatus @1538
+    GetPixel @936
+    GetPriorityClipboardFormat @679
+    ; GetProcAddrBits @602
+    ; GetProcAddressA @1230
+    GetProcAddress @530
+    ; GetProcFromPtr @600
+    ; GetProcName @624
+    GetProcessHeap @50
+    ; GetProcessIDFromIndex @1727
+    ; GetProcessIndexFromID @640
+    GetProcessVersion @536
+    GetPropW @1498
+    GetQueueStatus @1420
+    GetROP2 @1990
+    ; GetRealTime @570
+    GetRegionData @973
+    GetRgnBox @974
+    ; GetRomFileBytes @576
+    ; GetRomFileInfo @575
+    GetSaveFileNameW @489
+    GetScrollInfo @282
+    ; GetServiceByIndex @1513
+    ; GetServiceHandle @1518
+    ; GetStdioPathW @1149
+    GetStockObject @919
+    ; GetStoreInformation @323
+    GetStretchBltMode @1824
+    GetStringTypeExW @217
+    GetStringTypeW @216
+    GetSubMenu @855
+    GetSysColor @889
+    GetSysColorBrush @937
+    ; GetSystemCursorPreference @2868
+    GetSystemDefaultLCID @213
+    GetSystemDefaultLangID @211
+    GetSystemDefaultUILanguage @1317
+    GetSystemInfo @542
+    ; GetSystemMemoryDivision @336
+    GetSystemMetrics @885
+    GetSystemPaletteEntries @950
+    ; GetSystemPowerState @1581
+    ; GetSystemPowerStatusEx @715
+    ; GetSystemPowerStatusEx2 @1358
+    GetSystemTime @25
+    GetTempFileNameW @1234
+    GetTempPathW @162
+    GetTextAlign @1655
+    GetTextCharacterExtra @1963
+    GetTextColor @920
+    GetTextExtentExPointW @897
+    GetTextFaceW @967
+    GetTextMetricsW @898
+    ; GetThreadCallStack @1811
+    GetThreadContext @1148
+    GetThreadPriority @515
+    GetThreadTimes @1186
+    GetTickCount @535
+    GetTimeFormatW @202
+    GetTimeZoneInformation @27
+    GetUpdateRect @274
+    GetUpdateRgn @273
+    GetUserDefaultLCID @215
+    GetUserDefaultLangID @212
+    GetUserDefaultUILanguage @1318
+    ; GetUserDirectory @1686
+    ; GetUserNameExW @1503
+    ; GetVersionEx @17
+    GetVersionExW @717
+    GetViewportExtEx @1989
+    GetViewportOrgEx @1988
+    GetWindow @251
+    ; GetWindowAutoGesture @2869
+    ; GetWindowCursorPreference @2866
+    GetWindowDC @270
+    GetWindowExtEx @1986
+    GetWindowLongW @259
+    GetWindowOrgEx @1985
+    GetWindowRect @248
+    GetWindowRgn @1399
+    GetWindowTextLengthW @276
+    GetWindowTextW @257
+    ; GetWindowTextWDirect @1454
+    GetWindowThreadProcessId @292
 
-	; String
-	StringCchCopyW @1689
-	StringCchPrintfExW @1701
-	StringCchPrintfW @1699
-	StringCbPrintfW @1700
-	StringCchCopyExW @1691
-	StringCchVPrintfW=StringCchVPrintfW_WCECL @1697
+    ; String
+    StringCchCopyW=StringCchCopyW_WCECL         @1689
+    StringCchPrintfExW=StringCchPrintfExW_WCECL @1701
+    StringCchPrintfW=StringCchPrintfW_WCECL     @1699
+    StringCbPrintfW=StringCbPrintfW_WCECL       @1700
+    StringCchCopyExW=StringCchCopyExW_WCECL     @1691
+    StringCchVPrintfW=StringCchVPrintfW_WCECL   @1697
 
-	; Global
-	GlobalAddAtomW @1519
-	GlobalDeleteAtom @1520
-	GlobalFindAtomW @1521
-	GlobalMemoryStatus @88
+    ; Global
+    GlobalAddAtomW @1519
+    GlobalDeleteAtom @1520
+    GlobalFindAtomW @1521
+    GlobalMemoryStatus @88
 
-	; Wave
-	waveInAddBuffer @406
-	waveInClose @403
-	; waveInGetDevCaps @401
-	; waveInGetErrorText @402
-	waveInGetID @411
-	waveInGetNumDevs @400
-	waveInGetPosition @410
-	; waveInGetProperty @1815
-	waveInMessage @412
-	waveInOpen @413
-	waveInPrepareHeader @404
-	waveInReset @409
-	; waveInSetProperty @1816
-	waveInStart @407
-	waveInStop @408
-	waveInUnprepareHeader @405
-	waveOutBreakLoop @391
-	waveOutClose @384
-	; waveOutGetDevCaps @380
-	; waveOutGetErrorText @383
-	waveOutGetID @397
-	waveOutGetNumDevs @379
-	waveOutGetPitch @393
-	waveOutGetPlaybackRate @395
-	waveOutGetPosition @392
-	; waveOutGetProperty @1813
-	waveOutGetVolume @381
-	waveOutMessage @398
-	waveOutOpen @399
-	waveOutPause @388
-	waveOutPrepareHeader @385
-	waveOutReset @390
-	waveOutRestart @389
-	waveOutSetPitch @394
-	waveOutSetPlaybackRate @396
-	; waveOutSetProperty @1814
-	waveOutSetVolume @382
-	waveOutUnprepareHeader @386
-	waveOutWrite @387
+    ; Wave
+    waveInAddBuffer @406
+    waveInClose @403
+    ; waveInGetDevCaps @401
+    ; waveInGetErrorText @402
+    waveInGetID @411
+    waveInGetNumDevs @400
+    waveInGetPosition @410
+    ; waveInGetProperty @1815
+    waveInMessage @412
+    waveInOpen @413
+    waveInPrepareHeader @404
+    waveInReset @409
+    ; waveInSetProperty @1816
+    waveInStart @407
+    waveInStop @408
+    waveInUnprepareHeader @405
+    waveOutBreakLoop @391
+    waveOutClose @384
+    ; waveOutGetDevCaps @380
+    ; waveOutGetErrorText @383
+    waveOutGetID @397
+    waveOutGetNumDevs @379
+    waveOutGetPitch @393
+    waveOutGetPlaybackRate @395
+    waveOutGetPosition @392
+    ; waveOutGetProperty @1813
+    waveOutGetVolume @381
+    waveOutMessage @398
+    waveOutOpen @399
+    waveOutPause @388
+    waveOutPrepareHeader @385
+    waveOutReset @390
+    waveOutRestart @389
+    waveOutSetPitch @394
+    waveOutSetPlaybackRate @396
+    ; waveOutSetProperty @1814
+    waveOutSetVolume @382
+    waveOutUnprepareHeader @386
+    waveOutWrite @387
 
-	MonitorFromPoint @1522
-	MonitorFromRect @1523
-	MonitorFromWindow @1524
-	MoveFileW @163
-	MoveToEx @1651
-	MulDiv @1877
-	MultiByteToWideChar @196
+    MonitorFromPoint @1522
+    MonitorFromRect @1523
+    MonitorFromWindow @1524
+    MoveFileW @163
+    MoveToEx @1651
+    MulDiv @1877
+    MultiByteToWideChar @196
 
-	SetPropW @1497
-	RemovePropW @1499
+    SetPropW @1497
+    RemovePropW @1499
 
-	StretchBlt @905
-	StretchDIBits @1667
-	GradientFill @1763
-	TransparentBlt @906 ; TransparentImage !!! maybe wrong
+    StretchBlt @905
+    StretchDIBits @1667
+    GradientFill @1763
+    TransparentBlt @906 ; TransparentImage !!! maybe wrong
 
-	InvertRect @1770
+    InvertRect @1770
 
-	__GetUserKData @2528
-	SetDialogAutoScrollBar @2705
-	SetWindowPosOnRotate @2706
-	SetWindowAutoGesture @2870
-	GetWindowAutoGesture @2869
-	GetAnimateMessageInfo @2871
+    __GetUserKData @2528
+    SetDialogAutoScrollBar @2705
+    SetWindowPosOnRotate @2706
+    SetWindowAutoGesture @2870
+    GetWindowAutoGesture @2869
+    GetAnimateMessageInfo @2871
 
-	CloseGestureInfoHandle @2924
-	RegisterDefaultGestureHandler @2928 ; end of Windows CE 6.0 R3 coredll.dll
+    CloseGestureInfoHandle @2924
+    RegisterDefaultGestureHandler @2928 ; end of Windows CE 6.0 R3 coredll.dll
 
-	TerminateThread @491
-	CreateThread @492
-	CreateProcessW @493
-	_ftol2_sse @2043
-	_CIsqrt @2011
+    TerminateThread @491
+    CreateThread @492
+    CreateProcessW @493
+    _ftol2_sse @2043
+    _CIsqrt @2011
 
-	; Exceptions
-	_XcptFilter   @1645
-	_except_handler4_common=_except_handler4_common_WCECL @87
-	; _except_handler4_common @87 ; CRT
-	__security_gen_cookie2 @2696
-	__report_gsfailure=__report_gsfailure_WCECL @1876
-	; __report_gsfailure @1876 ; CRT
+    ; Exceptions
+    _XcptFilter=_XcptFilter_WCECL   @1645
+    _except_handler4_common=_except_handler4_common_WCECL @87
+    ; _except_handler4_common @87 ; CRT
+    __security_gen_cookie2 @2696
+    __report_gsfailure=__report_gsfailure_WCECL @1876
+    ; __report_gsfailure @1876 ; CRT
 
-	DisableThreadLibraryCalls @1232
-	ChangeDisplaySettingsEx=ChangeDisplaySettingsExW @1611
-	RegEnumKeyExW @460
-	EnumDisplayMonitors @1526
-	GetAPIAddress @32
-	EnumDisplaySettings=EnumDisplaySettingsW @1777
+    DisableThreadLibraryCalls @1232
+    ChangeDisplaySettingsEx=ChangeDisplaySettingsExW @1611
+    RegEnumKeyExW @460
+    EnumDisplayMonitors @1526
+    GetAPIAddress @32
+    EnumDisplaySettings=EnumDisplaySettingsW @1777

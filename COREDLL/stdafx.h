@@ -21,6 +21,13 @@
 #undef RasHangUp
 #undef RasDial
 
-#define Stub(Function) int Function() { return ProgramErrorDialog(L"Function " #Function " is not implemented yet.\n\nYES - return FALSE\nNO - return TRUE\nCANCEL - exit", FALSE); }
-#define StubSilent(Function) int Function() { return FALSE; }
+
+#define Stub(Function) StubEx(WINAPI, Function)
+#define StubEx(Decl, Function) int Decl Function() { return ProgramErrorDialog(L"Function " #Function " is not implemented yet.\n\nYES - return FALSE\nNO - return TRUE\nCANCEL - exit", FALSE); }
+
+#define StubSilent(Function) StubSilentEx(WINAPI, Function)
+#define StubSilentEx(Decl, Function) int Decl Function() { return FALSE; }
+
 #define w32err(Expression) (Expression) && IsDebuggerPresent()
+
+BOOL ProgramErrorDialog(LPCWSTR Text, BOOL YesNo);
