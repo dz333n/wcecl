@@ -100,12 +100,12 @@ EXPORTS
     lineAddProvider @375
     sndPlaySoundW @377
     ; PlaySoundW    @378
-    RegCloseKey   @455
+    RegCloseKey=RegCloseKey_WCECL   @455
     RegCreateKeyExW @456
     RegDeleteKeyW @457
     RegDeleteValueW @458
     RegOpenKeyExW=RegOpenKeyExW_WCECL @461
-    RegQueryValueExW @463
+    RegQueryValueExW=RegQueryValueExW_WCECL @463
     RegSetValueExW @464
     Sleep         @496
     WaitForSingleObject @497
@@ -587,7 +587,7 @@ EXPORTS
     ; GetServiceByIndex @1513
     ; GetServiceHandle @1518
     ; GetStdioPathW @1149
-    GetStockObject @919
+    GetStockObject=GetStockObject_WCECL @919
     ; GetStoreInformation @323
     GetStretchBltMode @1824
     GetStringTypeExW @217

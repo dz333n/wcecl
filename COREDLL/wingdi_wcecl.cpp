@@ -12,6 +12,12 @@ int WINAPI GetObjectW_WCECL(
 	return result;
 }
 
+HGDIOBJ WINAPI GetStockObject_WCECL(int i) 
+{
+	auto result = ::GetStockObject(i);
+	return result;
+}
+
 BOOL WINAPI DeleteObject_WCECL(HGDIOBJ hObject)
 {
 	auto result = ::DeleteObject(hObject);

@@ -18,6 +18,21 @@
 // #include <dpapi.h>
 #include <excpt.h>
 
+// STRUCTS
+typedef struct tagWNDCLASSW_WCECL {
+	UINT        style;
+	WNDPROC     lpfnWndProc;
+	int         cbClsExtra;
+	int         cbWndExtra;
+	HINSTANCE   hInstance;
+	HICON       hIcon;
+	HCURSOR     hCursor;
+	HBRUSH      hbrBackground;
+	LPCWSTR     lpszMenuName;
+	LPCWSTR     lpszClassName;
+} WNDCLASSW_WCECL, *PWNDCLASSW_WCECL, *LPWNDCLASSW_WCECL;
+
+// MACROS
 #undef RasHangUp
 #undef RasDial
 
@@ -51,4 +66,5 @@
 
 #define w32err(Expression) (Expression) && IsDebuggerPresent()
 
+// FUNCTIONS
 BOOL ProgramErrorDialog(LPCWSTR Text, BOOL YesNo);

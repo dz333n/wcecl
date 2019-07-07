@@ -49,6 +49,7 @@ HWND WINAPI CreateWindowExW_WCECL(
 	HINSTANCE hInstance,
 	LPVOID lpParam)
 {
+	// not working
 	auto result = ::CreateWindowExW(
 		dwExStyle,
 		lpClassName,
@@ -86,9 +87,23 @@ BOOL WINAPI SetForegroundWindow_WCECL(HWND hWnd)
 	return result;
 }
 
-ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW *lpWndClass)
+ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW_WCECL *lpWndClass)
 {
-	auto result = ::RegisterClassW(lpWndClass);
+	// 
+	WNDCLASSW wndClass = { };
+
+	wndClass.style = lpWndClass->style; // may be different, review!
+	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc;
+	wndClass.cbClsExtra = lpWndClass->cbClsExtra;
+	wndClass.cbWndExtra = lpWndClass->cbWndExtra;
+	wndClass.hInstance = lpWndClass->hInstance;
+	wndClass.hIcon = lpWndClass->hIcon;
+	wndClass.hCursor = lpWndClass->hCursor;
+	wndClass.hbrBackground = lpWndClass->hbrBackground;
+	wndClass.lpszMenuName = lpWndClass->lpszMenuName;
+	wndClass.lpszClassName = lpWndClass->lpszClassName;
+
+	auto result = ::RegisterClassW(&wndClass);
 	return result;
 }
 

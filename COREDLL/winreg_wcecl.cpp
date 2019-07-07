@@ -15,5 +15,31 @@ LONG APIENTRY RegOpenKeyExW_WCECL(
 	return result;
 }
 
+LONG
+APIENTRY
+RegQueryValueExW_WCECL(
+	HKEY hKey,
+	LPCWSTR lpValueName,
+	LPDWORD lpReserved,
+	LPDWORD lpType,
+	LPBYTE lpData,
+	LPDWORD lpcbData)
+{
+	auto result = ::RegQueryValueExW(
+		hKey,
+		lpValueName,
+		lpReserved,
+		lpType,
+		lpData,
+		lpcbData);
+	return result;
+}
+
+LONG APIENTRY RegCloseKey_WCECL(HKEY hKey)
+{
+	auto result = ::RegCloseKey(hKey);
+	return result;
+}
+
 // Stubs
 
