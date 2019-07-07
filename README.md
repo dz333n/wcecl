@@ -1,4 +1,4 @@
-# Windows CE Compatibility Layer
+# Windows CE Compatibility Layer [![Build status](https://ci.appveyor.com/api/projects/status/93fytq537hcb2nw9?svg=true)](https://ci.appveyor.com/project/feel-the-dz3n/wcecl)
 ## WinCE API <-> Win32 API Translator
 
 # What is this?
