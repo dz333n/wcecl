@@ -1,7 +1,8 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "stdafx.h"
 
-BOOL APIENTRY DllMain(HMODULE hModule,
+#undef __stdcall // DllMain should be __stdcall always
+BOOL __stdcall DllMain(HMODULE hModule,
 	DWORD  ul_reason_for_call,
 	LPVOID lpReserved
 )

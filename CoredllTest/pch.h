@@ -3,10 +3,7 @@
 
 #include <windows.h>
 
-extern "C" 
-{
-	int RegisterDefaultGestureHandler();
-	DWORD Random();
-}
+int __cdecl RegisterDefaultGestureHandler();
+DWORD __cdecl Random();
 
 #endif 
