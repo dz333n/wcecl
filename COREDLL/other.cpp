@@ -2,6 +2,9 @@
 #include "stdafx.h"
 
 // Functions
+Stub(delete_WCECL);
+Stub(new_WCECL);
+
 DWORD WINAPI RasDial_WCECL(LPRASDIALEXTENSIONS Arg1, LPCWSTR Arg2, LPRASDIALPARAMSW Arg3, DWORD Arg4, LPVOID Arg5, LPHRASCONN Arg6)
 {
 	// review me

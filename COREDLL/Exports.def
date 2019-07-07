@@ -42,7 +42,7 @@ EXPORTS
     SetRectEmpty  @104
     SubtractRect  @105
     UnionRect     @106
-    CreateFileW @168
+    CreateFileW=CreateFileW_WCECL @168
     iswctype      @193
     towlower @194
     towupper @195
@@ -131,10 +131,9 @@ EXPORTS
     CreateFileMappingW @548
     MapViewOfFile @549
     UnmapViewOfFile @550
-    CloseHandle @553
+    CloseHandle=CloseHandle_WCECL @553
     CreateMutexW @555
     ReleaseMutex @556
-    CloseHandle @553
     OpenClipboard @668
     CloseClipboard @669
     SetClipboardData @671
@@ -661,6 +660,13 @@ EXPORTS
     GlobalFindAtomW @1521
     GlobalMemoryStatus @88
 
+    delete=delete_WCECL @1094
+    new=new_WCECL       @1095
+
+    _aulldiv @2006
+    CreateEventW=CreateEventW_WCECL @495
+    SetFilePointer=SetFilePointer_WCECL @173
+
     ; Wave
     waveInAddBuffer @406
     waveInClose @403
@@ -722,9 +728,9 @@ EXPORTS
 
     __GetUserKData @2528
     SetDialogAutoScrollBar @2705
-    SetWindowPosOnRotate @2706
-    SetWindowAutoGesture @2870
-    GetWindowAutoGesture @2869
+    SetWindowPosOnRotate  @2706
+    SetWindowAutoGesture  @2870
+    GetWindowAutoGesture  @2869
     GetAnimateMessageInfo @2871
 
     CloseGestureInfoHandle @2924
@@ -735,6 +741,9 @@ EXPORTS
     CreateProcessW @493
     _ftol2_sse @2043
     _CIsqrt @2011
+
+    ReadFile=ReadFile_WCECL @170
+    WriteFile=WriteFile_WCECL @171
 
     ; Exceptions
     _XcptFilter=_XcptFilter_WCECL   @1645
