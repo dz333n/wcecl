@@ -355,7 +355,7 @@ EXPORTS
     WeirdThing1865    @1865
     WeirdThing1866   @1866
     SetLayout     @1890
-    _ftol2 @2039
+    _ftol2=_ftol2_WCECL @2039
 
     ; Imm
     ; ImmActivateLayout @1979
@@ -663,7 +663,7 @@ EXPORTS
     delete=delete_WCECL @1094
     new=new_WCECL       @1095
 
-    _aulldiv @2006
+    _aulldiv=_aulldiv_WCECL @2006
     CreateEventW=CreateEventW_WCECL @495
     SetFilePointer=SetFilePointer_WCECL @173
 
@@ -739,8 +739,9 @@ EXPORTS
     TerminateThread @491
     CreateThread @492
     CreateProcessW @493
-    _ftol2_sse @2043
-    _CIsqrt @2011
+
+    _ftol2_sse=_ftol2_sse_WCECL @2043
+    _CIsqrt=_CIsqrt_WCECL @2011
 
     ReadFile=ReadFile_WCECL @170
     WriteFile=WriteFile_WCECL @171

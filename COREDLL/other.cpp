@@ -12,6 +12,7 @@ DWORD WINAPI RasDial_WCECL(LPRASDIALEXTENSIONS Arg1, LPCWSTR Arg2, LPRASDIALPARA
 	return result;
 }
 
+
 DWORD WINAPI RasHangup_WCECL(HRASCONN Arg1) // @344
 {
 	auto result = ::RasHangUpW(Arg1);
@@ -63,3 +64,7 @@ Stub(WeirdThing1846);
 Stub(WeirdThing1849);
 Stub(WeirdThing1841);
 Stub(WeirdThing1840);
+Stub(_ftol2_WCECL);
+Stub(_ftol2_sse_WCECL);
+Stub(_CIsqrt_WCECL);
+Stub(_aulldiv_WCECL);
