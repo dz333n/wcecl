@@ -58,6 +58,30 @@ BOOL WINAPI ReadFile_WCECL(
 	return result;
 }
 
+HRSRC WINAPI FindResourceW_WCECL(
+	HMODULE hModule,
+	LPCWSTR lpName,
+	LPCWSTR lpType)
+{
+	auto result = FindResourceW(hModule, lpName, lpType);
+	return result;
+}
+
+DWORD WINAPI GetTickCount_WCECL()
+{
+	auto result = GetTickCount();
+	return result;
+}
+
+
+HGLOBAL WINAPI LoadResource_WCECL(
+	HMODULE hModule,
+	HRSRC hResInfo)
+{
+	auto result = LoadResource(hModule, hResInfo);
+	return result;
+}
+
 DWORD WINAPI SetFilePointer_WCECL(
 	HANDLE hFile,
 	LONG lDistanceToMove,

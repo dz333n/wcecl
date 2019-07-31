@@ -48,5 +48,17 @@ HBITMAP WINAPI CreateCompatibleBitmap_WCECL(HDC hdc, int width, int height)
 	return result;
 }
 
+int WINAPI FillRect_WCECL(HDC hdc, CONST RECT * lprc, HBRUSH hbr)
+{
+	auto result = FillRect(hdc, lprc, hbr);
+	return result;
+}
+
+BOOL WINAPI BitBlt_WCECL(HDC hdc, int x, int y, int cx, int cy, HDC hdcSrc, int x1, int y1, DWORD rop)
+{
+	auto result = BitBlt(hdc, x, y, cx, cy, hdcSrc, x1, y1, rop);
+	return result;
+}
+
 // Stubs
 

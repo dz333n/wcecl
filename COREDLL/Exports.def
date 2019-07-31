@@ -31,9 +31,9 @@ EXPORTS
     DestroyAcceleratorTable @93
     LoadAcceleratorsW @94
     RegisterClassW=RegisterClassW_WCECL @95
-    CopyRect      @96
+    CopyRect=CopyRect_WCECL @96
     EqualRect     @97
-    InflateRect   @98
+    InflateRect=InflateRect_WCECL   @98
     IntersectRect @99
     IsRectEmpty   @100
     OffsetRect    @101
@@ -61,7 +61,7 @@ EXPORTS
     lstrcmpW @227
     lstrcmpiW @228
     CreateWindowExW=CreateWindowExW_WCECL @246
-    SetWindowPos  @247
+    SetWindowPos=SetWindowPos_WCECL  @247
     InvalidateRect=InvalidateRect_WCECL @250
     WindowFromPoint @252
     ChildWindowFromPoint @253
@@ -72,10 +72,10 @@ EXPORTS
     BeginPaint    @260
     EndPaint      @261
     ReleaseDC=ReleaseDC_WCECL @263
-    DefWindowProcW @264
-    DestroyWindow @265
-    ShowWindow    @266
-    UpdateWindow  @267
+    DefWindowProcW=DefWindowProcW_WCECL @264
+    DestroyWindow=DestroyWindow_WCECL @265
+    ShowWindow=ShowWindow_WCECL @266
+    UpdateWindow=UpdateWindow_WCECL  @267
     SetParent     @268
     IsWindow      @271
     MoveWindow @272
@@ -88,8 +88,8 @@ EXPORTS
     MapWindowPoints @284
     CallWindowProcW @285
     FindWindowW=FindWindowW_WCECL @286
-    EnableWindow    @287
-    IsWindowEnabled @288
+    EnableWindow=EnableWindow_WCECL    @287
+    IsWindowEnabled=IsWindowEnabled_WCECL @288
     ScrollWindowEx  @289
     PostThreadMessageW @290
     EnumWindows     @291
@@ -121,8 +121,8 @@ EXPORTS
     LoadLibraryW=LoadLibraryW_WCECL  @528
     FreeLibrary   @529
     ; FindResource @531
-    FindResourceW @532
-    LoadResource @533
+    FindResourceW=FindResourceW_WCECL @532
+    LoadResource=LoadResource_WCECL @533
     SizeofResource @534
     OutputDebugStringW @541
     RaiseException @543
@@ -139,19 +139,19 @@ EXPORTS
     SetClipboardData @671
     SetCursor @682
     LoadCursorW=LoadCursorW_WCECL @683
-    CheckRadioButton @684
+    CheckRadioButton=CheckRadioButton_WCECL @684
     SendDlgItemMessageW @685
-    SetDlgItemTextW @686
-    CreateDialogIndirectParamW @688
-    DefDlgProcW   @689
+    SetDlgItemTextW=SetDlgItemTextW_WCECL @686
+    CreateDialogIndirectParamW=CreateDialogIndirectParamW_WCECL @688
+    DefDlgProcW=DefDlgProcW_WCECL   @689
     DialogBoxIndirectParamW @690
-    EndDialog     @691
+    EndDialog=EndDialog_WCECL @691
     IsDialogMessageW @698
     MapDialogRect @699
     SetDlgItemInt @700
     SetForegroundWindow=SetForegroundWindow_WCECL @702
     SetActiveWindow @703
-    SetFocus      @704
+    SetFocus=SetFocus_WCECL @704
     SetCapture    @708
     ReleaseCapture @709
     CreateCursor  @722
@@ -161,7 +161,7 @@ EXPORTS
     DrawIconEx    @726
     ExtractIconExW @727
     LoadIconW=LoadIconW_WCECL @728
-    LoadImageW    @730
+    LoadImageW=LoadImageW_WCECL @730
     ClipCursor    @731
     SetCursorPos  @736
     ShowCursor    @737
@@ -214,13 +214,13 @@ EXPORTS
     SetMenuItemInfoW @853
     DrawMenuBar   @856
     MessageBeep   @857
-    MessageBoxW   @858
-    DispatchMessageW @859
+    MessageBoxW=MessageBoxW_WCECL   @858
+    DispatchMessageW=DispatchMessageW_WCECL @859
     PeekMessageW  @864
-    PostMessageW  @865
+    PostMessageW=PostMessageW_WCECL  @865
     PostQuitMessage @866
     ; fwprintf      @867
-    SendMessageW  @868
+    SendMessageW=SendMessageW_WCECL  @868
     SendNotifyMessageW @869
     TranslateMessage @870
     MsgWaitForMultipleObjectsEx @871
@@ -231,7 +231,7 @@ EXPORTS
     SetClassLongW @880
     ; SetClassLong  @882
     UnregisterClassW @884
-    IsWindowVisible @886
+    IsWindowVisible=IsWindowVisible_WCECL @886
     AdjustWindowRectEx @887
     SetSysColors @890
     RegisterWindowMessageW @891
@@ -242,7 +242,7 @@ EXPORTS
     ExtTextOutW   @896
     CreateBitmap  @901
     CreateCompatibleBitmap=CreateCompatibleBitmap_WCECL @902
-    BitBlt        @903
+    BitBlt=BitBlt_WCECL        @903
     MaskBlt       @904
     StretchBlt    @905
     ; TransparentImage @906
@@ -266,7 +266,7 @@ EXPORTS
     DrawEdge      @932
     DrawFocusRect @933
     Ellipse       @934
-    FillRect      @935
+    FillRect=FillRect_WCECL @935
     PatBlt        @938
     Polygon       @939
     Polyline      @940
@@ -289,7 +289,7 @@ EXPORTS
     CreateRectRgn @980
     RectVisible   @981
     ; SetRealTime @571
-    SetRect @103
+    SetRect=SetRect_WCECL @103
     SetRectEmpty @104
     SetRectRgn    @982
     SetViewportOrgEx @983
@@ -492,10 +492,10 @@ EXPORTS
     GetDialogBaseUnits @694
     GetDiskFreeSpaceExW @184
     GetDlgCtrlID @693
-    GetDlgItem @692
+    GetDlgItem=GetDlgItem_WCECL @692
     GetDlgItemInt @695
     GetDlgItemTextW @687
-    GetDoubleClickTime @888
+    GetDoubleClickTime=GetDoubleClickTime_WCECL @888
     ; GetEventData @1527
     GetExitCodeProcess @519
     GetExitCodeThread @518
@@ -618,7 +618,7 @@ EXPORTS
     GetThreadContext @1148
     GetThreadPriority @515
     GetThreadTimes @1186
-    GetTickCount @535
+    GetTickCount=GetTickCount_WCECL @535
     GetTimeFormatW @202
     GetTimeZoneInformation @27
     GetUpdateRect @274
@@ -639,7 +639,7 @@ EXPORTS
     GetWindowExtEx @1986
     GetWindowLongW @259
     GetWindowOrgEx @1985
-    GetWindowRect @248
+    GetWindowRect=GetWindowRect_WCECL @248
     GetWindowRgn @1399
     GetWindowTextLengthW @276
     GetWindowTextW @257
