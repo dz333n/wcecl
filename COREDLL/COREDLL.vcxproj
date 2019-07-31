@@ -239,6 +239,7 @@
     <ClCompile Include="imm_wcecl.cpp" />
     <ClCompile Include="mmsystem_wcecl.cpp" />
     <ClCompile Include="other.cpp" />
+    <ClCompile Include="shellapi_wcecl.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Create</PrecompiledHeader>

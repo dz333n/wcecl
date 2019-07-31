@@ -1,5 +1,38 @@
 LIBRARY COREDLL
 EXPORTS
+	TlsGetValue=TlsGetValue_WCECL @15
+	TlsSetValue=TlsSetValue_WCECL @16
+	TlsCall=TlsCall_WCECL @520
+	longjmp @1036
+	_allmul @2002
+	vswprintf @1099
+	wcsrchr @69
+	_alloca_probe @2010
+	wcscpy @61
+	_alldiv @2001
+	wcslen @63
+	wcscat @58
+	_setjmp3 @2000
+	wcscmp @60
+	_SEH_prolog @2037
+	_SEH_epilog @2038
+	swscanf=swscanf_WCECL @1098
+	_wcsdup @74
+	swprintf=swprintf_WCECL @1097
+	wcschr  @59
+	floor @1013
+	EventModify=EventModify_WCECL @494
+	_wcsnicmp @229
+	VirtualFree=VirtualFree_WCECL @525
+	SetThreadPriority=SetThreadPriority_WCECL @514
+	wcsncmp @65
+	wcsncpy @66
+	_ftol=_ftol_WCECL @2028
+	SHLoadDIBitmap=SHLoadDIBitmap_WCECL @487
+	THCreateSnapshot @511
+	Shell_NotifyIcon=Shell_NotifyIcon_WCECL @481
+	GetHeapSnapshot @52
+	_wcsicmp=_wcsicmp_WCECL @230
     InitializeCriticalSection @2
     DeleteCriticalSection @3
     EnterCriticalSection @4
@@ -9,7 +42,7 @@ EXPORTS
     SystemTimeToFileTime @19
     HeapAlloc @46
     ; HeapAllocTrace @1999
-    HeapCompact @1884
+    HeapCompact @1884_ftol
     HeapCreate @44
     HeapDestroy @45
     HeapFree @49
@@ -341,7 +374,7 @@ EXPORTS
     DPA_SetPtr    @1850
     DPA_Sort      @1851
     DSA_Create    @1852
-    ; DSA_Clone     @1853 ; Causes 343 ordinal not found error
+    DSA_Clone=DSA_Clone_WCECL     @1853 
     DSA_DeleteAllItems @1854
     DSA_DeleteItem @1855
     DSA_Destroy   @1856

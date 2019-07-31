@@ -189,6 +189,37 @@ HANDLE WINAPI CreateEventW_WCECL(
 	return result;
 }
 
+LPVOID WINAPI TlsGetValue_WCECL(DWORD dwTlsIndex)
+{
+	auto result = TlsGetValue(dwTlsIndex);
+	return result;
+}
+
+BOOL WINAPI TlsSetValue_WCECL(
+	DWORD dwTlsIndex,
+	LPVOID lpvTlsValue)
+{
+	auto result = TlsSetValue(dwTlsIndex, lpvTlsValue);
+	return result;
+}
+
+BOOL WINAPI SetThreadPriority_WCECL(
+	HANDLE hThread,
+	int nPriority)
+{
+	auto result = SetThreadPriority(hThread, nPriority);
+	return result;
+}
+
+BOOL WINAPI VirtualFree_WCECL(
+	LPVOID lpAddress,
+	DWORD dwSize,
+	DWORD dwFreeType)
+{
+	auto result = VirtualFree(lpAddress, dwSize, dwFreeType);
+	return result;
+}
+
 DWORD WINAPI Random()
 {
 	// sources: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms860353(v%3Dmsdn.10)

@@ -65,6 +65,9 @@
     <ClCompile Include="mmsystem_wcecl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shellapi_wcecl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Exports.def">

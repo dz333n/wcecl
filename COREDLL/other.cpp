@@ -5,6 +5,44 @@
 Stub(delete_WCECL);
 Stub(new_WCECL);
 
+int __cdecl swscanf_WCECL(const wchar_t * buf, const wchar_t * fmt, ...)
+{
+#pragma warning( push )
+#pragma warning( disable: 4995 )
+	va_list args;
+	va_start(args, fmt);
+
+	auto result = swscanf(buf, fmt, args);
+
+	va_end(args);
+#pragma warning( pop )
+
+	return result;
+}
+
+int swprintf_WCECL(wchar_t * buf, const wchar_t * _format, ...)
+{
+#pragma warning( push )
+#pragma warning( disable: 4995 )
+	va_list args;
+	va_start(args, _format);
+
+	auto result = swprintf(buf, _format, args);
+
+	va_end(args);
+#pragma warning( pop )
+
+	return result;
+}
+
+int _wcsicmp_WCECL(
+	const wchar_t *string1,
+	const wchar_t *string2)
+{
+	auto result = _wcsicmp(string1, string2);
+	return result;
+}
+
 DWORD WINAPI RasDial_WCECL(LPRASDIALEXTENSIONS Arg1, LPCWSTR Arg2, LPRASDIALPARAMSW Arg3, DWORD Arg4, LPVOID Arg5, LPHRASCONN Arg6)
 {
 	// review me
@@ -37,6 +75,11 @@ DWORD WINAPI RasHangUp_WCECL(HRASCONN Arg1) // @343
 }*/
 
 // Stubs
+Stub(TlsCall_WCECL) // DWORD WINAPI TlsCall(DWORD p1, DWORD p2);
+Stub(EventModify_WCECL); // HANDLE hEvent, DWORD func
+Stub(_ftol_WCECL);
+Stub(THCreateSnapshot);
+Stub(GetHeapSnapshot);
 Stub(CloseGestureInfoHandle);
 Stub(Gesture);
 Stub(GetGestureExtraArguments);
@@ -56,6 +99,7 @@ Stub(GetAPIAddress);
 Stub(GetGweApiSetTables);
 Stub(RegisterDefaultGestureHandler);
 Stub(lineAddProvider);
+Stub(DSA_Clone_WCECL)
 Stub(DSA_Search);
 Stub(WeirdThing1865);
 Stub(WeirdThing1866);
