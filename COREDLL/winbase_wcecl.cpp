@@ -237,8 +237,8 @@ DWORD WINAPI Random()
 {
 	// sources: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms860353(v%3Dmsdn.10)
 	//          https://docs.microsoft.com/en-us/previous-versions/ms910957(v=msdn.10)
-	::srand(::GetTickCount());
-	auto result = ::rand();
+	srand((unsigned)GetTickCount());
+	int result = rand();
 	return result;
 }
 
