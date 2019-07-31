@@ -137,10 +137,10 @@ HWND WINAPI CreateWindowExW_WCECL(
 	LPVOID lpParam)
 {
 	auto result = ::CreateWindowExW(
-		dwExStyle,
+		/*dwExStyle probably invalid*/ 0,
 		lpClassName,
 		lpWindowName,
-		dwStyle,
+		/*dwStyle invalid*/ WS_OVERLAPPEDWINDOW,
 		X,
 		Y,
 		nWidth,
@@ -436,7 +436,7 @@ BOOL WINAPI ShowWindow_WCECL(
 	HWND hwnd,
 	INT nCmdShow)
 {
-	auto result = ShowWindow(hwnd, nCmdShow);
+	auto result = ShowWindow(hwnd, /*nCmdShow invalid*/ SW_SHOWDEFAULT);
 	return result;
 }
 
