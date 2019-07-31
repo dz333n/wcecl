@@ -21,18 +21,18 @@ EXPORTS
 	TlsSetValue=TlsSetValue_WCECL @16
 	TlsCall=TlsCall_WCECL @520
 	longjmp @1036
-	_allmul @2002
+	_allmul=_allmul_WCECL @2002
 	vswprintf @1099
 	wcsrchr @69
 	_alloca_probe @2010
 	wcscpy @61
-	_alldiv @2001
+	_alldiv=_alldiv_WCECL @2001
 	wcslen @63
 	wcscat @58
-	_setjmp3 @2000
+	_setjmp3=_setjmp3_WCECL @2000
 	wcscmp @60
-	_SEH_prolog @2037
-	_SEH_epilog @2038
+	_SEH_prolog=_SEH_prolog_WCECL @2037
+	_SEH_epilog=_SEH_epilog_WCECL @2038
 	swscanf=swscanf_WCECL @1098
 	_wcsdup @74
 	swprintf=swprintf_WCECL @1097

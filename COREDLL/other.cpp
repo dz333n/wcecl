@@ -109,6 +109,11 @@ void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
 }
 
 // Stubs
+Stub(_setjmp3_WCECL);
+Stub(_allmul_WCECL);
+Stub(_alldiv_WCECL);
+Stub(_SEH_epilog_WCECL);
+Stub(_SEH_prolog_WCECL);
 Stub(__security_gen_cookie_WCECL);
 Stub(GetProcessIndexFromID);
 Stub(type_info);
