@@ -344,6 +344,13 @@ HWND WINAPI CreateDialogIndirectParamW_WCECL(
 	LPARAM dwInitParam)
 {
 	auto result = CreateDialogIndirectParamW(hInstance, lpTemplate, hWndParent, lpDialogFunc, dwInitParam);
+
+	if (w32err(result == NULL))
+	{
+		auto win32error = GetLastError();
+		DebugBreak();
+	}
+
 	return result;
 }
 

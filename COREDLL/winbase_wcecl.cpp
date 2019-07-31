@@ -63,7 +63,14 @@ HRSRC WINAPI FindResourceW_WCECL(
 	LPCWSTR lpName,
 	LPCWSTR lpType)
 {
-	auto result = FindResourceW(hModule, lpName, lpType);
+	auto result = FindResourceW(NULL, lpName, lpType);
+
+	if (w32err(result == NULL))
+	{
+		auto win32error = GetLastError();
+		DebugBreak();
+	}
+
 	return result;
 }
 
@@ -78,7 +85,14 @@ HGLOBAL WINAPI LoadResource_WCECL(
 	HMODULE hModule,
 	HRSRC hResInfo)
 {
-	auto result = LoadResource(hModule, hResInfo);
+	auto result = LoadResource(NULL, hResInfo);
+
+	if (w32err(result == NULL))
+	{
+		auto win32error = GetLastError();
+		DebugBreak();
+	}
+
 	return result;
 }
 
