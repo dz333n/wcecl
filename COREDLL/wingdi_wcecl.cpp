@@ -36,5 +36,17 @@ int WINAPI GetDeviceCaps_WCECL(HDC hdc, int nIndex)
 	return result;
 }
 
+HDC WINAPI CreateCompatibleDC_WCECL(HDC hdc)
+{
+	auto result = ::CreateCompatibleDC(hdc);
+	return result;
+}
+
+HBITMAP WINAPI CreateCompatibleBitmap_WCECL(HDC hdc, int width, int height)
+{
+	auto result = ::CreateCompatibleBitmap(hdc, width, height);
+	return result;
+}
+
 // Stubs
 

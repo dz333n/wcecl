@@ -241,7 +241,7 @@ EXPORTS
     CreateFontIndirectW @895
     ExtTextOutW   @896
     CreateBitmap  @901
-    CreateCompatibleBitmap @902
+    CreateCompatibleBitmap=CreateCompatibleBitmap_WCECL @902
     BitBlt        @903
     MaskBlt       @904
     StretchBlt    @905
@@ -249,7 +249,7 @@ EXPORTS
     RestoreDC     @907
     SaveDC        @908
     CreateDCW     @909
-    CreateCompatibleDC @910
+    CreateCompatibleDC=CreateCompatibleDC_WCECL @910
     DeleteDC      @911
     DeleteObject=DeleteObject_WCECL  @912
     SelectObject  @921

@@ -49,7 +49,6 @@ HWND WINAPI CreateWindowExW_WCECL(
 	HINSTANCE hInstance,
 	LPVOID lpParam)
 {
-	// not working
 	auto result = ::CreateWindowExW(
 		dwExStyle,
 		lpClassName,
@@ -69,6 +68,17 @@ HWND WINAPI CreateWindowExW_WCECL(
 		auto win32error = GetLastError();
 		DebugBreak();
 	}
+	/*else
+	{
+		ShowWindow(result, SW_SHOWDEFAULT);
+		UpdateWindow(result);
+		MSG Msg;
+		while (GetMessage(&Msg, NULL, 0, 0) > 0)
+		{
+			TranslateMessage(&Msg);
+			DispatchMessage(&Msg);
+		}
+	}*/
 
 	return result;
 }
@@ -87,23 +97,28 @@ BOOL WINAPI SetForegroundWindow_WCECL(HWND hWnd)
 	return result;
 }
 
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	return DefWindowProc(hWnd, msg, wParam, lParam);
+}
+
 ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW_WCECL *lpWndClass)
 {
-	// 
 	WNDCLASSW wndClass = { };
 
-	wndClass.style = lpWndClass->style; // may be different, review!
-	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc;
+	wndClass.style = 0;// lpWndClass->style; // may be different, review!
+	wndClass.lpfnWndProc = (WNDPROC)WndProc; // TEMPORARY -- FIXME -- CreateWindowEx fails with correct WndProc
 	wndClass.cbClsExtra = lpWndClass->cbClsExtra;
 	wndClass.cbWndExtra = lpWndClass->cbWndExtra;
 	wndClass.hInstance = lpWndClass->hInstance;
-	wndClass.hIcon = lpWndClass->hIcon;
-	wndClass.hCursor = lpWndClass->hCursor;
+	wndClass.hIcon = lpWndClass->hIcon; // LoadIconW(0, IDI_WINLOGO); // 
+	wndClass.hCursor = lpWndClass->hCursor;// LoadCursorW(0, IDC_ARROW); // 
 	wndClass.hbrBackground = lpWndClass->hbrBackground;
 	wndClass.lpszMenuName = lpWndClass->lpszMenuName;
 	wndClass.lpszClassName = lpWndClass->lpszClassName;
 
-	auto result = ::RegisterClassW(&wndClass);
+	auto result = ::RegisterClass(&wndClass);
+
 	return result;
 }
 
