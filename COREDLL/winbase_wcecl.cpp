@@ -96,6 +96,50 @@ HGLOBAL WINAPI LoadResource_WCECL(
 	return result;
 }
 
+HLOCAL WINAPI LocalFree_WCECL(HLOCAL hMem)
+{
+	auto result = LocalFree(hMem);
+	return result;
+}
+
+BOOL WINAPI FreeLibrary_WCECL(HMODULE hLibModule)
+{
+	auto result = FreeLibrary(hLibModule);
+	return result;
+}
+
+BOOL WINAPI CreateProcessW_WCECL(
+	LPCWSTR pszImageName,
+	LPCWSTR pszCmdLine,
+	LPSECURITY_ATTRIBUTES psaProcess,
+	LPSECURITY_ATTRIBUTES psaThread,
+	BOOL fInheritHandles,
+	DWORD fdwCreate,
+	LPVOID pvEnvironment,
+	LPWSTR pszCurDir,
+	LPSTARTUPINFO psiStartInfo,
+	LPPROCESS_INFORMATION pProcInfo)
+{
+	auto result = CreateProcessW(
+		pszImageName,
+		(LPWSTR)pszCmdLine,
+		psaProcess,
+		psaThread,
+		fInheritHandles,
+		fdwCreate,
+		pvEnvironment,
+		pszCurDir,
+		psiStartInfo,
+		pProcInfo);
+
+	return result;
+}
+
+VOID WINAPI Sleep_WCECL(DWORD dwMilliseconds)
+{
+	Sleep(dwMilliseconds);
+}
+
 DWORD WINAPI SetFilePointer_WCECL(
 	HANDLE hFile,
 	LONG lDistanceToMove,

@@ -35,6 +35,93 @@ HICON WINAPI LoadIconW_WCECL(
 	return result;
 }
 
+BOOL WINAPI ReleaseCapture_WCECL()
+{
+	auto result = ReleaseCapture();
+	return result;
+}
+
+BOOL WINAPI DestroyWindow_WCECL(HWND hwnd)
+{
+	auto result = DestroyWindow(hwnd);
+	return result;
+}
+
+HDC WINAPI BeginPaint_WCECL(
+	HWND hwnd,
+	LPPAINTSTRUCT pps)
+{
+	auto result = BeginPaint(hwnd, pps);
+	return result;
+}
+
+BOOL WINAPI EndPaint_WCECL(
+	HWND hwnd,
+	LPPAINTSTRUCT pps)
+{
+	auto result = EndPaint(hwnd, pps);
+	return result;
+}
+
+BOOL WINAPI TranslateMessage_WCECL(CONST MSG   *pMsg)
+{
+	auto result = TranslateMessage(pMsg);
+	return result;
+}
+
+BOOL WINAPI IsDialogMessageW_WCECL(
+	HWND hDlg,
+	LPMSG lpMsg)
+{
+	auto result = IsDialogMessageW(hDlg, lpMsg);
+	return result;
+}
+
+BOOL WINAPI GetMessageW_WCECL(
+	LPMSG lpMsg,
+	HWND hWnd,
+	UINT wMsgFilterMin,
+	UINT wMsgFilterMax)
+{
+	auto result = GetMessageW(lpMsg, hWnd, wMsgFilterMin, wMsgFilterMax);
+	return result;
+}
+
+VOID WINAPI PostQuitMessage_WCECL(int nExitCode)
+{
+	PostQuitMessage(nExitCode);
+}
+
+HWND WINAPI SetCapture_WCECL(HWND hWnd)
+{
+	auto result = SetCapture(hWnd);
+	return result;
+}
+
+int WINAPI DialogBoxIndirectParamW_WCECL(
+	HINSTANCE hInstance,
+	LPCDLGTEMPLATEW hDialogTemplate,
+	HWND hWndParent,
+	DLGPROC lpDialogFunc,
+	LPARAM dwInitParam)
+{
+	auto result = DialogBoxIndirectParamW(
+		hInstance,
+		hDialogTemplate,
+		hWndParent,
+		lpDialogFunc,
+		dwInitParam);
+	return result;
+}
+
+BOOL WINAPI GetClientRect_WCECL(
+	HWND hwnd,
+	LPRECT prc)
+{
+	auto result = GetClientRect(hwnd, prc);
+	return result;
+}
+
 HWND WINAPI CreateWindowExW_WCECL(
 	DWORD dwExStyle,
 	LPCWSTR lpClassName,
@@ -218,6 +305,48 @@ BOOL WINAPI PostMessageW_WCECL(
 	return result;
 }
 
+BOOL WINAPI ValidateRect_WCECL(
+	HWND hWnd,
+	CONST RECT *lpRect)
+{
+	auto result = ValidateRect(hWnd, lpRect);
+	return result;
+}
+
+BOOL WINAPI PeekMessageW_WCECL(
+	PMSG pMsg,
+	HWND hWnd,
+	UINT wMsgFilterMin,
+	UINT wMsgFilterMax,
+	UINT wRemoveMsg)
+{
+	auto result = PeekMessageW(pMsg, hWnd, wMsgFilterMin, wMsgFilterMax, wRemoveMsg);
+	return result;
+}
+
+BOOL WINAPI PtInRect_WCECL(
+	CONST RECT *lprc,
+	POINT pt)
+{
+	auto result = PtInRect(lprc, pt);
+	return result;
+}
+
+SHORT WINAPI GetKeyState_WCECL(int nVirtKey)
+{
+	auto result = GetKeyState(nVirtKey);
+	return result;
+}
+
+BOOL WINAPI IntersectRect_WCECL(
+	LPRECT lprcDst,
+	CONST RECT *lprcSrc1,
+	CONST RECT *lprcSrc2)
+{
+	auto result = IntersectRect(lprcDst, lprcSrc1, lprcSrc2);
+	return result;
+}
+
 BOOL WINAPI SetRect_WCECL(
 	LPRECT lprc,
 	int xLeft,
@@ -285,12 +414,6 @@ BOOL WINAPI CheckRadioButton_WCECL(
 	int nIDCheckButton)
 {
 	auto result = CheckRadioButton(hDlg, nIDFirstButton, nIDLastButton, nIDCheckButton);
-	return result;
-}
-
-BOOL WINAPI DestroyWindow_WCECL(HWND hwnd)
-{
-	auto result = DestroyWindow(hwnd);
 	return result;
 }
 

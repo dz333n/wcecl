@@ -30,6 +30,12 @@ HBRUSH WINAPI CreateSolidBrush_WCECL(COLORREF crColor)
 	return result;
 }
 
+COLORREF WINAPI SetPixel_WCECL(HDC hdc, int x, int y, COLORREF color)
+{
+	auto result = SetPixel(hdc, x, y, color);
+	return result;
+}
+
 int WINAPI GetDeviceCaps_WCECL(HDC hdc, int nIndex)
 {
 	auto result = ::GetDeviceCaps(hdc, nIndex);
@@ -45,6 +51,30 @@ HDC WINAPI CreateCompatibleDC_WCECL(HDC hdc)
 HBITMAP WINAPI CreateCompatibleBitmap_WCECL(HDC hdc, int width, int height)
 {
 	auto result = ::CreateCompatibleBitmap(hdc, width, height);
+	return result;
+}
+
+int WINAPI GetClipBox_WCECL(HDC hdc, LPRECT lprect)
+{
+	auto result = GetClipBox(hdc, lprect);
+	return result;
+}
+
+BOOL WINAPI DrawFocusRect_WCECL(HDC hDC, CONST RECT * lprc)
+{
+	auto result = DrawFocusRect(hDC, lprc);
+	return result;
+}
+
+BOOL WINAPI DeleteDC_WCECL(HDC hdc)
+{
+	auto result = DeleteDC(hdc);
+	return result;
+}
+
+HGDIOBJ WINAPI SelectObject_WCECL(HDC hdc, HGDIOBJ h)
+{
+	auto result = SelectObject(hdc, h);
 	return result;
 }
 

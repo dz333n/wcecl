@@ -15,6 +15,42 @@ LONG APIENTRY RegOpenKeyExW_WCECL(
 	return result;
 }
 
+LONG APIENTRY RegSetValueExW_WCECL(
+	HKEY hKey,
+	LPCWSTR lpValueName,
+	DWORD Reserved,
+	DWORD dwType,
+	CONST BYTE* lpData,
+	DWORD cbData)
+{
+	auto result = RegSetValueExW(hKey, lpValueName, Reserved, dwType, lpData, cbData);
+	return result;
+}
+
+LONG APIENTRY RegCreateKeyExW_WCECL(
+	HKEY hKey,
+	LPCWSTR lpSubKey,
+	DWORD Reserved,
+	LPWSTR lpClass,
+	DWORD dwOptions,
+	REGSAM samDesired,
+	LPSECURITY_ATTRIBUTES lpSecurityAttributes,
+	PHKEY phkResult,
+	LPDWORD lpdwDisposition)
+{
+	auto result = RegCreateKeyExW(
+		hKey,
+		lpSubKey,
+		Reserved,
+		lpClass,
+		dwOptions,
+		samDesired,
+		lpSecurityAttributes,
+		phkResult,
+		lpdwDisposition);
+	return result;
+}
+
 LONG
 APIENTRY
 RegQueryValueExW_WCECL(

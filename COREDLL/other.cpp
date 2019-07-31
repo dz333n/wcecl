@@ -41,7 +41,6 @@ Stub(CloseGestureInfoHandle);
 Stub(Gesture);
 Stub(GetGestureExtraArguments);
 Stub(SetWindowPosOnRotate);
-Stub(sndPlaySoundW);
 Stub(SetAssociatedMenu);
 Stub(GetAssociatedMenu);
 Stub(GetOwnerProcess);
