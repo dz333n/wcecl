@@ -1,5 +1,22 @@
 LIBRARY COREDLL
 EXPORTS
+	calloc @1346
+	ConvertDefaultLocale=ConvertDefaultLocale_WCECL @210
+	LineTo=LineTo_WCECL @1652
+	FormatMessageW=FormatMessageW_WCECL @234
+	BeginDeferWindowPos=BeginDeferWindowPos_WCECL @1157
+	DeferWindowPos=DeferWindowPos_WCECL @1158FormatMessageW
+	EndDeferWindowPos=EndDeferWindowPos_WCECL @1159
+	_snwprintf=_snwprintf_WCECL @1096
+	GetProcessIndexFromID @640
+	_purecall @1092
+	_CxxThrowException @1551
+	type_info @1580
+	ShellExecuteEx=ShellExecuteEx_WCECL @480
+	_vsnwprintf @1132
+	CeLogSetZones @1452
+	CeLogReSync @1467
+	terminate=terminate_WCECL  @1556
 	TlsGetValue=TlsGetValue_WCECL @15
 	TlsSetValue=TlsSetValue_WCECL @16
 	TlsCall=TlsCall_WCECL @520
@@ -783,6 +800,7 @@ EXPORTS
     _XcptFilter=_XcptFilter_WCECL   @1645
     _except_handler4_common=_except_handler4_common_WCECL @87
     ; _except_handler4_common @87 ; CRT
+	__security_gen_cookie=__security_gen_cookie_WCECL @1875
     __security_gen_cookie2 @2696
     __report_gsfailure=__report_gsfailure_WCECL @1876
     ; __report_gsfailure @1876 ; CRT

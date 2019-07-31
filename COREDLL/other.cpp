@@ -5,6 +5,28 @@
 Stub(delete_WCECL);
 Stub(new_WCECL);
 
+LCID WINAPI ConvertDefaultLocale_WCECL(LCID Locale)
+{
+	auto result = ConvertDefaultLocale(Locale);
+	return result;
+}
+
+int _snwprintf_WCECL(wchar_t * buf, size_t bufCount, const wchar_t * fmt, ...)
+{
+#pragma warning( push )
+#pragma warning( disable: 4995 )
+	va_list args;
+	va_start(args, fmt);
+
+	auto result = _snwprintf(buf, bufCount, fmt, args);
+
+	va_end(args);
+
+#pragma warning( pop )
+
+	return result;
+}
+
 int __cdecl swscanf_WCECL(const wchar_t * buf, const wchar_t * fmt, ...)
 {
 #pragma warning( push )
@@ -74,7 +96,23 @@ DWORD WINAPI RasHangUp_WCECL(HRASCONN Arg1) // @343
 	return result;
 }*/
 
+void terminate_WCECL()
+{
+	exit(0); // std::terminate should be used here
+}
+
+void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
+	DWORD dwZoneCE,          // Predefined zones
+	DWORD dwZoneProcess)
+{
+	// wtf!?
+}
+
 // Stubs
+Stub(__security_gen_cookie_WCECL);
+Stub(GetProcessIndexFromID);
+Stub(type_info);
+Stub(CeLogReSync);
 Stub(TlsCall_WCECL) // DWORD WINAPI TlsCall(DWORD p1, DWORD p2);
 Stub(EventModify_WCECL); // HANDLE hEvent, DWORD func
 Stub(_ftol_WCECL);

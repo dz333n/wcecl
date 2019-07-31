@@ -12,6 +12,12 @@ int WINAPI GetObjectW_WCECL(
 	return result;
 }
 
+BOOL WINAPI LineTo_WCECL(HDC hdc, int x, int y)
+{
+	auto result = LineTo(hdc, x, y);
+	return result;
+}
+
 HGDIOBJ WINAPI GetStockObject_WCECL(int i) 
 {
 	auto result = ::GetStockObject(i);

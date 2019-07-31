@@ -96,6 +96,19 @@ HGLOBAL WINAPI LoadResource_WCECL(
 	return result;
 }
 
+DWORD WINAPI FormatMessageW_WCECL(
+	DWORD dwFlags,
+	LPCVOID lpSource,
+	DWORD dwMessageId,
+	DWORD dwLanguageId,
+	LPWSTR lpBuffer,
+	DWORD nSize,
+	va_list *Arguments)
+{
+	auto result = FormatMessageW(dwFlags, lpSource, dwMessageId, dwLanguageId, lpBuffer, nSize, Arguments);
+	return result;
+}
+
 HLOCAL WINAPI LocalFree_WCECL(HLOCAL hMem)
 {
 	auto result = LocalFree(hMem);

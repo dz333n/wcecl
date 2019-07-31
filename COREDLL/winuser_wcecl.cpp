@@ -122,6 +122,41 @@ BOOL WINAPI GetClientRect_WCECL(
 	return result;
 }
 
+HDWP WINAPI BeginDeferWindowPos_WCECL(int nNumWindows)
+{
+	auto result = BeginDeferWindowPos(nNumWindows);
+	return result;
+}
+
+HDWP WINAPI DeferWindowPos_WCECL(
+	HDWP hWinPosInfo,
+	HWND hWnd,
+	HWND hWndInsertAfter,
+	int x,
+	int y,
+	int cx,
+	int cy,
+	UINT uFlags)
+{
+	auto result = DeferWindowPos(
+		hWinPosInfo,
+		hWnd,
+		hWndInsertAfter,
+		x,
+		y,
+		cx,
+		cy,
+		uFlags);
+	return result;
+}
+
+
+BOOL WINAPI EndDeferWindowPos_WCECL(HDWP hWinPosInfo)
+{
+	auto result = EndDeferWindowPos(hWinPosInfo);
+	return result;
+}
+
 HWND WINAPI CreateWindowExW_WCECL(
 	DWORD dwExStyle,
 	LPCWSTR lpClassName,
