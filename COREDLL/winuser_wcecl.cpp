@@ -259,8 +259,8 @@ ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW_WCECL *lpWndClass)
 {
 	WNDCLASSW wndClass = { };
 
-	wndClass.style = lpWndClass->style; // may be different, review!
-	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc; // (WNDPROC)WndProc; // TEMPORARY -- FIXME -- CreateWindowEx fails with correct WndProc
+	wndClass.style = lpWndClass->style; 
+	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc; 
 	wndClass.cbClsExtra = lpWndClass->cbClsExtra;
 	wndClass.cbWndExtra = lpWndClass->cbWndExtra;
 	wndClass.hInstance = lpWndClass->hInstance;
