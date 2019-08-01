@@ -1,5 +1,7 @@
 // winuser_wcecl.cpp : Windows CE/winuser.h
+
 #include "stdafx.h"
+#include "winuser_wcecl.h"
 
 // Functions
 HDC WINAPI GetDC_WCECL(HWND hwnd)
@@ -157,6 +159,25 @@ BOOL WINAPI EndDeferWindowPos_WCECL(HDWP hWinPosInfo)
 	return result;
 }
 
+DWORD CeWsExToWin(DWORD dwExStyle)
+{
+	DWORD result = dwExStyle;
+	
+	result &= ~WINCE_WS_EX_CAPTIONOKBTN;
+	result &= ~WINCE_WS_EX_NODRAG;
+	result &= ~WINCE_WS_EX_ABOVESTARTUP;
+	result &= ~WINCE_WS_EX_INK;
+	result &= ~WINCE_WS_EX_NOANIMATION;
+
+	return result;
+}
+
+DWORD CeWsToWin(DWORD dwStyle)
+{
+	DWORD result = dwStyle;
+	return result;
+}
+
 HWND WINAPI CreateWindowExW_WCECL(
 	DWORD dwExStyle,
 	LPCWSTR lpClassName,
@@ -171,11 +192,14 @@ HWND WINAPI CreateWindowExW_WCECL(
 	HINSTANCE hInstance,
 	LPVOID lpParam)
 {
+	DWORD ex = CeWsExToWin(dwExStyle);
+	DWORD style = CeWsToWin(dwStyle);
+
 	auto result = ::CreateWindowExW(
-		/*dwExStyle probably invalid*/ 0,
+		ex,
 		lpClassName,
 		lpWindowName,
-		/*dwStyle invalid*/ WS_OVERLAPPEDWINDOW,
+		style,
 		X,
 		Y,
 		nWidth,
@@ -231,17 +255,12 @@ DefWindowProcW_WCECL(
 	return result;
 }
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-	return DefWindowProc(hWnd, msg, wParam, lParam);
-}
-
 ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW_WCECL *lpWndClass)
 {
 	WNDCLASSW wndClass = { };
 
-	wndClass.style = 0;// lpWndClass->style; // may be different, review!
-	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc; (WNDPROC)WndProc; // TEMPORARY -- FIXME -- CreateWindowEx fails with correct WndProc
+	wndClass.style = lpWndClass->style; // may be different, review!
+	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc; // (WNDPROC)WndProc; // TEMPORARY -- FIXME -- CreateWindowEx fails with correct WndProc
 	wndClass.cbClsExtra = lpWndClass->cbClsExtra;
 	wndClass.cbWndExtra = lpWndClass->cbWndExtra;
 	wndClass.hInstance = lpWndClass->hInstance;
@@ -251,7 +270,7 @@ ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW_WCECL *lpWndClass)
 	wndClass.lpszMenuName = lpWndClass->lpszMenuName;
 	wndClass.lpszClassName = lpWndClass->lpszClassName;
 
-	auto result = ::RegisterClass(&wndClass);
+	auto result = ::RegisterClassW(&wndClass);
 
 	return result;
 }
@@ -471,7 +490,28 @@ BOOL WINAPI ShowWindow_WCECL(
 	HWND hwnd,
 	INT nCmdShow)
 {
-	auto result = ShowWindow(hwnd, /*nCmdShow invalid*/ SW_SHOWDEFAULT);
+	INT nCmdShowActual = 0;
+
+	switch (nCmdShow)
+	{
+		case WINCE_SW_SHOWMAXIMIZED:
+			nCmdShowActual = SW_SHOWMAXIMIZED;
+			break;
+		case WINCE_SW_MAXIMIZE:
+			nCmdShowActual = SW_MAXIMIZE;
+			break;
+		case WINCE_SW_RESTORE:
+			nCmdShowActual = SW_RESTORE;
+			break;
+		default:
+			nCmdShowActual = nCmdShow;
+			break;
+	}
+
+	if (nCmdShowActual >= 12)
+		nCmdShowActual = SW_SHOWMAXIMIZED;
+
+	auto result = ShowWindow(hwnd, nCmdShowActual);
 	return result;
 }
 
