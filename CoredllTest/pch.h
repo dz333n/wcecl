@@ -6,5 +6,6 @@
 
 int __cdecl RegisterDefaultGestureHandler();
 DWORD __cdecl Random();
+HRESULT StringCbPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszFormat, ...);
 
 #endif 

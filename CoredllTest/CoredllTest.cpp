@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
+#include <tchar.h>
 
 void RandomTest(int number)
 {
@@ -21,4 +22,9 @@ int main()
 	printf("Wait 2500 ms...\n");
 	Sleep(2500);
 	RandomTest(2);
+	printf("\n");
+
+	wchar_t buf[256];
+	StringCbPrintfW(buf, 256, L"Should be 5: %d  Should be 1: %i\n", 5, 1);
+	_tprintf(buf);
 }
