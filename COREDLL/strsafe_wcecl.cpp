@@ -47,7 +47,7 @@ HRESULT WINAPI StringCbPrintfW_WCECL(wchar_t* pszDest, size_t cbDest, const wcha
 {
 	va_list args;
 	va_start(args, pszFormat);
-	HRESULT result = ::StringCbPrintfW(pszDest, cbDest, pszFormat, args);
+	HRESULT result = ::StringCchVPrintfW_WCECL(pszDest, cbDest, pszFormat, args);
 	va_end(args);
 	return result;
 }
