@@ -461,7 +461,7 @@ EXPORTS
     ImmSetCompositionStringW @809
     ImmSetCompositionWindow @810
     ImmSetConversionStatus @811
-    ImmSetHotKey @812
+    ImmSetHotKey=ImmSetHotKey_WCECL @812
     ; ImmSetImeWndIMC @1222
     ImmSetOpenStatus @814
     ImmSetStatusWindowPos @815
@@ -564,8 +564,8 @@ EXPORTS
     ; GetForegroundKeyboardLayoutHandle @1802
     ; GetForegroundKeyboardTarget @1225
     GetForegroundWindow @701
-    GetGestureExtraArguments @2926
-    GetGestureInfo @2925 ; windows 7+ system
+    GetGestureExtraArguments=GetGestureExtraArguments_WCECL @2926
+    GetGestureInfo=GetGestureInfo_WCECL @2925 ; windows 7+ system
     GetGweApiSetTables @1867
     ; GetHeapSnapshot @52
     GetIconInfo @1822
@@ -783,8 +783,8 @@ EXPORTS
     GetWindowAutoGesture  @2869
     GetAnimateMessageInfo @2871
 
-    CloseGestureInfoHandle @2924
-    RegisterDefaultGestureHandler @2928 ; end of Windows CE 6.0 R3 coredll.dll
+    CloseGestureInfoHandle=CloseGestureInfoHandle_WCECL @2924
+    RegisterDefaultGestureHandler=RegisterDefaultGestureHandler_WCECL @2928 ; end of Windows CE 6.0 R3 coredll.dll
 
     TerminateThread @491
     CreateThread @492

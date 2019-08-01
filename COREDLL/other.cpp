@@ -109,6 +109,10 @@ void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
 }
 
 // Stubs
+Stub(RegisterDefaultGestureHandler_WCECL);
+Stub(CloseGestureInfoHandle_WCECL);
+Stub(GetGestureExtraArguments_WCECL);
+Stub(GetGestureInfo_WCECL);
 Stub(_setjmp3_WCECL);
 Stub(_allmul_WCECL);
 Stub(_alldiv_WCECL);
