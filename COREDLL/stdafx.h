@@ -17,6 +17,8 @@
 #include <ras.h>
 // #include <dpapi.h>
 #include <excpt.h>
+#include <Mmsystem.h>
+#include <ShellApi.h>
 
 // STRUCTS
 typedef struct tagWNDCLASSW_WCECL {
