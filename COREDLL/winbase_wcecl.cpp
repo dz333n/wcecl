@@ -9,13 +9,7 @@ int WINAPI LoadStringW_WCECL(
 	int nBufferMax)
 {
 	auto result = ::LoadStringW(NULL, uID, lpBuffer, nBufferMax);
-
-	if (w32err(result == NULL))
-	{
-		auto win32error = GetLastError();
-		DebugBreak();
-	}
-
+	Assert32Failed(result == NULL, LoadStringW_WCECL);
 	return result;
 }
 
@@ -64,13 +58,7 @@ HRSRC WINAPI FindResourceW_WCECL(
 	LPCWSTR lpType)
 {
 	auto result = FindResourceW(NULL, lpName, lpType);
-
-	if (w32err(result == NULL))
-	{
-		auto win32error = GetLastError();
-		DebugBreak();
-	}
-
+	Assert32Failed(result == NULL, FindResourceW_WCECL);
 	return result;
 }
 
@@ -80,19 +68,12 @@ DWORD WINAPI GetTickCount_WCECL()
 	return result;
 }
 
-
 HGLOBAL WINAPI LoadResource_WCECL(
 	HMODULE hModule,
 	HRSRC hResInfo)
 {
 	auto result = LoadResource(NULL, hResInfo);
-
-	if (w32err(result == NULL))
-	{
-		auto win32error = GetLastError();
-		DebugBreak();
-	}
-
+	Assert32Failed(result == NULL, LoadResource_WCECL);
 	return result;
 }
 
@@ -105,6 +86,10 @@ DWORD WINAPI FormatMessageW_WCECL(
 	DWORD nSize,
 	va_list *Arguments)
 {
+	BOOL FormatMessageW_Fixed = FALSE;
+	Assert32(FormatMessageW_Fixed == TRUE);
+
+	// fix me
 	auto result = FormatMessageW(dwFlags, lpSource, dwMessageId, dwLanguageId, lpBuffer, nSize, Arguments);
 	return result;
 }
@@ -144,6 +129,8 @@ BOOL WINAPI CreateProcessW_WCECL(
 		pszCurDir,
 		psiStartInfo,
 		pProcInfo);
+
+	Assert32Failed(result == NULL, CreateProcessW_WCECL);
 
 	return result;
 }
@@ -250,6 +237,7 @@ HLOCAL WINAPI LocalAlloc_WCECL(
 HINSTANCE WINAPI LoadLibraryW_WCECL(LPCWSTR lpLibFileName)
 {
 	auto result = ::LoadLibraryW(lpLibFileName);
+	Assert32Failed(result == NULL, LoadLibraryW_WCECL);
 	return result;
 }
 

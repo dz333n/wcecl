@@ -35,9 +35,6 @@
     <ClCompile Include="strsafe_wcecl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="additional.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="winuser_wcecl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,6 +66,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="shellapi_wcecl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wcecl_dialogs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wcecl_memtools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

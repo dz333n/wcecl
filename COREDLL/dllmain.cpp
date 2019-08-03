@@ -11,7 +11,12 @@ BOOL __stdcall DllMain(HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 	{
-		MessageBox(NULL, L"Windows CE Compatibility Layer is working. You can attach debugger or continue.", L"WCECL: Startup", 0);
+		MessageBoxExW(
+			NULL,
+			L"Program works. Now you can attach a debugger or continue.",
+			L"Windows CE Compatibility Layer",
+			MB_OK,
+			MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US));
 		break;
 	};
 	//

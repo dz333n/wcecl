@@ -162,7 +162,7 @@ BOOL WINAPI EndDeferWindowPos_WCECL(HDWP hWinPosInfo)
 DWORD CeWsExToWin(DWORD dwExStyle)
 {
 	DWORD result = dwExStyle;
-	
+
 	result &= ~WINCE_WS_EX_CAPTIONOKBTN;
 	result &= ~WINCE_WS_EX_NODRAG;
 	result &= ~WINCE_WS_EX_ABOVESTARTUP;
@@ -209,11 +209,7 @@ HWND WINAPI CreateWindowExW_WCECL(
 		hInstance,
 		lpParam);
 
-	if (w32err(result == NULL))
-	{
-		auto win32error = GetLastError();
-		DebugBreak();
-	}
+	Assert32(result == NULL);
 	/*else
 	{
 		ShowWindow(result, SW_SHOWDEFAULT);
@@ -259,13 +255,13 @@ ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW_WCECL *lpWndClass)
 {
 	WNDCLASSW wndClass = { };
 
-	wndClass.style = lpWndClass->style; 
-	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc; 
+	wndClass.style = lpWndClass->style;
+	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc;
 	wndClass.cbClsExtra = lpWndClass->cbClsExtra;
 	wndClass.cbWndExtra = lpWndClass->cbWndExtra;
 	wndClass.hInstance = lpWndClass->hInstance;
-	wndClass.hIcon = lpWndClass->hIcon; // LoadIconW(0, IDI_WINLOGO); // 
-	wndClass.hCursor = lpWndClass->hCursor;// LoadCursorW(0, IDC_ARROW); // 
+	wndClass.hIcon = lpWndClass->hIcon; // LoadIconW(0, IDI_WINLOGO); //
+	wndClass.hCursor = lpWndClass->hCursor;// LoadCursorW(0, IDC_ARROW); //
 	wndClass.hbrBackground = lpWndClass->hbrBackground;
 	wndClass.lpszMenuName = lpWndClass->lpszMenuName;
 	wndClass.lpszClassName = lpWndClass->lpszClassName;
@@ -541,13 +537,12 @@ HWND WINAPI CreateDialogIndirectParamW_WCECL(
 	DLGPROC lpDialogFunc,
 	LPARAM dwInitParam)
 {
+	DWORD style = CeWsToWin(lpTemplate->style);
+	DWORD exstyle = CeWsExToWin(lpTemplate->dwExtendedStyle);
+
 	auto result = CreateDialogIndirectParamW(hInstance, lpTemplate, hWndParent, lpDialogFunc, dwInitParam);
 
-	if (w32err(result == NULL))
-	{
-		auto win32error = GetLastError();
-		DebugBreak();
-	}
+	Assert32Failed(!result, CreateDialogIndirectParamW_WCECL);
 
 	return result;
 }

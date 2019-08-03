@@ -16,6 +16,7 @@
 #include <strsafe.h>
 #include <ras.h>
 // #include <dpapi.h>
+#include <psapi.h>
 #include <excpt.h>
 #include <Mmsystem.h>
 #include <ShellApi.h>
@@ -66,7 +67,14 @@ typedef struct tagWNDCLASSW_WCECL {
 #define StubSilent(Function) StubSilentEx(WINAPI, Function)
 #define StubSilentEx(Decl, Function) int Decl Function() { return FALSE; }
 
-#define w32err(Expression) (Expression) && IsDebuggerPresent()
+// #define w32err(Expression) (Expression) && IsDebuggerPresent() // obsolete
+
+#define Assert32Ex(Expression, Comment) if (Expression) DisplayAssert32ErrorDialog(L"" #Expression "", Comment)
+#define Assert32(Expression) Assert32Ex(Expression, L"");
+#define Assert32Failed(Expression, FunctionName) Assert32Ex(Expression, L"Function '" #FunctionName "' failed.");
 
 // FUNCTIONS
 BOOL ProgramErrorDialog(LPCWSTR Text, BOOL YesNo);
+VOID DisplayAssert32ErrorDialog(LPCWSTR ExpressionText, LPCWSTR Comment);
+DWORD GetBaseAddress(HANDLE pHandle);
+HMODULE GetModule(HANDLE pHandle);
