@@ -11,12 +11,37 @@ BOOL __stdcall DllMain(HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 	{
-		MessageBoxExW(
+		if (MessageBoxExW(
 			NULL,
-			L"Program works. Now you can attach a debugger or continue.",
+			L"Attach a debugger now?",
 			L"Windows CE Compatibility Layer",
-			MB_OK,
-			MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US));
+			MB_YESNO,
+			MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US)) == IDYES)
+		{
+			WCHAR VSJitDebugger[MAX_PATH], CmdLineBuf[256], SystemDirectory[MAX_PATH];
+			PROCESS_INFORMATION Info = { };
+			STARTUPINFO StartupInfo = { };
+
+			GetSystemDirectoryW(SystemDirectory, MAX_PATH);
+			swprintf_s(VSJitDebugger, MAX_PATH, L"%s\\vsjitdebugger.exe", SystemDirectory);
+			swprintf_s(CmdLineBuf, 256, L"%s -p %d", VSJitDebugger, GetCurrentProcessId());
+
+			StartupInfo.wShowWindow = TRUE;
+			
+			// MessageBoxW(NULL, CmdLineBuf, VSJitDebugger, 0);
+
+			Assert32(CreateProcess(
+				VSJitDebugger,
+				CmdLineBuf,
+				NULL, NULL,
+				FALSE, NORMAL_PRIORITY_CLASS,
+				NULL, NULL, &StartupInfo, &Info) == FALSE);
+
+			WaitForSingleObject(Info.hProcess, -1);
+
+			CloseHandle(Info.hProcess);
+			CloseHandle(Info.hThread);
+		}
 		break;
 	};
 	//

@@ -2,13 +2,14 @@
 
 #include "stdafx.h"
 
-VOID DisplayAssert32ErrorDialog(LPCWSTR ExpressionText, LPCWSTR Comment)
+VOID DisplayAssert32ErrorDialog(LPCWSTR ExpressionText, LPCWSTR Comment, BOOL ShowLastError)
 {
 	WCHAR Buffer[512];
-	DWORD Error = GetLastError();
+	DWORD Error = ShowLastError ? GetLastError() : 0xD3ADB33F;
 	WCHAR ErrorBuffer[256];
 
 	if (Error == 0) wcscpy_s(ErrorBuffer, 256, L"Unknown");
+	else if (Error == 0xD3ADB33F) wcscpy_s(ErrorBuffer, 256, L"Not Win32 Error");
 	else FormatMessageW(
 		FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
 		NULL,

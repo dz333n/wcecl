@@ -209,7 +209,7 @@ HWND WINAPI CreateWindowExW_WCECL(
 		hInstance,
 		lpParam);
 
-	Assert32(result == NULL);
+	Assert32Failed(result == NULL, CreateWindowExW_WCECL);
 	/*else
 	{
 		ShowWindow(result, SW_SHOWDEFAULT);
@@ -267,6 +267,8 @@ ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW_WCECL *lpWndClass)
 	wndClass.lpszClassName = lpWndClass->lpszClassName;
 
 	auto result = ::RegisterClassW(&wndClass);
+
+	Assert32Failed(!result, RegisterClassW_WCECL);
 
 	return result;
 }
@@ -537,10 +539,24 @@ HWND WINAPI CreateDialogIndirectParamW_WCECL(
 	DLGPROC lpDialogFunc,
 	LPARAM dwInitParam)
 {
+	DLGTEMPLATE *dlgTemplate = (DLGTEMPLATE*)malloc(sizeof(DLGTEMPLATE));
+	RtlZeroMemory(dlgTemplate, sizeof(DLGTEMPLATE));
+
 	DWORD style = CeWsToWin(lpTemplate->style);
 	DWORD exstyle = CeWsExToWin(lpTemplate->dwExtendedStyle);
 
-	auto result = CreateDialogIndirectParamW(hInstance, lpTemplate, hWndParent, lpDialogFunc, dwInitParam);
+	dlgTemplate->cdit = lpTemplate->cdit;
+	dlgTemplate->cx = lpTemplate->cx;
+	dlgTemplate->cy = lpTemplate->cy;
+	dlgTemplate->x = lpTemplate->x;
+	dlgTemplate->y = lpTemplate->y;
+	dlgTemplate->style = style;
+	dlgTemplate->dwExtendedStyle = exstyle;
+
+	AssertFailed(dlgTemplate->style != style, CreateDialogIndirectParamW_WCECL);
+	AssertFailed(dlgTemplate->dwExtendedStyle != exstyle, CreateDialogIndirectParamW_WCECL);
+
+	auto result = CreateDialogIndirectParamW(NULL, /*dlgTemplate*/ lpTemplate, hWndParent, lpDialogFunc, dwInitParam);
 
 	Assert32Failed(!result, CreateDialogIndirectParamW_WCECL);
 

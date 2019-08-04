@@ -69,12 +69,14 @@ typedef struct tagWNDCLASSW_WCECL {
 
 // #define w32err(Expression) (Expression) && IsDebuggerPresent() // obsolete
 
-#define Assert32Ex(Expression, Comment) if (Expression) DisplayAssert32ErrorDialog(L"" #Expression "", Comment)
+#define ActuallyAssert(Expression, Comment, ShowLastError) if (Expression) DisplayAssert32ErrorDialog(L"" #Expression "", Comment, ShowLastError)
+#define Assert32Ex(Expression, Comment) ActuallyAssert(Expression, Comment, TRUE)
 #define Assert32(Expression) Assert32Ex(Expression, L"");
 #define Assert32Failed(Expression, FunctionName) Assert32Ex(Expression, L"Function '" #FunctionName "' failed.");
+#define AssertFailed(Expression, FunctionName) ActuallyAssert(Expression, L"Function '" #FunctionName "' failed.", FALSE);
 
 // FUNCTIONS
 BOOL ProgramErrorDialog(LPCWSTR Text, BOOL YesNo);
-VOID DisplayAssert32ErrorDialog(LPCWSTR ExpressionText, LPCWSTR Comment);
+VOID DisplayAssert32ErrorDialog(LPCWSTR ExpressionText, LPCWSTR Comment, BOOL ShowLastError);
 DWORD GetBaseAddress(HANDLE pHandle);
 HMODULE GetModule(HANDLE pHandle);
