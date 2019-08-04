@@ -211,6 +211,15 @@ BOOL WINAPI SetThreadPriority_WCECL(
 	return result;
 }
 
+DWORD WINAPI GetModuleFileNameW_WCECL(
+	HMODULE hModule,
+	LPWSTR lpFilename,
+	DWORD nSize)
+{
+	auto result = GetModuleFileNameW(hModule, lpFilename, nSize);
+	return result;
+}
+
 BOOL WINAPI VirtualFree_WCECL(
 	LPVOID lpAddress,
 	DWORD dwSize,

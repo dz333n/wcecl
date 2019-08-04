@@ -589,7 +589,7 @@ EXPORTS
     GetMessageSource @872
     GetMessageW=GetMessageW_WCECL @861
     ; GetMessageWNoWait @863
-    GetModuleFileNameW @537
+    GetModuleFileNameW=GetModuleFileNameW_WCECL @537
     GetModuleHandleW @1177
     ; GetModuleInformation @1721
     GetMonitorInfoA @1525
