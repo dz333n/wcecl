@@ -1,6 +1,6 @@
 LIBRARY COREDLL
 EXPORTS
-	_chkstk @2009
+	_chkstk=_chkstk_WCECL @2009
 	wcsstr @73
 	GetExitCodeProcess=GetExitCodeProcess_WCECL @519
 	CreateDirectoryW=CreateDirectoryW_WCECL @160

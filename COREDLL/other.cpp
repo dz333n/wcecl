@@ -160,6 +160,7 @@ void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
 }
 
 // Stubs
+Stub(_chkstk_WCECL);
 Stub(WaitForAPIReady)
 Stub(SetStdioPathW);
 Stub(GetStdioPathW);
