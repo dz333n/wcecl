@@ -20,6 +20,8 @@
 #include <excpt.h>
 #include <Mmsystem.h>
 #include <ShellApi.h>
+#include <string>      // std::string, std::wstring
+#include <algorithm>   // std::copy 
 
 // STRUCTS
 typedef struct tagWNDCLASSW_WCECL {

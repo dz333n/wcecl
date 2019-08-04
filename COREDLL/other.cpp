@@ -5,11 +5,51 @@
 Stub(delete_WCECL);
 Stub(new_WCECL);
 
+int WINAPI GetLocaleInfoW_WCECL(
+	IN LCID     Locale,
+	IN LCTYPE   LCType,
+	OUT LPWSTR  lpLCData,
+	IN int      cchData)
+{
+	auto result = GetLocaleInfoW(Locale, LCType, lpLCData, cchData);
+	return result;
+}
+
+int WINAPI GetTimeFormatW_WCECL(
+	LCID             Locale,
+	DWORD            dwFlags,
+	CONST SYSTEMTIME *lpTime,
+	LPCWSTR          lpFormat,
+	LPWSTR          lpTimeStr,
+	int              cchTime)
+{
+	auto result = GetTimeFormatW(Locale, dwFlags, lpTime, lpFormat, lpTimeStr, cchTime);
+	return result;
+}
+
+int WINAPI GetDateFormatW_WCECL(
+	LCID             Locale,
+	DWORD            dwFlags,
+	CONST SYSTEMTIME *lpDate,
+	LPCWSTR          lpFormat,
+	LPWSTR          lpDateStr,
+	int              cchDate)
+{
+	auto result = GetDateFormatW(Locale, dwFlags, lpDate, lpFormat, lpDateStr, cchDate);
+	return result;
+}
+
+int __cdecl vfwprintf_WCECL(FILE * stream, const wchar_t * fmt, va_list args)
+{
+	auto result = vfwprintf(stream, fmt, args);
+	return result;
+}
+
 int __cdecl fwprintf_WCECL(FILE * file, const wchar_t * fmt, ...)
 {
 	va_list args;
 	va_start(args, fmt);
-
+	
 	auto result = _vfwprintf_s_l(file, fmt, NULL, args);
 
 	va_end(args);
@@ -120,6 +160,10 @@ void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
 }
 
 // Stubs
+Stub(WaitForAPIReady)
+Stub(SetStdioPathW);
+Stub(GetStdioPathW);
+Stub(_getstdfilex_WCECL); // FILE* __cdecl _getstdfilex_WCECL(int a1)
 Stub(RegisterDefaultGestureHandler_WCECL);
 Stub(CloseGestureInfoHandle_WCECL);
 Stub(GetGestureExtraArguments_WCECL);

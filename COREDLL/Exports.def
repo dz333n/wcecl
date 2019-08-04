@@ -1,5 +1,39 @@
 LIBRARY COREDLL
 EXPORTS
+	_chkstk @2009
+	wcsstr @73
+	GetExitCodeProcess=GetExitCodeProcess_WCECL @519
+	CreateDirectoryW=CreateDirectoryW_WCECL @160
+	GetDiskFreeSpaceExW=GetDiskFreeSpaceExW_WCECL @184
+	FileTimeToSystemTime=FileTimeToSystemTime_WCECL @20
+	SystemTimeToFileTime=SystemTimeToFileTime_WCECL @21
+	CompareFileTime=CompareFileTime_WCECL @18
+	SetFileAttributesW=SetFileAttributesW_WCECL @169
+	SetLocalTime=SetLocalTime_WCECL @24
+	MoveFileW=MoveFileW_WCECL @163
+	CopyFileW=CopyFileW_WCECL @164
+	SetFileTime=SetFileTime_WCECL @177
+	GetFileTime=GetFileTime_WCECL @176
+	RemoveDirectoryW=RemoveDirectoryW_WCECL @161
+	DeleteFileW=DeleteFileW_WCECL @165 
+	FindClose=FindClose_WCECL @180
+	FindNextFileW=FindNextFileW_WCECL @181
+	FindFirstFileW=FindFirstFileW_WCECL @167
+	WaitForAPIReady @2562
+	SetStdioPathW @1150
+	GetStdioPathW @1149
+	DeviceIoControl=DeviceIoControl_WCECL @179
+	_wfopen @1145
+	fread @1120
+	fclose @1118
+	_wcslwr @231
+	_wcsupr @232
+	vfwprintf=vfwprintf_WCECL @721
+	fflush @1122
+	fgetws @1143
+	fputwc @1141
+	fputws @1144
+	_getstdfilex=_getstdfilex_WCECL @1100
 	calloc @1346
 	ConvertDefaultLocale=ConvertDefaultLocale_WCECL @210
 	LineTo=LineTo_WCECL @1652
@@ -67,7 +101,7 @@ EXPORTS
     HeapSize @48
     HeapValidate @51
     LocalAlloc=LocalAlloc_WCECL @33
-    LocalReAlloc  @34
+    LocalReAlloc=LocalReAlloc_WCECL  @34
     LocalSize     @35
     LocalFree=LocalFree_WCECL  @36
     wsprintfW      @56
@@ -158,15 +192,15 @@ EXPORTS
     RegQueryValueExW=RegQueryValueExW_WCECL @463
     RegSetValueExW=RegSetValueExW_WCECL @464
     Sleep=Sleep_WCECL         @496
-    WaitForSingleObject @497
-    WaitForMultipleObjects @498
+    WaitForSingleObject=WaitForSingleObject_WCECL @497
+    WaitForMultipleObjects=WaitForMultipleObjects_WCECL @498
     SuspendThread @499
     ResumeThread @500
     SetThreadContext @502
     ReadProcessMemory @506
     WriteProcessMemory @507
     FlushInstructionCache @508
-    OpenProcess @509
+    OpenProcess=OpenProcess_WCECL @509
     SetLastError  @517
     LoadLibraryW=LoadLibraryW_WCECL  @528
     FreeLibrary=FreeLibrary_WCECL   @529
@@ -529,7 +563,7 @@ EXPORTS
     GetDC=GetDC_WCECL @262
     GetDCEx @1185
     GetDIBColorTable @1665
-    GetDateFormatW @203
+    GetDateFormatW=GetDateFormatW_WCECL @203
     GetDesktopWindow @1397
     ; GetDeviceByIndex @1236
     GetDeviceCaps=GetDeviceCaps_WCECL @916
@@ -552,7 +586,7 @@ EXPORTS
     ; GetFSHeapInfo @603
     ; GetFiberData @1482
     GetFileAttributesExW @1237
-    GetFileAttributesW @166
+    GetFileAttributesW=GetFileAttributesW_WCECL @166
     GetFileInformationByHandle @174
     GetFileSize @172
     GetFileTime @176
@@ -581,8 +615,8 @@ EXPORTS
     GetLastError @516
     GetLayeredWindowAttributes @2715
     GetLayout @1891
-    GetLocalTime @23
-    GetLocaleInfoW @200
+    GetLocalTime=GetLocalTime_WCECL @23
+    GetLocaleInfoW=GetLocaleInfoW_WCECL @200
     GetMenuItemInfoW @854
     GetMessagePos @862
     ; GetMessageQueueReadyTimeStamp @1477
@@ -590,7 +624,7 @@ EXPORTS
     GetMessageW=GetMessageW_WCECL @861
     ; GetMessageWNoWait @863
     GetModuleFileNameW=GetModuleFileNameW_WCECL @537
-    GetModuleHandleW @1177
+    GetModuleHandleW=GetModuleHandleW_WCECL @1177
     ; GetModuleInformation @1721
     GetMonitorInfoA @1525
     ; GetMouseMovePoints @820
@@ -616,7 +650,7 @@ EXPORTS
     GetPriorityClipboardFormat @679
     ; GetProcAddrBits @602
     ; GetProcAddressA @1230
-    GetProcAddress @530
+    GetProcAddressW=GetProcAddressW_WCECL @530
     ; GetProcFromPtr @600
     ; GetProcName @624
     GetProcessHeap @50
@@ -669,7 +703,7 @@ EXPORTS
     GetThreadPriority @515
     GetThreadTimes @1186
     GetTickCount=GetTickCount_WCECL @535
-    GetTimeFormatW @202
+    GetTimeFormatW=GetTimeFormatW_WCECL @202
     GetTimeZoneInformation @27
     GetUpdateRect @274
     GetUpdateRgn @273
@@ -786,8 +820,8 @@ EXPORTS
     CloseGestureInfoHandle=CloseGestureInfoHandle_WCECL @2924
     RegisterDefaultGestureHandler=RegisterDefaultGestureHandler_WCECL @2928 ; end of Windows CE 6.0 R3 coredll.dll
 
-    TerminateThread @491
-    CreateThread @492
+    TerminateThread=TerminateThread_WCECL @491
+    CreateThread=CreateThread_WCECL @492
     CreateProcessW=CreateProcessW_WCECL @493
 
     _ftol2_sse=_ftol2_sse_WCECL @2043

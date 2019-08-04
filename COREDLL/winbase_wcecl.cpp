@@ -211,6 +211,153 @@ BOOL WINAPI SetThreadPriority_WCECL(
 	return result;
 }
 
+HANDLE WINAPI OpenProcess_WCECL(
+	DWORD fdwAccess,
+	BOOL fInherit,
+	DWORD IDProcess)
+{
+	auto result = OpenProcess(fdwAccess, fInherit, IDProcess);
+	return result;
+}
+
+BOOL WINAPI CreateDirectoryW_WCECL(
+	LPCWSTR lpPathName,
+	LPSECURITY_ATTRIBUTES lpSecurityAttributes)
+{
+	auto result = CreateDirectoryW(lpPathName, lpSecurityAttributes);
+	return result;
+}
+
+BOOL WINAPI GetExitCodeProcess_WCECL(
+	HANDLE hProcess,
+	LPDWORD lpExitCode)
+{
+	auto result = GetExitCodeProcess(hProcess, lpExitCode);
+	return result;
+}
+
+LONG WINAPI CompareFileTime_WCECL(const FILETIME *lpft1, const FILETIME *lpft2)
+{
+	auto result = CompareFileTime(lpft1, lpft2);
+	return result;
+}
+
+BOOL GetDiskFreeSpaceExW_WCECL(LPCWSTR lpDirectoryName, PULARGE_INTEGER lpFreeBytesAvailableToCaller,
+	PULARGE_INTEGER lpTotalNumberOfBytes, PULARGE_INTEGER lpTotalNumberOfFreeBytes)
+{
+	auto result = GetDiskFreeSpaceExW(lpDirectoryName, lpFreeBytesAvailableToCaller, lpTotalNumberOfBytes, lpTotalNumberOfFreeBytes);
+	return result;
+}
+
+BOOL WINAPI FileTimeToSystemTime_WCECL(const FILETIME *lpft, LPSYSTEMTIME lpst)
+{
+	auto result = FileTimeToSystemTime(lpft, lpst);
+	return result;
+}
+
+BOOL WINAPI SystemTimeToFileTime_WCECL(const SYSTEMTIME *lpst, LPFILETIME lpft)
+{
+	auto result = SystemTimeToFileTime(lpst, lpft);
+	return result;
+}
+
+BOOL WINAPI SetFileAttributesW_WCECL(
+	LPCWSTR lpFileName,
+	DWORD dwFileAttributes)
+{
+	auto result = SetFileAttributesW(lpFileName, dwFileAttributes);
+	return result;
+}
+
+BOOL WINAPI SetLocalTime_WCECL(CONST SYSTEMTIME *lpSystemTime)
+{
+	auto result = SetLocalTime(lpSystemTime);
+	return result;
+}
+
+BOOL WINAPI MoveFileW_WCECL(
+	LPCWSTR lpExistingFileName,
+	LPCWSTR lpNewFileName)
+{
+	auto result = MoveFileW(lpExistingFileName, lpNewFileName);
+	return result;
+}
+
+BOOL WINAPI CopyFileW_WCECL(
+	LPCWSTR lpExistingFileName,
+	LPCWSTR lpNewFileName,
+	BOOL bFailIfExists)
+{
+	auto result = CopyFileW(lpExistingFileName, lpNewFileName, bFailIfExists);
+	return result;
+}
+
+BOOL WINAPI GetFileTime_WCECL(HANDLE hFile, LPFILETIME lpCreation, LPFILETIME lpLastAccess, LPFILETIME lpLastWrite)
+{
+	auto result = GetFileTime(hFile, lpCreation, lpLastAccess, lpLastWrite);
+	return result;
+}
+
+BOOL WINAPI SetFileTime_WCECL(HANDLE hFile, CONST FILETIME *lpCreation, CONST FILETIME *lpLastAccess, CONST FILETIME *lpLastWrite)
+{
+	auto result = SetFileTime(hFile, lpCreation, lpLastAccess, lpLastWrite);
+	return result;
+}
+
+VOID WINAPI GetLocalTime_WCECL(LPSYSTEMTIME lpSystemTime)
+{
+	GetLocalTime(lpSystemTime);
+}
+
+BOOL WINAPI RemoveDirectoryW_WCECL(LPCWSTR lpPathName)
+{
+	auto result = RemoveDirectoryW(lpPathName);
+	return result;
+}
+
+BOOL WINAPI DeleteFileW_WCECL(LPCWSTR lpFileName)
+{
+	auto result = DeleteFileW(lpFileName);
+	return result;
+}
+
+HANDLE WINAPI FindFirstFileW_WCECL(
+	LPCWSTR lpFileName,
+	LPWIN32_FIND_DATAW lpFindFileData)
+{
+	auto result = FindFirstFileW(lpFileName, lpFindFileData);
+	return result;
+}
+
+BOOL WINAPI FindNextFileW_WCECL(
+	HANDLE hFindFile,
+	LPWIN32_FIND_DATAW lpFindFileData)
+{
+	auto result = FindNextFileW(hFindFile, lpFindFileData);
+	return result;
+}
+
+BOOL WINAPI FindClose_WCECL(HANDLE hFindFile)
+{
+	auto result = FindClose(hFindFile);
+	return result;
+}
+
+HLOCAL WINAPI LocalReAlloc_WCECL(
+	HLOCAL hMem,
+	UINT cbBytes,
+	UINT fuFlags)
+{
+	auto result = LocalReAlloc(hMem, cbBytes, fuFlags);
+	return result;
+}
+
+DWORD WINAPI GetFileAttributesW_WCECL(LPCWSTR lpFileName)
+{
+	auto result = GetFileAttributesW(lpFileName);
+	return result;
+}
+
 DWORD WINAPI GetModuleFileNameW_WCECL(
 	HMODULE hModule,
 	LPWSTR lpFilename,
@@ -220,12 +367,96 @@ DWORD WINAPI GetModuleFileNameW_WCECL(
 	return result;
 }
 
+HMODULE WINAPI GetModuleHandleW_WCECL(LPCWSTR lpModuleName)
+{
+	auto result = GetModuleHandleW(lpModuleName);
+	return result;
+}
+
+std::string WStringToString(const std::wstring& s)
+{
+	std::string temp(s.length(), ' ');
+	std::copy(s.begin(), s.end(), temp.begin());
+	return temp;
+}
+
+FARPROC WINAPI GetProcAddressW_WCECL(
+	HMODULE hModule,
+	LPCWSTR lpProcName)
+{
+	std::string narrow_str(WStringToString(lpProcName));
+	LPCSTR win_str = narrow_str.c_str();
+
+	auto result = GetProcAddress(hModule, win_str);
+	return result;
+}
+
+BOOL WINAPI DeviceIoControl_WCECL(
+	HANDLE hDevice,
+	DWORD dwIoControlCode,
+	LPVOID lpInBuf,
+	DWORD nInBufSize,
+	LPVOID lpOutBuf,
+	DWORD nOutBufSize,
+	LPDWORD lpBytesReturned,
+	LPOVERLAPPED lpOverlapped)
+{
+	auto result = DeviceIoControl(
+		hDevice,
+		dwIoControlCode,
+		lpInBuf,
+		nInBufSize,
+		lpOutBuf,
+		nOutBufSize,
+		lpBytesReturned,
+		lpOverlapped);
+	return result;
+}
+
+BOOL WINAPI TerminateThread_WCECL(
+	HANDLE hThread,
+	DWORD dwExitCode)
+{
+	auto result = TerminateThread(hThread, dwExitCode);
+	return result;
+}
+
+HANDLE WINAPI CreateThread_WCECL(
+	LPSECURITY_ATTRIBUTES lpsa,
+	DWORD   cbStack,
+	LPTHREAD_START_ROUTINE lpStartAddr,
+	LPVOID lpvThreadParam,
+	DWORD fdwCreate,
+	LPDWORD lpIDThread)
+{
+	auto result = CreateThread(lpsa, cbStack, lpStartAddr, lpvThreadParam, fdwCreate, lpIDThread);
+	return result;
+}
+
 BOOL WINAPI VirtualFree_WCECL(
 	LPVOID lpAddress,
 	DWORD dwSize,
 	DWORD dwFreeType)
 {
 	auto result = VirtualFree(lpAddress, dwSize, dwFreeType);
+	return result;
+}
+
+DWORD WINAPI WaitForSingleObject_WCECL(
+	HANDLE hHandle,
+	DWORD dwMilliseconds)
+{
+	auto result = WaitForSingleObject(hHandle, dwMilliseconds);
+	return result;
+}
+
+DWORD WINAPI WaitForMultipleObjects_WCECL(
+	DWORD cObjects,
+	CONST HANDLE *lphObjects,
+	BOOL fWaitAll,
+	DWORD dwTimeout)
+{
+	auto result = WaitForMultipleObjects(cObjects, lphObjects, fWaitAll, dwTimeout);
 	return result;
 }
 
