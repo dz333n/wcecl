@@ -269,7 +269,7 @@ EXPORTS
     PeekMessageW=PeekMessageW_WCECL  @864
     PostMessageW=PostMessageW_WCECL  @865
     PostQuitMessage=PostQuitMessage_WCECL @866
-    ; fwprintf      @867
+    fwprintf=fwprintf_WCECL      @867
     SendMessageW=SendMessageW_WCECL  @868
     SendNotifyMessageW @869
     TranslateMessage=TranslateMessage_WCECL @870

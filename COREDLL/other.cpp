@@ -5,6 +5,17 @@
 Stub(delete_WCECL);
 Stub(new_WCECL);
 
+int __cdecl fwprintf_WCECL(FILE * file, const wchar_t * fmt, ...)
+{
+	va_list args;
+	va_start(args, fmt);
+
+	auto result = _vfwprintf_s_l(file, fmt, NULL, args);
+
+	va_end(args);
+	return result;
+}
+
 LCID WINAPI ConvertDefaultLocale_WCECL(LCID Locale)
 {
 	auto result = ConvertDefaultLocale(Locale);
