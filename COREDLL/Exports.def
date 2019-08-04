@@ -90,7 +90,6 @@ EXPORTS
     LeaveCriticalSection @5
     ExitThread @6
     ; InitLocale @8
-    SystemTimeToFileTime @19
     HeapAlloc @46
     ; HeapAllocTrace @1999
     HeapCompact @1884_ftol
@@ -574,14 +573,12 @@ EXPORTS
     ; GetDevicePower @1679
     ; GetDeviceUniqueID @1993
     GetDialogBaseUnits @694
-    GetDiskFreeSpaceExW @184
     GetDlgCtrlID @693
     GetDlgItem=GetDlgItem_WCECL @692
     GetDlgItemInt @695
     GetDlgItemTextW @687
     GetDoubleClickTime=GetDoubleClickTime_WCECL @888
     ; GetEventData @1527
-    GetExitCodeProcess @519
     GetExitCodeThread @518
     ; GetFSHeapInfo @603
     ; GetFiberData @1482
@@ -589,7 +586,6 @@ EXPORTS
     GetFileAttributesW=GetFileAttributesW_WCECL @166
     GetFileInformationByHandle @174
     GetFileSize @172
-    GetFileTime @176
     ; GetFileVersionInfoSizeW @1461
     ; GetFileVersionInfoW @1460
     GetFocus @705
@@ -795,7 +791,6 @@ EXPORTS
     MonitorFromPoint @1522
     MonitorFromRect @1523
     MonitorFromWindow @1524
-    MoveFileW @163
     MoveToEx @1651
     MulDiv @1877
     MultiByteToWideChar @196
