@@ -3,6 +3,8 @@
 #include "stdafx.h"
 #include "winuser_wcecl.h"
 
+#define OK_BUTTON_UNIMPLEMENTED
+
 // Functions
 HDC WINAPI GetDC_WCECL(HWND hwnd)
 {
@@ -100,22 +102,6 @@ HWND WINAPI SetCapture_WCECL(HWND hWnd)
 	return result;
 }
 
-int WINAPI DialogBoxIndirectParamW_WCECL(
-	HINSTANCE hInstance,
-	LPCDLGTEMPLATEW hDialogTemplate,
-	HWND hWndParent,
-	DLGPROC lpDialogFunc,
-	LPARAM dwInitParam)
-{
-	auto result = DialogBoxIndirectParamW(
-		hInstance,
-		hDialogTemplate,
-		hWndParent,
-		lpDialogFunc,
-		dwInitParam);
-	return result;
-}
-
 BOOL WINAPI GetClientRect_WCECL(
 	HWND hwnd,
 	LPRECT prc)
@@ -178,6 +164,26 @@ DWORD CeWsToWin(DWORD dwStyle)
 	return result;
 }
 
+VOID CreateWindowCaptionOKButton(HINSTANCE hInstance, HWND hwnd)
+{
+#ifndef OK_BUTTON_UNIMPLEMENTED
+	// Create window
+	HWND okHwnd = CreateWindowExW(0, L"BUTTON", L"OK", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON, 0, 0, 25, 25, hwnd, NULL, hInstance, NULL);
+
+	Assert32Failed(!okHwnd, CreateWindowCaptionOKButton);
+#else
+	ActuallyAssert(TRUE == FALSE, L"Caption OK Button is not implemented yet.", FALSE);
+#endif
+}
+
+VOID CheckWsEx(HINSTANCE hInstance, HWND hwnd, DWORD dwExStyle)
+{
+	if (dwExStyle & WINCE_WS_EX_CAPTIONOKBTN)
+	{
+		CreateWindowCaptionOKButton(hInstance, hwnd);
+	}
+}
+
 HWND WINAPI CreateWindowExW_WCECL(
 	DWORD dwExStyle,
 	LPCWSTR lpClassName,
@@ -210,17 +216,11 @@ HWND WINAPI CreateWindowExW_WCECL(
 		lpParam);
 
 	Assert32Failed(result == NULL, CreateWindowExW_WCECL);
-	/*else
+
+	if (result != NULL)
 	{
-		ShowWindow(result, SW_SHOWDEFAULT);
-		UpdateWindow(result);
-		MSG Msg;
-		while (GetMessage(&Msg, NULL, 0, 0) > 0)
-		{
-			TranslateMessage(&Msg);
-			DispatchMessage(&Msg);
-		}
-	}*/
+		CheckWsEx(hInstance, result, dwExStyle);
+	}
 
 	return result;
 }
@@ -239,9 +239,7 @@ BOOL WINAPI SetForegroundWindow_WCECL(HWND hWnd)
 	return result;
 }
 
-LRESULT
-WINAPI
-DefWindowProcW_WCECL(
+LRESULT WINAPI DefWindowProcW_WCECL(
 	HWND hWnd,
 	UINT Msg,
 	WPARAM wParam,
@@ -560,7 +558,34 @@ HWND WINAPI CreateDialogIndirectParamW_WCECL(
 
 	Assert32Failed(!result, CreateDialogIndirectParamW_WCECL);
 
+	if (result != NULL)
+	{
+		CheckWsEx(hInstance, result, lpTemplate->dwExtendedStyle);
+	}
+
 	return result;
+}
+
+int WINAPI DialogBoxIndirectParamW_WCECL(
+	HINSTANCE hInstance,
+	LPCDLGTEMPLATEW hDialogTemplate,
+	HWND hWndParent,
+	DLGPROC lpDialogFunc,
+	LPARAM dwInitParam)
+{
+#ifndef OK_BUTTON_UNIMPLEMENTED
+	HWND hwnd = CreateDialogIndirectParamW_WCECL(hInstance, hDialogTemplate, hWndParent, lpDialogFunc, dwInitParam);
+	ShowWindow(hwnd, SW_SHOW); // FIX ME: should be a dialog
+	return 0;
+#else
+	auto result = DialogBoxIndirectParamW(
+		hInstance,
+		hDialogTemplate,
+		hWndParent,
+		lpDialogFunc,
+		dwInitParam);
+	return result;
+#endif
 }
 
 HWND WINAPI SetFocus_WCECL(HWND hWnd)
