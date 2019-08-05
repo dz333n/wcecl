@@ -11,6 +11,8 @@ namespace HeaderToFunction
 {
     public partial class MainWindow : Form
     {
+        const char Tab = '	';
+
         public MainWindow()
         {
             InitializeComponent();
@@ -56,8 +58,115 @@ namespace HeaderToFunction
 
             try
             {
-                result.AppendLine("Not implemented");
-                throw new NotImplementedException();
+                string source = tbSource.Text;
+
+                // Remove new lines
+                source = source.Replace("\r\n", " ").Replace("\n", " ");
+
+                // Split code
+                string[] codeLines = source.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (codeLines.Length <= 0) throw new Exception("No code");
+
+                foreach (var codeLine in codeLines)
+                {
+                    // Get the text until the first bracket and bracket positions
+                    //    IN: HWND  WINAPI  VOID  CreateWindowEx ( BRUG arg1 , BRUH arg2 )
+                    //   OUT: HWND  WINAPI  VOID  CreateWindowEx 
+                    string TextBeforeBraces = "", FunctionName = "";
+                    bool AddText = true;
+                    int BracketPositionStart = 0, BracketPositionEnd = 0;
+                    for (int i = 0; i < codeLine.Length; i++)
+                    {
+                        var c = codeLine[i];
+
+                        if (c == '(')
+                        {
+                            BracketPositionStart = i;
+                            AddText = false;
+                        }
+
+                        if (AddText) TextBeforeBraces += c;
+
+                        if (c == ')')
+                        {
+                            BracketPositionEnd = i;
+                            break;
+                        }
+                    }
+
+                    // Format the text before bracket and add suffix if needed
+                    //   IN: HWND  WINAPI  VOID  CreateWindowEx
+                    //  OUT: HWND WINAPI VOID CreateWindowEx_WCECL
+                    var splitBr = TextBeforeBraces
+                        .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    TextBeforeBraces = string.Join(" ", splitBr);
+
+                    FunctionName = splitBr[splitBr.Length - 1];
+                    if (cbAddSuffix.Checked) TextBeforeBraces += tbSuffix.Text;
+
+                    // Add function declaration to the result
+                    result.Append(TextBeforeBraces);
+                    result.Append('(');
+
+                    // Get text from the brackets, format it and generate variable name if needed
+                    //   IN: ( IN BRUG arg1 , OUT BRUH arg2 ) or ( BRUH,  BRUH ) 
+                    //  OUT: BRUG arg1,
+                    //       BRUH arg2
+                    string ArgumentsTextRaw = codeLine.Substring(BracketPositionStart + 1, BracketPositionEnd - BracketPositionStart - 1);
+                    string[] ArgumentsTextSp = ArgumentsTextRaw.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    bool ArgumentsNewLine = cbNewLinesForArgs.Checked ? (ArgumentsTextSp.Length > 1) : false;
+
+                    for (int i = 0; i < ArgumentsTextSp.Length; i++)
+                    {
+                        var spArg = ArgumentsTextSp[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        ArgumentsTextSp[i] = string.Join(" ", spArg);
+
+                        if (spArg.Length <= 1)
+                            ArgumentsTextSp[i] += $" arg{i}";
+
+                        // Add to the result
+                        if (ArgumentsNewLine)
+                        {
+                            result.AppendLine();
+                            result.Append(Tab);
+                        }
+                        result.Append(ArgumentsTextSp[i]);
+                        if (i < ArgumentsTextSp.Length - 1) result.Append(',');
+                    }
+
+                    result.Append(')');
+                    result.AppendLine();
+                    result.Append('{');
+                    result.AppendLine();
+
+                    if(cbWrapFunction.Checked)
+                    {
+                        result.Append($"{Tab}auto result = {FunctionName}(");
+
+                        for (int i = 0; i < ArgumentsTextSp.Length; i++)
+                        {
+                            if (ArgumentsNewLine)
+                            {
+                                result.AppendLine();
+                                result.Append($"{Tab}{Tab}");
+                            }
+
+                            var spTest = ArgumentsTextSp[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            result.Append(spTest[spTest.Length - 1]);
+                            if (i < ArgumentsTextSp.Length - 1) result.Append(',');
+                        }
+
+                        result.Append(");");
+                        result.AppendLine();
+                        result.AppendLine($"{Tab}return result;");
+                    }
+
+                    result.Append("}");
+                    result.AppendLine();
+                    result.AppendLine();
+                }
             }
             catch (Exception ex)
             {

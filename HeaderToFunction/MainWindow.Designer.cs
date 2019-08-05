@@ -41,6 +41,7 @@
             this.tbSuffix = new System.Windows.Forms.TextBox();
             this.cbWrapFunction = new System.Windows.Forms.CheckBox();
             this.btnClearSource = new System.Windows.Forms.Button();
+            this.cbNewLinesForArgs = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,7 +60,7 @@
             this.groupBox1.Controls.Add(this.tbSource);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(440, 378);
+            this.groupBox1.Size = new System.Drawing.Size(525, 378);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Header source";
@@ -77,8 +78,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(910, 402);
-            this.splitContainer1.SplitterDistance = 455;
+            this.splitContainer1.Size = new System.Drawing.Size(1080, 402);
+            this.splitContainer1.SplitterDistance = 540;
             this.splitContainer1.TabIndex = 1;
             // 
             // groupBox2
@@ -86,6 +87,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.cbNewLinesForArgs);
             this.groupBox2.Controls.Add(this.cbWrapFunction);
             this.groupBox2.Controls.Add(this.tbSuffix);
             this.groupBox2.Controls.Add(this.cbAddSuffix);
@@ -94,7 +96,7 @@
             this.groupBox2.Controls.Add(this.btnConvert);
             this.groupBox2.Location = new System.Drawing.Point(3, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(436, 378);
+            this.groupBox2.Size = new System.Drawing.Size(521, 378);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Result";
@@ -102,7 +104,7 @@
             // btnConvert
             // 
             this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConvert.Location = new System.Drawing.Point(355, 349);
+            this.btnConvert.Location = new System.Drawing.Point(440, 349);
             this.btnConvert.Name = "btnConvert";
             this.btnConvert.Size = new System.Drawing.Size(75, 23);
             this.btnConvert.TabIndex = 0;
@@ -120,7 +122,7 @@
             this.tbSource.Multiline = true;
             this.tbSource.Name = "tbSource";
             this.tbSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbSource.Size = new System.Drawing.Size(428, 324);
+            this.tbSource.Size = new System.Drawing.Size(513, 324);
             this.tbSource.TabIndex = 0;
             this.tbSource.Text = resources.GetString("tbSource.Text");
             this.tbSource.WordWrap = false;
@@ -130,7 +132,7 @@
             this.btnCopyResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCopyResult.Location = new System.Drawing.Point(6, 349);
             this.btnCopyResult.Name = "btnCopyResult";
-            this.btnCopyResult.Size = new System.Drawing.Size(75, 23);
+            this.btnCopyResult.Size = new System.Drawing.Size(49, 23);
             this.btnCopyResult.TabIndex = 1;
             this.btnCopyResult.Text = "Copy";
             this.btnCopyResult.UseVisualStyleBackColor = true;
@@ -146,7 +148,7 @@
             this.tbResult.Multiline = true;
             this.tbResult.Name = "tbResult";
             this.tbResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbResult.Size = new System.Drawing.Size(424, 324);
+            this.tbResult.Size = new System.Drawing.Size(509, 324);
             this.tbResult.TabIndex = 2;
             this.tbResult.WordWrap = false;
             // 
@@ -156,7 +158,7 @@
             this.cbAddSuffix.AutoSize = true;
             this.cbAddSuffix.Checked = true;
             this.cbAddSuffix.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAddSuffix.Location = new System.Drawing.Point(107, 352);
+            this.cbAddSuffix.Location = new System.Drawing.Point(192, 352);
             this.cbAddSuffix.Name = "cbAddSuffix";
             this.cbAddSuffix.Size = new System.Drawing.Size(75, 17);
             this.cbAddSuffix.TabIndex = 3;
@@ -178,7 +180,7 @@
             // tbSuffix
             // 
             this.tbSuffix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSuffix.Location = new System.Drawing.Point(188, 350);
+            this.tbSuffix.Location = new System.Drawing.Point(273, 350);
             this.tbSuffix.Name = "tbSuffix";
             this.tbSuffix.Size = new System.Drawing.Size(62, 20);
             this.tbSuffix.TabIndex = 4;
@@ -190,7 +192,7 @@
             this.cbWrapFunction.AutoSize = true;
             this.cbWrapFunction.Checked = true;
             this.cbWrapFunction.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbWrapFunction.Location = new System.Drawing.Point(256, 352);
+            this.cbWrapFunction.Location = new System.Drawing.Point(341, 352);
             this.cbWrapFunction.Name = "cbWrapFunction";
             this.cbWrapFunction.Size = new System.Drawing.Size(93, 17);
             this.cbWrapFunction.TabIndex = 5;
@@ -208,12 +210,25 @@
             this.btnClearSource.UseVisualStyleBackColor = true;
             this.btnClearSource.Click += new System.EventHandler(this.btnClearSource_Click);
             // 
+            // cbNewLinesForArgs
+            // 
+            this.cbNewLinesForArgs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbNewLinesForArgs.AutoSize = true;
+            this.cbNewLinesForArgs.Checked = true;
+            this.cbNewLinesForArgs.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbNewLinesForArgs.Location = new System.Drawing.Point(76, 352);
+            this.cbNewLinesForArgs.Name = "cbNewLinesForArgs";
+            this.cbNewLinesForArgs.Size = new System.Drawing.Size(110, 17);
+            this.cbNewLinesForArgs.TabIndex = 6;
+            this.cbNewLinesForArgs.Text = "New lines for args";
+            this.cbNewLinesForArgs.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AcceptButton = this.btnConvert;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 402);
+            this.ClientSize = new System.Drawing.Size(1080, 402);
             this.Controls.Add(this.splitContainer1);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -244,6 +259,7 @@
         private System.Windows.Forms.Button btnCopyResult;
         private System.Windows.Forms.Button btnConvert;
         private System.Windows.Forms.Button btnClearSource;
+        private System.Windows.Forms.CheckBox cbNewLinesForArgs;
     }
 }
 
