@@ -123,7 +123,7 @@ namespace HeaderToFunction
                         var spArg = ArgumentsTextSp[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                         ArgumentsTextSp[i] = string.Join(" ", spArg);
 
-                        if (spArg.Length <= 1)
+                        if (spArg.Length <= 1 && !IsOptionsArray(ArgumentsTextSp[i]))
                             ArgumentsTextSp[i] += $" arg{i}";
 
                         // Add to the result
@@ -155,6 +155,7 @@ namespace HeaderToFunction
 
                             var spTest = ArgumentsTextSp[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                             result.Append(spTest[spTest.Length - 1]);
+                            if (IsOptionsArray(ArgumentsTextSp[i])) result.Append(" /* FIX HERE */ ");
                             if (i < ArgumentsTextSp.Length - 1) result.Append(',');
                         }
 
@@ -184,5 +185,8 @@ namespace HeaderToFunction
 
             this.Cursor = Cursors.Default;
         }
+
+        private bool IsOptionsArray(string arg)
+            => arg == "...";
     }
 }
