@@ -3,7 +3,7 @@
 
 #include "pch.h"
 
-int ProcessPath(_TCHAR* path, _TCHAR* subsys);
+int ProcessPath(_TCHAR* path, _TCHAR* subsys, BOOL ResetVersion);
 
 BOOL DirectoryExists(LPCTSTR szPath)
 {
@@ -34,7 +34,7 @@ _TCHAR* GetSubsystemByVal(int subsys)
 	}
 }
 
-int SearchForFilesThere(_TCHAR* path, _TCHAR* append, _TCHAR* subsys, BOOL CheckForFolder)
+int SearchForFilesThere(_TCHAR* path, _TCHAR* append, _TCHAR* subsys, BOOL CheckForFolder, BOOL ResetVersion)
 {
 	_TCHAR fullFileName[MAX_PATH] = { };
 	_TCHAR szDir[MAX_PATH] = { };
@@ -62,8 +62,8 @@ int SearchForFilesThere(_TCHAR* path, _TCHAR* append, _TCHAR* subsys, BOOL Check
 			StringCchCat(fullFileName, MAX_PATH, FindFileData.cFileName);
 
 			int result = 0;
-			if (!CheckForFolder) result = ProcessPath(fullFileName, subsys);
-			else if (CheckForFolder && DirectoryExists(fullFileName)) result = ProcessPath(fullFileName, subsys);
+			if (!CheckForFolder) result = ProcessPath(fullFileName, subsys, ResetVersion);
+			else if (CheckForFolder && DirectoryExists(fullFileName)) result = ProcessPath(fullFileName, subsys, ResetVersion);
 
 			if (result != 0) // Failed to process file
 			{
@@ -81,7 +81,7 @@ int SearchForFilesThere(_TCHAR* path, _TCHAR* append, _TCHAR* subsys, BOOL Check
 	return 0;
 }
 
-int ProcessPath(_TCHAR* path, _TCHAR* subsys)
+int ProcessPath(_TCHAR* path, _TCHAR* subsys, BOOL ResetVersion)
 {
 	if (DirectoryExists(path))
 	{
@@ -94,10 +94,10 @@ int ProcessPath(_TCHAR* path, _TCHAR* subsys)
 		// if (result != 0) return result; // failed
 
 		// 2nd search for *.exe and *.dll files in current folder and ProcessPath them
-		result = SearchForFilesThere(path, (_TCHAR*)TEXT("\\*.exe"), subsys, FALSE);
+		result = SearchForFilesThere(path, (_TCHAR*)TEXT("\\*.exe"), subsys, FALSE, ResetVersion);
 		if (result != 0) return result; // failed
 
-		result = SearchForFilesThere(path, (_TCHAR*)TEXT("\\*.dll"), subsys, FALSE);
+		result = SearchForFilesThere(path, (_TCHAR*)TEXT("\\*.dll"), subsys, FALSE, ResetVersion);
 		if (result != 0) return result; // failed
 	}
 	else  // File
@@ -148,10 +148,19 @@ int ProcessPath(_TCHAR* path, _TCHAR* subsys)
 		// Convert subsystem to int
 		int subsysVal = _tstoi(subsys);
 
-		_tprintf(TEXT("     Subsystem: %d (%s) -> %d (%s)\n"), ntHeaders->OptionalHeader.Subsystem, GetSubsystemByVal(ntHeaders->OptionalHeader.Subsystem), subsysVal, GetSubsystemByVal(subsysVal));
+		_tprintf(TEXT("          Subsystem: %d (%s) -> %d (%s)\n"), ntHeaders->OptionalHeader.Subsystem, GetSubsystemByVal(ntHeaders->OptionalHeader.Subsystem), subsysVal, GetSubsystemByVal(subsysVal));
 
 		// Change subsystem number
 		ntHeaders->OptionalHeader.Subsystem = subsysVal;
+
+		if (ResetVersion)
+		{
+			// Reset subsystem version
+			_tprintf(TEXT("  Subsystem Version: %d.%d -> 4.0\n"), ntHeaders->OptionalHeader.MajorSubsystemVersion, ntHeaders->OptionalHeader.MinorSubsystemVersion);
+
+			ntHeaders->OptionalHeader.MajorSubsystemVersion = 4;
+			ntHeaders->OptionalHeader.MinorSubsystemVersion = 0;
+		}
 
 		// Free memory
 		LocalFree(dosHeader);
@@ -190,16 +199,34 @@ int ProcessPath(_TCHAR* path, _TCHAR* subsys)
 	return 0;
 }
 
+BOOL ThereIsArgument(int argc, _TCHAR* argv[], _TCHAR* arg)
+{
+	for (int i = 1; i < argc; i++) 
+	{
+		if (!_tcscmp(argv[i], arg))
+			return TRUE;
+	}
+
+	return FALSE;
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
-	if (argc <= 1)
+	if (argc <= 1 
+		|| ThereIsArgument(argc, argv, (_TCHAR*)TEXT("/help"))
+		|| ThereIsArgument(argc, argv, (_TCHAR*)TEXT("--help"))
+		|| ThereIsArgument(argc, argv, (_TCHAR*)TEXT("/?"))
+		|| ThereIsArgument(argc, argv, (_TCHAR*)TEXT("/h"))
+		|| ThereIsArgument(argc, argv, (_TCHAR*)TEXT("-h")))
 	{
-		_tprintf(TEXT("Usage: SubsytemTool.exe [PATH] [SUBSYSTEM NUMBER OR NAME (optional)]\n"));
-		_tprintf(TEXT("PATH can be directory path or file path.\n"));
+		_tprintf(TEXT("Usage: SubsytemTool.exe [PATH] [SUBSYSTEM NUMBER OR NAME] [/rv]\n\n"));
+		_tprintf(TEXT("[PATH] can be directory path or file path.\n\n"));
 		_tprintf(TEXT("You can enter any subsystem number or one from the available names:\n"));
-		_tprintf(TEXT("wince, win32gui (default), win32cui.\n"));
+		_tprintf(TEXT("wince, win32gui (default), win32cui.\n\n"));
+		_tprintf(TEXT("Include /rv after subsystem if you want to reset subsystem version.\n"));
 		return 1;
 	}
 
-	return ProcessPath(argv[1], (argc >= 3 ? argv[2] : (_TCHAR*)TEXT("win32gui")));
+	BOOL ResetVersion = ThereIsArgument(argc, argv, (_TCHAR*)TEXT("/rv"));
+	return ProcessPath(argv[1], (argc >= 3 ? argv[2] : (_TCHAR*)TEXT("win32gui")), ResetVersion);
 }
