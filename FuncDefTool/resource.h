@@ -16,11 +16,14 @@
 #define ID_SELECT_WCECL                 1001
 #define ID_SELECT_TARGET                1002
 #define IDC_TARGET_PATH                 1003
+#define ID_SELECT_TARGET2               1004
+#define ID_SELECT_ORIG                  1004
 #define IDC_CB_ADD_COMMENTS             1005
 #define IDC_RESULT_BOX                  1006
 #define ID_PROCESS                      1007
 #define IDC_SYSLINK1                    1008
 #define IDC_LINK_DATABASE               1008
+#define IDC_ORIG_DLL_PATH               1008
 #define IDC_STATIC                      -1
 #define IDC_WCECL_PATH                  -1
 
