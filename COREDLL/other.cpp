@@ -2,8 +2,16 @@
 #include "stdafx.h"
 
 // Functions
-Stub(delete_WCECL);
-Stub(new_WCECL);
+void* __cdecl new_WCECL(unsigned int s) // will it work?????
+{
+	auto result = LocalAlloc(LMEM_ZEROINIT, s);
+	return result;
+}
+
+void __cdecl delete_WCECL(void * p)
+{
+	LocalFree(p);
+}
 
 int WINAPI GetLocaleInfoW_WCECL(
 	IN LCID     Locale,
