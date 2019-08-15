@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeaderSearch.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +53,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchCfgDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchCfgDlg.Designer.cs">
+      <DependentUpon>SearchCfgDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchDlg.Designer.cs">
+      <DependentUpon>SearchDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchProcessDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchProcessDlg.Designer.cs">
+      <DependentUpon>SearchProcessDlg.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -64,6 +83,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SearchCfgDlg.resx">
+      <DependentUpon>SearchCfgDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchDlg.resx">
+      <DependentUpon>SearchDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchProcessDlg.resx">
+      <DependentUpon>SearchProcessDlg.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

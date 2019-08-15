@@ -16,6 +16,23 @@ namespace HeaderToFunction
         public MainWindow()
         {
             InitializeComponent();
+
+            HeaderSearch.StatusChanged += HeaderSearch_StatusChanged;
+        }
+
+        private void HeaderSearch_StatusChanged(HeaderSearch.SearchStatus status, object StringOrExceptionOrNull)
+        {
+            if (status == HeaderSearch.SearchStatus.Started)
+                this.BeginInvoke(new Action(() => new SearchProcessDlg().ShowDialog()));
+            else if(status == HeaderSearch.SearchStatus.FoundSomething)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    tbSource.AppendText("\r\n");
+                    tbSource.AppendText((string)StringOrExceptionOrNull);
+                    tbSource.AppendText("\r\n");
+                }));
+            }
         }
 
         private void btnPasteSource_Click(object sender, EventArgs e)
@@ -188,5 +205,8 @@ namespace HeaderToFunction
 
         private bool IsOptionsArray(string arg)
             => arg == "...";
+
+        private void btnSearch_Click(object sender, EventArgs e)
+            => new SearchDlg().ShowDialog();
     }
 }
