@@ -103,7 +103,7 @@ VOID Display32ErrorDialog(HWND Parent, LPCWSTR Comment)
 		FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
 		NULL,
 		Error,
-		MAKELANGID(SUBLANG_DEFAULT, SUBLANG_DEFAULT),
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
 		ErrorBuffer,
 		(sizeof(ErrorBuffer) / sizeof(WCHAR)),
 		NULL);
@@ -440,4 +440,3 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    return TRUE;
 }
-
