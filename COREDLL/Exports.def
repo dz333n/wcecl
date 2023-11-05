@@ -876,3 +876,4 @@ EXPORTS
     _itoa @1025
     sprintf=sprintf_WCECL @719
     SHCreateShortcut=SHCreateShortcut_WCECL @484
+    wcstok @77
