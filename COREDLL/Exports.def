@@ -848,3 +848,4 @@ EXPORTS
     StartPage=StartPage_WCECL @964
     PlayEnhMetaFile=PlayEnhMetaFile_WCECL @961
     EndPage=EndPage_WCECL @960
+    EndDoc=EndDoc_WCECL @959
