@@ -2,6 +2,18 @@
 #include "stdafx.h"
 
 // Functions
+HRESULT StringCbCopyExW_WCECL(
+	STRSAFE_LPWSTR  pszDest,
+	size_t          cbDest,
+	STRSAFE_LPCWSTR pszSrc,
+	STRSAFE_LPWSTR* ppszDestEnd,
+	size_t* pcbRemaining,
+	DWORD           dwFlags)
+{
+	auto result = ::StringCbCopyExW(pszDest, cbDest, pszSrc, ppszDestEnd, pcbRemaining, dwFlags);
+	return result;
+}
+
 HRESULT StringCchLengthW_WCECL(
 	PCNZWCH psz,
 	size_t          cchMax,
