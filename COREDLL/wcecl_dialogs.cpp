@@ -21,7 +21,7 @@ VOID DisplayAssert32ErrorDialog(LPCWSTR ExpressionText, LPCWSTR Comment, BOOL Sh
 
 	swprintf_s(
 		Buffer, 512,
-		L"%s%sExpression\n\n%s\n\nis TRUE.\n\n\nError %d - %s",
+		L"%s%sExpression\n\n%s\n\nis TRUE.\n\n\nError %d - %s\n\nNote: this dialog shows every time when expression is true, however there may be correct cases when it's really expected to be true.",
 		Comment,
 		wcslen(Comment) >= 1 ? L"\n\n\n" : L"",
 		ExpressionText,
