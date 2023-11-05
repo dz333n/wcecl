@@ -1,8 +1,8 @@
-// other.cpp : contains unknown and weird functions
+// other.cpp : contains unknown for me and other weird functions )
 #include "stdafx.h"
 
 // Functions
-void* __cdecl new_WCECL(unsigned int s) // will it work?????
+void* __cdecl new_WCECL(unsigned int s) 
 {
 	auto result = LocalAlloc(LMEM_ZEROINIT, s);
 	return result;
