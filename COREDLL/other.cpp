@@ -120,6 +120,22 @@ int swprintf_WCECL(wchar_t * buf, const wchar_t * _format, ...)
 	return result;
 }
 
+
+int sprintf_WCECL(char* buffer, const char* format, ...)
+{
+#pragma warning( push )
+#pragma warning( disable: 4995 )
+	va_list args;
+	va_start(args, format);
+
+	auto result = sprintf(buffer, format, args);
+
+	va_end(args);
+#pragma warning( pop )
+
+	return result;
+}
+
 int _wcsicmp_WCECL(
 	const wchar_t *string1,
 	const wchar_t *string2)
