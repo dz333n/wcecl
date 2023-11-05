@@ -2,6 +2,12 @@
 #include "stdafx.h"
 
 // Functions
+HANDLE GetOwnerProcess_WCECL()
+{
+	auto result = ::GetCurrentProcess();
+	return result;
+}
+
 void DeleteAndRenameFile_WCECL()
 {
 	// wtf is this?
@@ -217,7 +223,6 @@ Stub(GetGestureExtraArguments);
 Stub(SetWindowPosOnRotate);
 Stub(SetAssociatedMenu);
 Stub(GetAssociatedMenu);
-Stub(GetOwnerProcess);
 Stub(__dtou);
 Stub(__rt_ursh);
 Stub(SetDialogAutoScrollBar);
