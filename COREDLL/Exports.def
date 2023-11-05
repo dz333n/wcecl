@@ -852,3 +852,4 @@ EXPORTS
     StringCchCopyNW=StringCchCopyNW_WCECL @1742
     FlushFileBuffers=FlushFileBuffers_WCECL @175
     wcsncat @64
+    strncmp @1070
