@@ -17,6 +17,8 @@
 #include <ras.h>
 #include <time.h>
 // #include <dpapi.h>
+#include <shlobj.h>
+#include <shlobj_core.h>
 #include <psapi.h>
 #include <excpt.h>
 #include <Mmsystem.h>
