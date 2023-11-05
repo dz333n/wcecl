@@ -2,6 +2,11 @@
 #include "stdafx.h"
 
 // Functions
+HRESULT StringCchCopyNW_WCECL(LPWSTR pszDest, size_t cchDest, PCNZWCH pszSrc, size_t cchSrc)
+{
+	auto result = StringCchCopyN(pszDest, cchDest, pszSrc, cchSrc);
+	return result;
+}
 
 HRESULT WINAPI StringCchCopyExW_WCECL(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
 {
