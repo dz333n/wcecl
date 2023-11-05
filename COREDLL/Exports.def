@@ -875,3 +875,4 @@ EXPORTS
     _alloca_probe_16 @2042
     _itoa @1025
     sprintf=sprintf_WCECL @719
+    SHCreateShortcut=SHCreateShortcut_WCECL @484
