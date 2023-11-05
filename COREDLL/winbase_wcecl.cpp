@@ -2,6 +2,12 @@
 #include "stdafx.h"
 
 // Functions
+BOOL WINAPI FlushFileBuffers_WCECL(HANDLE hFile)
+{
+	auto result = ::FlushFileBuffers(hFile);
+	return result;
+}
+
 BOOL WINAPI CeGenRandom_WCECL(DWORD dwLen, BYTE* pbBuffer)
 {
 	if (pbBuffer == NULL) {
