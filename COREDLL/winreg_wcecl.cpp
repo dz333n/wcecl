@@ -2,6 +2,38 @@
 #include "stdafx.h"
 
 // Functions
+LSTATUS RegQueryInfoKeyW_WCECL(
+	HKEY      hKey,
+	LPWSTR    lpClass,
+	LPDWORD   lpcchClass,
+	LPDWORD   lpReserved,
+	LPDWORD   lpcSubKeys,
+	LPDWORD   lpcbMaxSubKeyLen,
+	LPDWORD   lpcbMaxClassLen,
+	LPDWORD   lpcValues,
+	LPDWORD   lpcbMaxValueNameLen,
+	LPDWORD   lpcbMaxValueLen,
+	LPDWORD   lpcbSecurityDescriptor,
+	PFILETIME lpftLastWriteTime)
+{
+	auto result = ::RegQueryInfoKey(hKey, lpClass, lpcchClass, lpReserved, lpcSubKeys, lpcbMaxSubKeyLen, lpcbMaxClassLen, lpcValues, lpcbMaxValueNameLen, lpcbMaxValueLen, lpcbSecurityDescriptor, lpftLastWriteTime);
+	return result;
+}
+
+LSTATUS RegEnumValueW_WCECL(
+	HKEY    hKey,
+	DWORD   dwIndex,
+	LPWSTR  lpValueName,
+	LPDWORD lpcchValueName,
+	LPDWORD lpReserved,
+	LPDWORD lpType,
+	LPBYTE  lpData,
+	LPDWORD lpcbData)
+{
+	auto result = ::RegEnumValueW(hKey, dwIndex, lpValueName, lpcchValueName, lpReserved, lpType, lpData, lpcbData);
+	return result;
+}
+
 LONG APIENTRY RegOpenKeyExW_WCECL(
 	HKEY hKey,
 	LPCWSTR lpSubKey,

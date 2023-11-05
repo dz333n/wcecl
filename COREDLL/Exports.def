@@ -867,3 +867,5 @@ EXPORTS
     wvsprintfW @57
     SHGetSpecialFolderPath=SHGetSpecialFolderPath_WCECL @295
     _itow @1026
+    RegEnumValueW=RegEnumValueW_WCECL @459
+    RegQueryInfoKeyW=RegQueryInfoKeyW_WCECL @462
