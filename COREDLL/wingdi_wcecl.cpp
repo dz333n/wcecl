@@ -2,6 +2,12 @@
 #include "stdafx.h"
 
 // Functions
+int EndDoc_WCECL(HDC hdc)
+{
+	auto result = EndDoc(hdc);
+	return result;
+}
+
 int EndPage_WCECL(HDC hdc)
 {
 	auto result = EndPage(hdc);
