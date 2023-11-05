@@ -861,3 +861,7 @@ EXPORTS
     StringCchLengthW=StringCchLengthW_WCECL @1748
     EnumFontFamiliesW=EnumFontFamiliesW_WCECL @965
     DeleteAndRenameFile=DeleteAndRenameFile_WCECL @183
+    wcstombs @75
+    mbstowcs @76
+    wcstol @1082
+    wvsprintfW @57
