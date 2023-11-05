@@ -2,6 +2,27 @@
 #include "stdafx.h"
 
 // Functions
+BOOL WINAPI CeGenRandom_WCECL(DWORD dwLen, BYTE* pbBuffer)
+{
+	if (pbBuffer == NULL) {
+		return 0; // Fail if the buffer is not allocated
+	}
+
+	// Optionally, use the existing data in pbBuffer as a seed
+	unsigned int seed = 0;
+	for (DWORD i = 0; i < dwLen; i++) {
+		seed += pbBuffer[i];
+	}
+	srand(seed + (unsigned int)time(NULL)); // Seed the random number generator
+
+	// Fill the buffer with random bytes
+	for (DWORD i = 0; i < dwLen; i++) {
+		pbBuffer[i] = (BYTE)rand(); // Note: rand() returns an int, we need to truncate it to BYTE
+	}
+
+	return 1; // Success
+}
+
 int WINAPI LoadStringW_WCECL(
 	HINSTANCE hInstance,
 	UINT uID,
@@ -84,7 +105,7 @@ DWORD WINAPI FormatMessageW_WCECL(
 	DWORD dwLanguageId,
 	LPWSTR lpBuffer,
 	DWORD nSize,
-	va_list *Arguments)
+	va_list* Arguments)
 {
 	BOOL FormatMessageW_Fixed = FALSE;
 	Assert32(FormatMessageW_Fixed == TRUE);
@@ -236,7 +257,7 @@ BOOL WINAPI GetExitCodeProcess_WCECL(
 	return result;
 }
 
-LONG WINAPI CompareFileTime_WCECL(const FILETIME *lpft1, const FILETIME *lpft2)
+LONG WINAPI CompareFileTime_WCECL(const FILETIME* lpft1, const FILETIME* lpft2)
 {
 	auto result = CompareFileTime(lpft1, lpft2);
 	return result;
@@ -249,13 +270,13 @@ BOOL GetDiskFreeSpaceExW_WCECL(LPCWSTR lpDirectoryName, PULARGE_INTEGER lpFreeBy
 	return result;
 }
 
-BOOL WINAPI FileTimeToSystemTime_WCECL(const FILETIME *lpft, LPSYSTEMTIME lpst)
+BOOL WINAPI FileTimeToSystemTime_WCECL(const FILETIME* lpft, LPSYSTEMTIME lpst)
 {
 	auto result = FileTimeToSystemTime(lpft, lpst);
 	return result;
 }
 
-BOOL WINAPI SystemTimeToFileTime_WCECL(const SYSTEMTIME *lpst, LPFILETIME lpft)
+BOOL WINAPI SystemTimeToFileTime_WCECL(const SYSTEMTIME* lpst, LPFILETIME lpft)
 {
 	auto result = SystemTimeToFileTime(lpst, lpft);
 	return result;
@@ -269,7 +290,7 @@ BOOL WINAPI SetFileAttributesW_WCECL(
 	return result;
 }
 
-BOOL WINAPI SetLocalTime_WCECL(CONST SYSTEMTIME *lpSystemTime)
+BOOL WINAPI SetLocalTime_WCECL(CONST SYSTEMTIME* lpSystemTime)
 {
 	auto result = SetLocalTime(lpSystemTime);
 	return result;
@@ -298,7 +319,7 @@ BOOL WINAPI GetFileTime_WCECL(HANDLE hFile, LPFILETIME lpCreation, LPFILETIME lp
 	return result;
 }
 
-BOOL WINAPI SetFileTime_WCECL(HANDLE hFile, CONST FILETIME *lpCreation, CONST FILETIME *lpLastAccess, CONST FILETIME *lpLastWrite)
+BOOL WINAPI SetFileTime_WCECL(HANDLE hFile, CONST FILETIME* lpCreation, CONST FILETIME* lpLastAccess, CONST FILETIME* lpLastWrite)
 {
 	auto result = SetFileTime(hFile, lpCreation, lpLastAccess, lpLastWrite);
 	return result;
@@ -452,7 +473,7 @@ DWORD WINAPI WaitForSingleObject_WCECL(
 
 DWORD WINAPI WaitForMultipleObjects_WCECL(
 	DWORD cObjects,
-	CONST HANDLE *lphObjects,
+	CONST HANDLE* lphObjects,
 	BOOL fWaitAll,
 	DWORD dwTimeout)
 {

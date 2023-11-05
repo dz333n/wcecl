@@ -72,6 +72,7 @@ EXPORTS
 	swprintf=swprintf_WCECL @1097
 	wcschr  @59
 	floor @1013
+    CeGenRandom=CeGenRandom_WCECL @1601
     wcspbrk @68
 	EventModify=EventModify_WCECL @494
 	_wcsnicmp @229
