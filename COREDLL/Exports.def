@@ -844,3 +844,4 @@ EXPORTS
     EnumDisplaySettings=EnumDisplaySettingsW @1777
     SHGetFileInfo=SHGetFileInfo_WCECL @482
     SetAbortProc=SetAbortProc_WCECL @962
+    StartDocW=StartDocW_WCECL @963
