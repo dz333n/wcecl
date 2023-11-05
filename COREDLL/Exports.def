@@ -856,3 +856,4 @@ EXPORTS
     IsClipboardFormatAvailable=IsClipboardFormatAvailable_WCECL @678
     StringCchCatW=StringCchCatW_WCECL @1693
     RegisterClipboardFormat=RegisterClipboardFormat_WCECL @673
+    EmptyClipboard=EmptyClipboard_WCECL @677
