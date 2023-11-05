@@ -2,6 +2,11 @@
 #include "stdafx.h"
 
 // Functions
+void DeleteAndRenameFile_WCECL()
+{
+	// wtf is this?
+}
+
 void* __cdecl new_WCECL(unsigned int s) 
 {
 	auto result = LocalAlloc(LMEM_ZEROINIT, s);
