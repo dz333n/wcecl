@@ -877,3 +877,4 @@ EXPORTS
     sprintf=sprintf_WCECL @719
     SHCreateShortcut=SHCreateShortcut_WCECL @484
     wcstok @77
+    StringCbCopyExW=StringCbCopyExW_WCECL @1692
