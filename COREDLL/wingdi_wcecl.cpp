@@ -2,6 +2,15 @@
 #include "stdafx.h"
 
 // Functions
+BOOL PlayEnhMetaFile_WCECL(
+	HDC          hdc,
+	HENHMETAFILE hmf,
+	const RECT* lprect)
+{
+	auto result = PlayEnhMetaFile(hdc, hmf, lprect);
+	return result;
+}
+
 int StartPage_WCECL(
 	HDC hDC)
 {

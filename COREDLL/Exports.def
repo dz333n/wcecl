@@ -846,3 +846,4 @@ EXPORTS
     SetAbortProc=SetAbortProc_WCECL @962
     StartDocW=StartDocW_WCECL @963
     StartPage=StartPage_WCECL @964
+    PlayEnhMetaFile=PlayEnhMetaFile_WCECL @961
