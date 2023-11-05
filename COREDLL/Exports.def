@@ -858,3 +858,4 @@ EXPORTS
     RegisterClipboardFormat=RegisterClipboardFormat_WCECL @673
     EmptyClipboard=EmptyClipboard_WCECL @677
     EnumClipboardFormats=EnumClipboardFormats_WCECL @675
+    StringCchLengthW=StringCchLengthW_WCECL @1748
