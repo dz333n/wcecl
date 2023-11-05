@@ -870,3 +870,4 @@ EXPORTS
     RegEnumValueW=RegEnumValueW_WCECL @459
     RegQueryInfoKeyW=RegQueryInfoKeyW_WCECL @462
     _ltow @1040
+    VirtualAlloc=VirtualAlloc_WCECL @524

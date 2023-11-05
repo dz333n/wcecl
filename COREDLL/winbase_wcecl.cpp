@@ -2,6 +2,16 @@
 #include "stdafx.h"
 
 // Functions
+LPVOID VirtualAlloc_WCECL(
+	LPVOID lpAddress,
+	DWORD dwSize,
+	DWORD flAllocationType,
+	DWORD flProtect)
+{
+	auto result = ::VirtualAlloc(lpAddress, dwSize, flAllocationType, flProtect);
+	return result;
+}
+
 BOOL WINAPI FlushFileBuffers_WCECL(HANDLE hFile)
 {
 	auto result = ::FlushFileBuffers(hFile);
