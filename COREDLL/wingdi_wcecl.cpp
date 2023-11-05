@@ -2,6 +2,11 @@
 #include "stdafx.h"
 
 // Functions
+int SetAbortProc_WCECL(HDC hdc, ABORTPROC lpAbortProc) {
+	auto result = SetAbortProc(hdc, lpAbortProc);
+	return result;
+}
+
 int WINAPI GetObjectW_WCECL(
 	HGDIOBJ hgdiobj,
 	int cbBuffer,
