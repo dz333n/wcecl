@@ -640,7 +640,7 @@ EXPORTS
     GetOpenClipboardWindow @680
     GetOpenFileNameW @488
     GetOutlineTextMetricsW @1889
-    GetOwnerProcess @606
+    GetOwnerProcess=GetOwnerProcess_WCECL @606
     GetPaletteEntries @949
     GetParent @269
     ; GetPasswordActive @239
