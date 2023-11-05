@@ -20,4 +20,12 @@ HBITMAP WINAPI SHLoadDIBitmap_WCECL(LPCTSTR szFileName)
 	return result;
 }
 
+DWORD WINAPI SHGetFileInfo_WCECL(LPCTSTR pszPath, DWORD dwFileAttributes, SHFILEINFO FAR* psfi, UINT cbFileInfo, UINT uFlags)
+{
+	// Win doc: https://learn.microsoft.com/ru-ru/windows/win32/api/shellapi/nf-shellapi-shgetfileinfow
+	// WinCE doc: https://learn.microsoft.com/en-us/previous-versions/windows/embedded/aa453700(v=msdn.10)
+	auto result = SHGetFileInfo(pszPath, dwFileAttributes, psfi, cbFileInfo, uFlags);
+	return result;
+}
+
 // Stubs

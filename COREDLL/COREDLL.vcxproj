@@ -262,6 +262,7 @@
     <ClCompile Include="wcecl_dialogs.cpp" />
     <ClCompile Include="wcecl_memtools.cpp" />
     <ClCompile Include="winbase_wcecl.cpp" />
+    <ClCompile Include="windows_wcecl.cpp" />
     <ClCompile Include="wingdi_wcecl.cpp" />
     <ClCompile Include="winreg_wcecl.cpp" />
     <ClCompile Include="winuser_wcecl.cpp" />

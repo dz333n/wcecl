@@ -625,7 +625,7 @@ EXPORTS
     GetModuleHandleW=GetModuleHandleW_WCECL @1177
     ; GetModuleInformation @1721
     GetMonitorInfoA @1525
-    ; GetMouseMovePoints @820
+    GetMouseMovePoints=GetMouseMovePoints_WCECL @820
     ; GetMsgQueueInfo @1532
     GetNearestColor @952
     GetNearestPaletteIndex @948
@@ -842,3 +842,4 @@ EXPORTS
     EnumDisplayMonitors @1526
     GetAPIAddress @32
     EnumDisplaySettings=EnumDisplaySettingsW @1777
+    SHGetFileInfo=SHGetFileInfo_WCECL @482

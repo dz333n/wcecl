@@ -74,6 +74,9 @@
     <ClCompile Include="wcecl_memtools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="windows_wcecl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Exports.def">
