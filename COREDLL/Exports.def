@@ -855,3 +855,4 @@ EXPORTS
     strncmp @1070
     IsClipboardFormatAvailable=IsClipboardFormatAvailable_WCECL @678
     StringCchCatW=StringCchCatW_WCECL @1693
+    RegisterClipboardFormat=RegisterClipboardFormat_WCECL @673

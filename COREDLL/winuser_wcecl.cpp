@@ -6,6 +6,12 @@
 #define OK_BUTTON_UNIMPLEMENTED
 
 // Functions
+UINT RegisterClipboardFormat_WCECL(LPCWSTR lpszFormat)
+{
+	auto result = ::RegisterClipboardFormat(lpszFormat);
+	return result;
+}
+
 BOOL IsClipboardFormatAvailable_WCECL(UINT format)
 {
 	auto result = ::IsClipboardFormatAvailable(format);
