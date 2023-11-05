@@ -5,7 +5,8 @@ EXPORTS
 	GetExitCodeProcess=GetExitCodeProcess_WCECL @519
 	CreateDirectoryW=CreateDirectoryW_WCECL @160
 	GetDiskFreeSpaceExW=GetDiskFreeSpaceExW_WCECL @184
-	; FileTimeToSystemTime=FileTimeToSystemTime_WCECL @20
+	FileTimeToSystemTime=FileTimeToSystemTime_WCECL @20
+    FileTimeToLocalFileTime=FileTimeToLocalFileTime_WCECL @21
 	SystemTimeToFileTime=SystemTimeToFileTime_WCECL @19
 	CompareFileTime=CompareFileTime_WCECL @18
 	SetFileAttributesW=SetFileAttributesW_WCECL @169

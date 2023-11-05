@@ -2,6 +2,22 @@
 #include "stdafx.h"
 
 // Functions
+BOOL SystemTimeToFileTime_WCECL(
+	const SYSTEMTIME* lpSystemTime,
+	LPFILETIME lpFileTime)
+{
+	auto result = ::SystemTimeToFileTime(lpSystemTime, lpFileTime);
+	return result;
+}
+
+BOOL FileTimeToLocalFileTime_WCECL(
+	const FILETIME* lpFileTime,
+	LPFILETIME     lpLocalFileTime)
+{
+	auto result = ::FileTimeToLocalFileTime(lpFileTime, lpLocalFileTime);
+	return result;
+}
+
 LPVOID VirtualAlloc_WCECL(
 	LPVOID lpAddress,
 	DWORD dwSize,
@@ -289,12 +305,6 @@ BOOL GetDiskFreeSpaceExW_WCECL(LPCWSTR lpDirectoryName, PULARGE_INTEGER lpFreeBy
 BOOL WINAPI FileTimeToSystemTime_WCECL(const FILETIME* lpft, LPSYSTEMTIME lpst)
 {
 	auto result = FileTimeToSystemTime(lpft, lpst);
-	return result;
-}
-
-BOOL WINAPI SystemTimeToFileTime_WCECL(const SYSTEMTIME* lpst, LPFILETIME lpft)
-{
-	auto result = SystemTimeToFileTime(lpst, lpft);
 	return result;
 }
 
