@@ -742,8 +742,8 @@ EXPORTS
     GlobalFindAtomW @1521
     GlobalMemoryStatus @88
 
-    delete=delete_WCECL @1094
-    new=new_WCECL       @1095
+    ; delete=delete_WCECL @1094
+    ; new=new_WCECL       @1095
 
     _aulldiv=_aulldiv_WCECL @2006
     CreateEventW=CreateEventW_WCECL @495
