@@ -2,6 +2,12 @@
 #include "stdafx.h"
 
 // Functions
+BOOL SHGetSpecialFolderPath_WCECL(HWND hwndOwner, LPSTR lpszPath, int nFolder, BOOL fCreate)
+{
+	auto result = ::SHGetSpecialFolderPathA(hwndOwner, lpszPath, nFolder, fCreate);
+	return result;
+}
+
 BOOL WINAPI ShellExecuteEx_WCECL(LPSHELLEXECUTEINFO lpExecInfo)
 {
 	auto result = ShellExecuteExW(lpExecInfo);
