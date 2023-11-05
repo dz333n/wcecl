@@ -853,3 +853,4 @@ EXPORTS
     FlushFileBuffers=FlushFileBuffers_WCECL @175
     wcsncat @64
     strncmp @1070
+    IsClipboardFormatAvailable=IsClipboardFormatAvailable_WCECL @678

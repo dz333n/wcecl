@@ -6,6 +6,12 @@
 #define OK_BUTTON_UNIMPLEMENTED
 
 // Functions
+BOOL IsClipboardFormatAvailable_WCECL(UINT format)
+{
+	auto result = ::IsClipboardFormatAvailable(format);
+	return result;
+}
+
 HDC WINAPI GetDC_WCECL(HWND hwnd)
 {
 	auto result = ::GetDC(hwnd);
