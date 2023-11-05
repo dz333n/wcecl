@@ -869,3 +869,4 @@ EXPORTS
     _itow @1026
     RegEnumValueW=RegEnumValueW_WCECL @459
     RegQueryInfoKeyW=RegQueryInfoKeyW_WCECL @462
+    _ltow @1040
