@@ -2,6 +2,13 @@
 #include "stdafx.h"
 
 // Functions
+int StartPage_WCECL(
+	HDC hDC)
+{
+	auto result = StartPage(hDC);
+	return result;
+}
+
 int StartDocW_WCECL(HDC hdc, CONST DOCINFO* lpdi)
 {
 	auto result = StartDoc(hdc, lpdi);
