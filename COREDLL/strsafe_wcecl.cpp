@@ -2,6 +2,15 @@
 #include "stdafx.h"
 
 // Functions
+HRESULT StringCchLengthW_WCECL(
+	PCNZWCH psz,
+	size_t          cchMax,
+	size_t* pcchLength)
+{
+	auto result = ::StringCchLength(psz, cchMax, pcchLength);
+	return result;
+}
+
 HRESULT StringCchCatW_WCECL(
 	LPWSTR  pszDest,
 	size_t          cchDest,
