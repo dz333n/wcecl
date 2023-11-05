@@ -6,6 +6,13 @@
 #define OK_BUTTON_UNIMPLEMENTED
 
 // Functions
+UINT EnumClipboardFormats_WCECL(
+	UINT format)
+{
+	auto result = ::EnumClipboardFormats(format);
+	return result;
+}
+
 BOOL EmptyClipboard_WCECL()
 {
 	auto result = ::EmptyClipboard();
