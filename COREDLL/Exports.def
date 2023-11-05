@@ -866,3 +866,4 @@ EXPORTS
     wcstol @1082
     wvsprintfW @57
     SHGetSpecialFolderPath=SHGetSpecialFolderPath_WCECL @295
+    _itow @1026
