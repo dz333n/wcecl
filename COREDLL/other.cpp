@@ -7,15 +7,14 @@ void DeleteAndRenameFile_WCECL()
 	// wtf is this?
 }
 
-void* __cdecl new_WCECL(unsigned int s) 
+void* new_WCECL(size_t size)
 {
-	auto result = LocalAlloc(LMEM_ZEROINIT, s);
-	return result;
+	void* p = ::malloc(size);
+	return p;
 }
 
-void __cdecl delete_WCECL(void * p)
-{
-	LocalFree(p);
+void delete_WCECL(void* p) noexcept {
+	::free(p);
 }
 
 int WINAPI GetLocaleInfoW_WCECL(
