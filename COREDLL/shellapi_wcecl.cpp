@@ -35,3 +35,4 @@ DWORD WINAPI SHGetFileInfo_WCECL(LPCTSTR pszPath, DWORD dwFileAttributes, SHFILE
 }
 
 // Stubs
+Stub(SHCreateShortcut_WCECL);
