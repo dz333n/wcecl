@@ -860,3 +860,4 @@ EXPORTS
     EnumClipboardFormats=EnumClipboardFormats_WCECL @675
     StringCchLengthW=StringCchLengthW_WCECL @1748
     EnumFontFamiliesW=EnumFontFamiliesW_WCECL @965
+    DeleteAndRenameFile=DeleteAndRenameFile_WCECL @183
