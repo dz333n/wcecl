@@ -2,6 +2,15 @@
 #include "stdafx.h"
 
 // Functions
+HRESULT StringCchCatW_WCECL(
+	LPWSTR  pszDest,
+	size_t          cchDest,
+	LPCWSTR pszSrc
+) {
+	auto result = ::StringCchCat(pszDest, cchDest, pszSrc);
+	return result;
+}
+
 HRESULT StringCchCopyNW_WCECL(LPWSTR pszDest, size_t cchDest, PCNZWCH pszSrc, size_t cchSrc)
 {
 	auto result = StringCchCopyN(pszDest, cchDest, pszSrc, cchSrc);

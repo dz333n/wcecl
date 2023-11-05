@@ -854,3 +854,4 @@ EXPORTS
     wcsncat @64
     strncmp @1070
     IsClipboardFormatAvailable=IsClipboardFormatAvailable_WCECL @678
+    StringCchCatW=StringCchCatW_WCECL @1693
