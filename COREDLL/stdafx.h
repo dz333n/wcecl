@@ -15,6 +15,7 @@
 #include <excpt.h>
 #include <strsafe.h>
 #include <ras.h>
+#include <time.h>
 // #include <dpapi.h>
 #include <psapi.h>
 #include <excpt.h>
