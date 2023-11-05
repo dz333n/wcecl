@@ -2,6 +2,12 @@
 #include "stdafx.h"
 
 // Functions
+int EndPage_WCECL(HDC hdc)
+{
+	auto result = EndPage(hdc);
+	return result;
+}
+
 BOOL PlayEnhMetaFile_WCECL(
 	HDC          hdc,
 	HENHMETAFILE hmf,
