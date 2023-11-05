@@ -872,3 +872,4 @@ EXPORTS
     _ltow @1040
     VirtualAlloc=VirtualAlloc_WCECL @524
     _alloca_probe_16 @2042
+    _itoa @1025
