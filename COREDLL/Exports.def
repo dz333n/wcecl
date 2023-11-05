@@ -850,3 +850,4 @@ EXPORTS
     EndPage=EndPage_WCECL @960
     EndDoc=EndDoc_WCECL @959
     StringCchCopyNW=StringCchCopyNW_WCECL @1742
+    FlushFileBuffers=FlushFileBuffers_WCECL @175
