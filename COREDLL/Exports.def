@@ -5,8 +5,8 @@ EXPORTS
 	GetExitCodeProcess=GetExitCodeProcess_WCECL @519
 	CreateDirectoryW=CreateDirectoryW_WCECL @160
 	GetDiskFreeSpaceExW=GetDiskFreeSpaceExW_WCECL @184
-	FileTimeToSystemTime=FileTimeToSystemTime_WCECL @20
-	SystemTimeToFileTime=SystemTimeToFileTime_WCECL @21
+	; FileTimeToSystemTime=FileTimeToSystemTime_WCECL @20
+	SystemTimeToFileTime=SystemTimeToFileTime_WCECL @19
 	CompareFileTime=CompareFileTime_WCECL @18
 	SetFileAttributesW=SetFileAttributesW_WCECL @169
 	SetLocalTime=SetLocalTime_WCECL @24
@@ -72,6 +72,7 @@ EXPORTS
 	swprintf=swprintf_WCECL @1097
 	wcschr  @59
 	floor @1013
+    wcspbrk @68
 	EventModify=EventModify_WCECL @494
 	_wcsnicmp @229
 	VirtualFree=VirtualFree_WCECL @525
