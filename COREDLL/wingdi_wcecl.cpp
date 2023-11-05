@@ -2,7 +2,14 @@
 #include "stdafx.h"
 
 // Functions
-int SetAbortProc_WCECL(HDC hdc, ABORTPROC lpAbortProc) {
+int StartDocW_WCECL(HDC hdc, CONST DOCINFO* lpdi)
+{
+	auto result = StartDoc(hdc, lpdi);
+	return result;
+}
+
+int SetAbortProc_WCECL(HDC hdc, ABORTPROC lpAbortProc)
+{
 	auto result = SetAbortProc(hdc, lpAbortProc);
 	return result;
 }
@@ -23,7 +30,7 @@ BOOL WINAPI LineTo_WCECL(HDC hdc, int x, int y)
 	return result;
 }
 
-HGDIOBJ WINAPI GetStockObject_WCECL(int i) 
+HGDIOBJ WINAPI GetStockObject_WCECL(int i)
 {
 	auto result = ::GetStockObject(i);
 	return result;
@@ -71,7 +78,7 @@ int WINAPI GetClipBox_WCECL(HDC hdc, LPRECT lprect)
 	return result;
 }
 
-BOOL WINAPI DrawFocusRect_WCECL(HDC hDC, CONST RECT * lprc)
+BOOL WINAPI DrawFocusRect_WCECL(HDC hDC, CONST RECT* lprc)
 {
 	auto result = DrawFocusRect(hDC, lprc);
 	return result;
@@ -89,7 +96,7 @@ HGDIOBJ WINAPI SelectObject_WCECL(HDC hdc, HGDIOBJ h)
 	return result;
 }
 
-int WINAPI FillRect_WCECL(HDC hdc, CONST RECT * lprc, HBRUSH hbr)
+int WINAPI FillRect_WCECL(HDC hdc, CONST RECT* lprc, HBRUSH hbr)
 {
 	auto result = FillRect(hdc, lprc, hbr);
 	return result;
