@@ -1,0 +1,20 @@
+type: executable
+name: CoreDllTest
+
+deps:
+  - CoreDll
+
+# NOTE: Re does not support automatic DLL dependencies yet, so we do it manually
+
+# Link with the DLL's glue library
+cxx-link-deps:
+  - $out/../../CoreDll/COREDLL.lib
+
+# Copy the DLL file into the directory
+tasks:
+  install-coredll:
+    run: always
+    post-build:
+      - copy:
+          from: ${target/CoreDll:main-artifact}
+          to: ${artifact-dir}

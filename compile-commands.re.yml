@@ -1,0 +1,20 @@
+#
+# FROM TEMPLATE: re/compile-commands
+#
+# This template will add compile_commands generation to your Re target.
+# This lets tools such as clangd pick up the target and learn its properties.
+#
+# Consider adding `compile_commands.json` to your .gitignore.
+#
+
+load-context.standalone:
+  actions:
+    - run:
+        on: meta-available
+        command: python
+        args:
+          [
+            "${root-dir}/compile-commands-gen.py",
+            "${root-dir}/.re-cache/meta/full.json",
+            "${root-dir}/compile_commands.json",
+          ]
