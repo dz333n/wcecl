@@ -1,0 +1,37 @@
+type: shared-library
+name: CoreDll
+
+artifact-name: COREDLL
+
+cxx-compile-definitions:
+  COREDLL_EXPORTS: 1
+
+cxxenv.msvc:
+  cxx-build-flags:
+    linker:
+      # Specifies the export definitions file for the linker to use
+      - /DEF:${path}/Exports.def
+
+# Link to the actual Windows API libraries implementing our exports
+cxx-link-deps:
+  - kernel32.lib
+  - user32.lib
+  - gdi32.lib
+  - winspool.lib
+  - comdlg32.lib
+  - advapi32.lib
+  - shell32.lib
+  - ole32.lib
+  - oleaut32.lib
+  - uuid.lib
+  - odbc32.lib
+  - odbccp32.lib
+  - Comctl32.lib
+  - Imm32.lib
+  - Rasapi32.lib
+  - Crypt32.lib
+  - Odbccp32.lib
+  - User32.lib
+  - psapi.lib
+  - Msimg32.lib
+  - Winmm.lib

@@ -1,0 +1,11 @@
+type: project
+name: "WCECL"
+
+# Do not build on non-Windows platforms
+platform.!windows:
+  enabled: false
+
+# Force WCHAR compilation
+cxx-compile-definitions:
+  UNICODE: 1
+  _UNICODE: 1

@@ -5,6 +5,7 @@
 
 # What is this?
 This library is designed to wrap Windows CE API using Win32 functions. This allows to run Windows CE executables in Win32 environment. Visit our [wiki](https://github.com/feel-the-dz3n/wcecl/wiki) for details.
+This project is built using [Re](https://github.com/osdeverr/rebs) - try it out!
 
 # Credits
  - Created by [Yaroslav Kibysh / Dz3n](https://github.com/feel-the-dz3n)
