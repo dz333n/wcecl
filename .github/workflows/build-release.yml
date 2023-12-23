@@ -32,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: wcecl-${{ github.ref_name }}-${{ matrix.arch }}-${{ matrix.config }}-${{ github.run_id }}
-          path: ./out/build
+          path: ./out/${{ matrix.arch }}-windows-${{ matrix.config }}/build
