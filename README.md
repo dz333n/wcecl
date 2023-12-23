@@ -1,4 +1,4 @@
-# Windows CE Compatibility Layer [![Build status](/actions/workflows/build.yml/badge.svg)](/actions?query=workflow%3Abuild)
+# Windows CE Compatibility Layer [![Build status](https://github.com/osdeverr/wcecl/actions/workflows/build.yml/badge.svg)](https://github.com/osdeverr/wcecl/actions?query=workflow%3Abuild)
 ### WinCE API Wrapper
 
 [Watch YouTube video](https://youtu.be/igz8mekvr8A)
