@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         arch: [x86]
-        config: [debug, release]
+        config: [release]
 
     runs-on: windows-latest
     
