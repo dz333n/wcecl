@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         configuration: [Release, Debug]
-        platform: [Win32, ARM]
+        platform: [x86, ARM]
 
     steps:
       - uses: actions/checkout@v3
