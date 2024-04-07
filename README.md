@@ -1,13 +1,22 @@
-# Windows CE Compatibility Layer [![Build status](https://ci.appveyor.com/api/projects/status/93fytq537hcb2nw9?svg=true)](https://ci.appveyor.com/project/dz333n/wcecl)
-### WinCE API Wrapper
+# Windows CE Compatibility Layer
 
-[Watch YouTube video](https://youtu.be/igz8mekvr8A)
+### (WCECL)
 
-# What is this?
-This library is designed to wrap Windows CE API using Win32 functions. This allows to run Windows CE executables in Win32 environment. Visit our [wiki](https://github.com/feel-the-dz3n/wcecl/wiki) for details.
+## What is this?
 
-# Credits
- - Created by [Yaroslav Kibysh / Dz3n](https://github.com/feel-the-dz3n)
- - [Nikita Ivanov / osdever](https://github.com/osdeverr)
- - Special thanks to [Stanislav Motylkov / Stas'M](https://github.com/binarymaster), who inspired me to make this.
+![Improvised Logo](logo.png)
 
+This project includes:
+
+- **COREDLL**: a library that wraps Windows CE APIs and redirects calls to desktop Win32 APIs
+- **SubsystemTool**: a program that allows you to modify subsystem attributes in portable executables (.EXEs)
+
+Use WCECL to run original Windows CE applications on desktop Windows.
+
+⚠️ The project is at an early stage of development. Only one application has been confirmed to work so far.
+
+Visit project [wiki](https://github.com/dz333n/wcecl/wiki) for details.
+
+## Downloads
+
+TODO
