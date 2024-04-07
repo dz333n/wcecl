@@ -48,7 +48,7 @@ EXPORTS
 	_CxxThrowException @1551
 	type_info @1580
 	ShellExecuteEx=ShellExecuteEx_WCECL @480
-	_vsnwprintf @1132
+	; _vsnwprintf @1132
 	CeLogSetZones @1452
 	CeLogReSync @1467
 	terminate=terminate_WCECL  @1556
@@ -57,7 +57,7 @@ EXPORTS
 	TlsCall=TlsCall_WCECL @520
 	longjmp @1036
 	_allmul=_allmul_WCECL @2002
-	vswprintf @1099
+	; vswprintf @1099
 	wcsrchr @69
 	_alloca_probe @2010
 	wcscpy @61
