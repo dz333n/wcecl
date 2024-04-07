@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "COREDLL", "COREDLL\COREDLL.vcxproj", "{7AC1A661-7B3C-4C08-B41E-FE26C13AEC8B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoredllTest", "CoredllTest\CoredllTest.vcxproj", "{DE9AEC50-51BF-4229-AA7E-16DB683B84B5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7AC1A661-7B3C-4C08-B41E-FE26C13AEC8B} = {7AC1A661-7B3C-4C08-B41E-FE26C13AEC8B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SubsystemTool", "SubsystemTool\SubsystemTool.vcxproj", "{FADF7D2C-7303-4FD3-A615-95A3D30FEB0A}"
 EndProject
@@ -41,14 +44,6 @@ Global
 		{FADF7D2C-7303-4FD3-A615-95A3D30FEB0A}.Release|ARM.Build.0 = Release|ARM
 		{FADF7D2C-7303-4FD3-A615-95A3D30FEB0A}.Release|x86.ActiveCfg = Release|Win32
 		{FADF7D2C-7303-4FD3-A615-95A3D30FEB0A}.Release|x86.Build.0 = Release|Win32
-		{8B67E920-022B-4AF8-A79D-F27DC7FFEF87}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{8B67E920-022B-4AF8-A79D-F27DC7FFEF87}.Debug|ARM.Build.0 = Debug|Any CPU
-		{8B67E920-022B-4AF8-A79D-F27DC7FFEF87}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8B67E920-022B-4AF8-A79D-F27DC7FFEF87}.Debug|x86.Build.0 = Debug|Any CPU
-		{8B67E920-022B-4AF8-A79D-F27DC7FFEF87}.Release|ARM.ActiveCfg = Release|Any CPU
-		{8B67E920-022B-4AF8-A79D-F27DC7FFEF87}.Release|ARM.Build.0 = Release|Any CPU
-		{8B67E920-022B-4AF8-A79D-F27DC7FFEF87}.Release|x86.ActiveCfg = Release|Any CPU
-		{8B67E920-022B-4AF8-A79D-F27DC7FFEF87}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
