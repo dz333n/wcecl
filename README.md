@@ -15,6 +15,6 @@ Visit project [wiki](https://github.com/dz333n/wcecl/wiki) for details.
 
 ## Downloads
 
-Open workflow status link below and download the artifacts from the "Upload Artifacts" section for your desired configuration and platform.
+Open the workflow status link below, open the latest run, scroll to the bottom, and download the desired artifacts.
 
 [![build](https://github.com/dz333n/wcecl/actions/workflows/build.yml/badge.svg)](https://github.com/dz333n/wcecl/actions/workflows/build.yml)
