@@ -192,8 +192,7 @@ int ProcessPath(_TCHAR* path, _TCHAR* subsys, BOOL ResetVersion)
 			return 5;
 		}
 		
-		delete fileBuf;
-
+		delete[] fileBuf;
 		CloseHandle(hFile);
 	}
 
