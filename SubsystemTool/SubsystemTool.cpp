@@ -213,7 +213,6 @@ BOOL ThereIsArgument(int argc, _TCHAR* argv[], _TCHAR* arg)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	/*
 	if (argc <= 1 
 		|| ThereIsArgument(argc, argv, (_TCHAR*)TEXT("/help"))
 		|| ThereIsArgument(argc, argv, (_TCHAR*)TEXT("--help"))
@@ -227,8 +226,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		_tprintf(TEXT("wince, win32gui (default), win32cui.\n\n"));
 		_tprintf(TEXT("Include /rv after subsystem if you want to reset subsystem version.\n"));
 		return 1;
-	}*/
+	}
 
 	BOOL ResetVersion = ThereIsArgument(argc, argv, (_TCHAR*)TEXT("/rv"));
-	return ProcessPath((_TCHAR*)TEXT("C:\\ce6_solitaire\\solitare.exe"), (argc >= 3 ? argv[2] : (_TCHAR*)TEXT("win32gui")), ResetVersion);
+	return ProcessPath(argv[1], (argc >= 3 ? argv[2] : (_TCHAR*)TEXT("win32gui")), ResetVersion);
 }
