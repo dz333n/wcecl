@@ -1,5 +1,6 @@
 // other.cpp : contains unknown for me and other weird functions )
 #include "stdafx.h"
+#include <io.h>
 
 // Functions
 HANDLE GetOwnerProcess_WCECL()
@@ -87,7 +88,7 @@ int _snwprintf_WCECL(wchar_t * buf, size_t bufCount, const wchar_t * fmt, ...)
 	va_list args;
 	va_start(args, fmt);
 
-	auto result = _snwprintf(buf, bufCount, fmt, args);
+	auto result = _vsnwprintf(buf, bufCount, fmt, args);
 
 	va_end(args);
 
@@ -99,11 +100,11 @@ int _snwprintf_WCECL(wchar_t * buf, size_t bufCount, const wchar_t * fmt, ...)
 int __cdecl swscanf_WCECL(const wchar_t * buf, const wchar_t * fmt, ...)
 {
 #pragma warning( push )
-#pragma warning( disable: 4995 )
+#pragma warning( disable: 4995 4996 )
 	va_list args;
 	va_start(args, fmt);
 
-	auto result = swscanf(buf, fmt, args);
+	auto result = vswscanf(buf, fmt, args);
 
 	va_end(args);
 #pragma warning( pop )
@@ -114,11 +115,11 @@ int __cdecl swscanf_WCECL(const wchar_t * buf, const wchar_t * fmt, ...)
 int swprintf_WCECL(wchar_t * buf, const wchar_t * _format, ...)
 {
 #pragma warning( push )
-#pragma warning( disable: 4995 )
+#pragma warning( disable: 4995 4996 )
 	va_list args;
 	va_start(args, _format);
 
-	auto result = swprintf(buf, _format, args);
+	auto result = vswprintf(buf, _format, args);
 
 	va_end(args);
 #pragma warning( pop )
@@ -130,11 +131,11 @@ int swprintf_WCECL(wchar_t * buf, const wchar_t * _format, ...)
 int sprintf_WCECL(char* buffer, const char* format, ...)
 {
 #pragma warning( push )
-#pragma warning( disable: 4995 )
+#pragma warning( disable: 4995 4996 )
 	va_list args;
 	va_start(args, format);
 
-	auto result = sprintf(buffer, format, args);
+	auto result = vsprintf(buffer, format, args);
 
 	va_end(args);
 #pragma warning( pop )
@@ -193,12 +194,102 @@ void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
 	// wtf!?
 }
 
+FILE* WINAPI _getstdfilex_WCECL(DWORD type)
+{
+	switch (type)
+	{
+	case 0:
+		return stdin;
+	case 1:
+		return stdout;
+	case 2:
+		return stderr;
+	default:
+		Assert32(FALSE);
+		return NULL;
+	}
+}
+
+BOOL WINAPI SetStdioPathW_WCECL(
+	DWORD id,
+	PWSTR pwszPath)
+{
+	/* TODO: test */
+	switch (id)
+	{
+	case 0:
+		return (_wfreopen(pwszPath, L"r", stdin) != NULL);
+	case 1:
+		return (_wfreopen(pwszPath, L"w", stdout) != NULL);
+	case 2:
+		return (_wfreopen(pwszPath, L"w", stderr) != NULL);
+	default:
+		Assert32(FALSE);
+		return NULL;
+	}
+}
+
+BOOL WINAPI GetStdioPathW_WCECL(
+	DWORD id,
+	PWSTR pwszBuf,
+	LPDWORD lpdwLen)
+{
+	/* TODO: test */
+	FILE* filePtr = _getstdfilex_WCECL(id);
+	HANDLE hFile = (HANDLE)_get_osfhandle(_fileno(filePtr));
+	if (GetFinalPathNameByHandleW(hFile, pwszBuf, *lpdwLen, 0) < *lpdwLen)
+	{
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+void* _fileno_WCECL(FILE* file)
+{
+	return (void*)_get_osfhandle(_fileno(file));
+}
+
+int WINAPI WideCharToMultiByte_WCECL(
+	UINT CodePage,
+	DWORD dwFlags,
+	LPCWSTR lpWideCharStr,
+	int cchWideChar,
+	LPSTR lpMultiByteStr,
+	int cbMultiByte,
+	LPCSTR lpDefaultChar,
+	LPBOOL lpUsedDefaultChar)
+{
+	return WideCharToMultiByte(
+		CodePage,
+		dwFlags,
+		lpWideCharStr,
+		cchWideChar,
+		lpMultiByteStr,
+		cbMultiByte,
+		lpDefaultChar,
+		lpUsedDefaultChar);
+}
+
+wchar_t* fgetws_WCECL(wchar_t* w, int count, FILE* file)
+{
+	wchar_t* result = fgetws(w, count, file);
+	if (result == NULL && 
+		file == stdin && count > 2)
+	{
+		result = w;
+		wsprintf(w, L"");
+	}
+	else
+	{
+		return result;
+	}
+	return result;
+}
+
 // Stubs
 Stub(_chkstk_WCECL);
-Stub(WaitForAPIReady)
-Stub(SetStdioPathW);
-Stub(GetStdioPathW);
-Stub(_getstdfilex_WCECL); // FILE* __cdecl _getstdfilex_WCECL(int a1)
+Stub(WaitForAPIReady);
 Stub(RegisterDefaultGestureHandler_WCECL);
 Stub(CloseGestureInfoHandle_WCECL);
 Stub(GetGestureExtraArguments_WCECL);

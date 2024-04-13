@@ -21,8 +21,8 @@ EXPORTS
 	FindNextFileW=FindNextFileW_WCECL @181
 	FindFirstFileW=FindFirstFileW_WCECL @167
 	WaitForAPIReady @2562
-	SetStdioPathW @1150
-	GetStdioPathW @1149
+	SetStdioPathW=SetStdioPathW_WCECL @1150
+	GetStdioPathW=GetStdioPathW_WCECL @1149
 	DeviceIoControl=DeviceIoControl_WCECL @179
 	_wfopen @1145
 	fread @1120
@@ -31,7 +31,7 @@ EXPORTS
 	_wcsupr @232
 	vfwprintf=vfwprintf_WCECL @721
 	fflush @1122
-	fgetws @1143
+	fgetws=fgetws_WCECL @1143
 	fputwc @1141
 	fputws @1144
 	_getstdfilex=_getstdfilex_WCECL @1100
@@ -133,7 +133,7 @@ EXPORTS
     towlower @194
     towupper @195
     MultiByteToWideChar @196
-    WideCharToMultiByte @197
+    WideCharToMultiByte=WideCharToMultiByte_WCECL @197
     CompareStringW @198
     LCMapStringW @199
     SetLocaleInfoW @201
@@ -398,7 +398,7 @@ EXPORTS
     qsort         @1052
     rand          @1053
     realloc       @1054
-    _fileno       @1124
+    _fileno=_fileno_WCECL       @1124
     feof          @1125
     ferror        @1126
     clearerr      @1127
