@@ -1,9 +1,124 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "stdafx.h"
+#include "winuser_wcecl.h"
 
 typedef UINT(__cdecl* CE_ENTRYPOINT)(HINSTANCE, HINSTANCE, LPCWSTR, int);
+void WceclEntrypointWrapper();
 
-#undef __stdcall // DllMain should be __stdcall always
+#pragma pack(push, 1)
+
+static struct
+{
+	BYTE Push;
+	void* Address;
+	BYTE Ret;
+}
+EntrypointHijackCode[] = { {0x68, WceclEntrypointWrapper, 0xC3} };
+static BYTE EntrypointRepairCode[sizeof(EntrypointHijackCode)];
+CE_ENTRYPOINT Entrypoint;
+
+#pragma pack(pop)
+
+static void WceclEntrypointWrapper()
+{
+	STARTUPINFOW startupInfo;
+	LPCWSTR commandLine;
+	BOOL bQuoted;
+	UINT result;
+	int nCmdShow;
+
+	GetStartupInfoW(&startupInfo);
+	commandLine = GetCommandLineW();
+
+	/* FIXME: It seems WinCE programs do not want the image path to be included
+	   in the commandLine passed to them. 
+	   
+	   For now, find the first argument and skip its length worth of bytes
+	   from the command line. */
+	bQuoted = FALSE;
+
+	while (*commandLine)
+	{
+		if (*commandLine == '"')
+		{
+			bQuoted = !bQuoted;
+		}
+		if (bQuoted == FALSE)
+		{
+			if (iswspace(*commandLine))
+			{
+				while (iswspace(*commandLine)) commandLine++;
+				break;
+			}
+		}
+		commandLine++;
+	}
+
+	nCmdShow = 1;
+	if (startupInfo.dwFlags & STARTF_USESHOWWINDOW)
+	{
+		switch (startupInfo.wShowWindow)
+		{
+		case SW_RESTORE:
+			nCmdShow = WINCE_SW_RESTORE;
+			break;
+		case SW_MAXIMIZE:
+			nCmdShow = WINCE_SW_MAXIMIZE;
+			break;
+		}
+	}
+
+	memcpy(Entrypoint, EntrypointRepairCode, sizeof(EntrypointRepairCode));
+	result = Entrypoint(GetModuleHandleW(NULL), NULL, commandLine, nCmdShow);
+	ExitProcess(result);
+}
+
+static BOOL WceclPatchEntrypoint()
+{
+	MODULEINFO moduleInfo;
+	HMODULE hModule;
+	PIMAGE_DOS_HEADER dosHeader;
+	DWORD dwOld;
+	MEMORY_BASIC_INFORMATION mbi;
+	CE_ENTRYPOINT entrypoint;
+
+	hModule = GetModuleHandleW(NULL);
+	dosHeader = (PIMAGE_DOS_HEADER)hModule;
+
+	if (GetModuleInformation(
+		GetCurrentProcess(),
+		hModule,
+		&moduleInfo,
+		sizeof(moduleInfo)) == FALSE)
+	{
+		return FALSE;
+	}
+	entrypoint = (CE_ENTRYPOINT)moduleInfo.EntryPoint;
+
+	/* Unprotect the entrypoint, so it is possible to hijack it, and
+	   to later repair it. */
+
+	VirtualQuery(entrypoint, &mbi, sizeof(mbi));
+	mbi.Protect &= ~(PAGE_READONLY | PAGE_EXECUTE_READ);
+	mbi.Protect |= PAGE_EXECUTE_READWRITE;
+	
+	if (VirtualProtect(
+			mbi.BaseAddress, 
+			mbi.RegionSize,
+			mbi.Protect,
+			&dwOld) == FALSE)
+	{
+		return FALSE;
+	}
+
+	memcpy(EntrypointRepairCode, entrypoint, sizeof(EntrypointRepairCode));
+	memcpy(entrypoint, EntrypointHijackCode, sizeof(EntrypointHijackCode));
+	
+	Entrypoint = entrypoint;
+	
+	return TRUE;
+}
+
 BOOL __stdcall DllMain(HMODULE hModule,
 	DWORD  ul_reason_for_call,
 	LPVOID lpReserved
@@ -49,14 +164,7 @@ BOOL __stdcall DllMain(HMODULE hModule,
 			CloseHandle(Info.hThread);
 		}
 
-		MODULEINFO moduleInfo;
-		HMODULE hModule = GetModuleHandleW(NULL);
-
-		GetModuleInformation(GetCurrentProcess(), hModule, &moduleInfo, sizeof(moduleInfo));
-		CE_ENTRYPOINT entrypoint = (CE_ENTRYPOINT)moduleInfo.EntryPoint;
-
-		LPCWSTR wstr = L"";
-		ExitProcess(entrypoint(hModule, NULL, wstr, 0));
+		WceclPatchEntrypoint();
 		break;
 	};
 	//
