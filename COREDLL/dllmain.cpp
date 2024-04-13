@@ -1,6 +1,8 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "stdafx.h"
 
+typedef UINT(__cdecl* CE_ENTRYPOINT)(HINSTANCE, HINSTANCE, LPCWSTR, int);
+
 #undef __stdcall // DllMain should be __stdcall always
 BOOL __stdcall DllMain(HMODULE hModule,
 	DWORD  ul_reason_for_call,
@@ -11,6 +13,10 @@ BOOL __stdcall DllMain(HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 	{
+		AllocConsole();
+		freopen("CONOUT$", "w", stdout);
+		freopen("CONIN$", "r", stdin);
+
 		if (MessageBoxExW(
 			NULL,
 			L"Attach a debugger now?",
@@ -27,7 +33,7 @@ BOOL __stdcall DllMain(HMODULE hModule,
 			swprintf_s(CmdLineBuf, 256, L"%s -p %d", VSJitDebugger, GetCurrentProcessId());
 
 			StartupInfo.wShowWindow = TRUE;
-			
+
 			// MessageBoxW(NULL, CmdLineBuf, VSJitDebugger, 0);
 
 			Assert32(CreateProcess(
@@ -42,6 +48,15 @@ BOOL __stdcall DllMain(HMODULE hModule,
 			CloseHandle(Info.hProcess);
 			CloseHandle(Info.hThread);
 		}
+
+		MODULEINFO moduleInfo;
+		HMODULE hModule = GetModuleHandleW(NULL);
+
+		GetModuleInformation(GetCurrentProcess(), hModule, &moduleInfo, sizeof(moduleInfo));
+		CE_ENTRYPOINT entrypoint = (CE_ENTRYPOINT)moduleInfo.EntryPoint;
+
+		LPCWSTR wstr = L"";
+		ExitProcess(entrypoint(hModule, NULL, wstr, 0));
 		break;
 	};
 	//
