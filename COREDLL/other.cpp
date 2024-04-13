@@ -84,7 +84,7 @@ LCID WINAPI ConvertDefaultLocale_WCECL(LCID Locale)
 int _snwprintf_WCECL(wchar_t * buf, size_t bufCount, const wchar_t * fmt, ...)
 {
 #pragma warning( push )
-#pragma warning( disable: 4995 )
+#pragma warning( disable: 4995 4996)
 	va_list args;
 	va_start(args, fmt);
 
