@@ -40,6 +40,18 @@ typedef struct tagWNDCLASSW_WCECL {
 	LPCWSTR     lpszClassName;
 } WNDCLASSW_WCECL, *PWNDCLASSW_WCECL, *LPWNDCLASSW_WCECL;
 
+typedef struct tagWIN32_FIND_DATA_WCECL
+{
+	DWORD dwFileAttributes;
+	FILETIME ftCreationTime;
+	FILETIME ftLastAccessTime;
+	FILETIME ftLastWriteTime; 
+	DWORD nFileSizeHigh; 
+	DWORD nFileSizeLow; 
+	DWORD dwOID;
+	TCHAR cFileName[MAX_PATH];
+} WIN32_FIND_DATA_WCECL, *PWIN32_FIND_DATA_WCECL, *LPWIN32_FIND_DATA_WCECL;
+
 // MACROS
 #undef RasHangUp
 #undef RasDial

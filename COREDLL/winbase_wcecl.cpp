@@ -367,20 +367,59 @@ BOOL WINAPI DeleteFileW_WCECL(LPCWSTR lpFileName)
 	auto result = DeleteFileW(lpFileName);
 	return result;
 }
+static void ConvertFindDataToWcecl(
+	LPWIN32_FIND_DATA_WCECL lpWceclData,
+	LPWIN32_FIND_DATAW lpFindData)
+{
+	wcscpy_s(lpWceclData->cFileName,
+		sizeof(lpWceclData->cFileName) / sizeof(*lpWceclData->cFileName),
+		lpFindData->cFileName);
+	lpWceclData->dwFileAttributes = lpFindData->dwFileAttributes;
+	lpWceclData->dwOID = lpFindData->dwReserved0;
+	lpWceclData->ftCreationTime = lpFindData->ftCreationTime;
+	lpWceclData->ftLastAccessTime = lpFindData->ftLastAccessTime;
+	lpWceclData->ftLastWriteTime = lpFindData->ftLastWriteTime;
+	lpWceclData->nFileSizeHigh = lpFindData->nFileSizeHigh;
+	lpWceclData->nFileSizeLow = lpFindData->nFileSizeLow;
+}
+
+static void ConvertFindDataFromWcecl(
+	LPWIN32_FIND_DATAW lpFindData,
+	LPWIN32_FIND_DATA_WCECL lpWceclData)
+{
+	wcscpy_s(lpFindData->cFileName,
+		sizeof(lpFindData->cFileName) / sizeof(*lpFindData->cFileName),
+		lpWceclData->cFileName);
+	lpFindData->dwFileAttributes = lpWceclData->dwFileAttributes;
+	lpFindData->dwReserved0 = lpWceclData->dwOID;
+	lpFindData->ftCreationTime = lpWceclData->ftCreationTime;
+	lpFindData->ftLastAccessTime = lpWceclData->ftLastAccessTime;
+	lpFindData->ftLastWriteTime = lpWceclData->ftLastWriteTime;
+	lpFindData->nFileSizeHigh = lpWceclData->nFileSizeHigh;
+	lpFindData->nFileSizeLow = lpWceclData->nFileSizeLow;
+}
 
 HANDLE WINAPI FindFirstFileW_WCECL(
 	LPCWSTR lpFileName,
-	LPWIN32_FIND_DATAW lpFindFileData)
+	LPWIN32_FIND_DATA_WCECL lpFindFileData)
 {
-	auto result = FindFirstFileW(lpFileName, lpFindFileData);
+	WIN32_FIND_DATAW findData;
+
+	ConvertFindDataFromWcecl(&findData, lpFindFileData);
+	auto result = FindFirstFileW(lpFileName, &findData);
+	ConvertFindDataToWcecl(lpFindFileData, &findData);
 	return result;
 }
 
 BOOL WINAPI FindNextFileW_WCECL(
 	HANDLE hFindFile,
-	LPWIN32_FIND_DATAW lpFindFileData)
+	LPWIN32_FIND_DATA_WCECL lpFindFileData)
 {
-	auto result = FindNextFileW(hFindFile, lpFindFileData);
+	WIN32_FIND_DATAW findData;
+
+	ConvertFindDataFromWcecl(&findData, lpFindFileData);
+	auto result = FindNextFileW(hFindFile, &findData);
+	ConvertFindDataToWcecl(lpFindFileData, &findData);
 	return result;
 }
 
