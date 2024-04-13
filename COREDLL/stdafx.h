@@ -56,18 +56,6 @@ typedef struct tagWIN32_FIND_DATA_WCECL
 #undef RasHangUp
 #undef RasDial
 
-// Windows CE uses __cdecl instead of __stdcall everywhere, including WINAPI macro
-// (defined in wce/windef.h)
-#ifdef __stdcall
-#undef __stdcall
-#endif
-#define __stdcall __cdecl
-
-#ifdef _stdcall
-#undef _stdcall
-#endif
-#define _stdcall _cdecl
-
 #ifdef WINAPI
 #undef WINAPI
 #endif
