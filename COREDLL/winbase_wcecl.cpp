@@ -171,9 +171,13 @@ BOOL WINAPI CreateProcessW_WCECL(
 	LPSTARTUPINFO psiStartInfo,
 	LPPROCESS_INFORMATION pProcInfo)
 {
+	std::wstring commandLine = std::wstring(pszImageName) + L" " + std::wstring(pszCmdLine);
+	wchar_t* commandLineCString = new wchar_t[commandLine.length() + 1];
+	wcscpy(commandLineCString, commandLine.c_str());
+
 	auto result = CreateProcessW(
 		pszImageName,
-		(LPWSTR)pszCmdLine,
+		commandLineCString,
 		psaProcess,
 		psaThread,
 		fInheritHandles,
