@@ -5,6 +5,7 @@
 typedef UINT(__cdecl* CE_ENTRYPOINT)(HINSTANCE, HINSTANCE, LPCWSTR, int);
 void WceclEntrypointWrapper();
 
+#ifdef _M_IX86
 #pragma pack(push, 1)
 
 static struct
@@ -14,10 +15,13 @@ static struct
 	BYTE Ret;
 }
 EntrypointHijackCode[] = { {0x68, WceclEntrypointWrapper, 0xC3} };
+#pragma pack(pop)
+#else
+#error No patching code for non x86 architectures
+#endif
+
 static BYTE EntrypointRepairCode[sizeof(EntrypointHijackCode)];
 CE_ENTRYPOINT Entrypoint;
-
-#pragma pack(pop)
 
 static void WceclEntrypointWrapper()
 {
