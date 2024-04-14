@@ -17,7 +17,7 @@ static struct
 EntrypointHijackCode[] = { {0x68, WceclEntrypointWrapper, 0xC3} };
 #pragma pack(pop)
 #else
-#error No patching code for non x86 architectures
+/* FIXME: No patching code for architectures other than x86. */
 #endif
 
 static BYTE EntrypointRepairCode[sizeof(EntrypointHijackCode)];
@@ -169,8 +169,11 @@ BOOL __stdcall DllMain(HMODULE hModule,
 			CloseHandle(Info.hProcess);
 			CloseHandle(Info.hThread);
 		}
-
+#ifdef _M_IX86
 		WceclPatchEntrypoint();
+#else
+		/* FIXME: No patching code for architectures other than x86. */
+#endif
 		break;
 	};
 	case DLL_THREAD_ATTACH:
