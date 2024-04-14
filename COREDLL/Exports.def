@@ -31,7 +31,7 @@ EXPORTS
 	_wcsupr @232
 	vfwprintf=vfwprintf_WCECL @721
 	fflush @1122
-	fgetws=fgetws_WCECL @1143
+	fgetws @1143
 	fputwc @1141
 	fputws @1144
 	_getstdfilex=_getstdfilex_WCECL @1100

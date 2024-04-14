@@ -196,6 +196,12 @@ void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
 
 void* _fileno_WCECL(FILE* file)
 {
+	void* result = WceclTryGetOrAllocStdHandle(file);
+	if (result != NULL)
+	{
+		return result;
+	}
+
 	return (void*)_get_osfhandle(_fileno(file));
 }
 
@@ -218,22 +224,6 @@ int WINAPI WideCharToMultiByte_WCECL(
 		cbMultiByte,
 		lpDefaultChar,
 		lpUsedDefaultChar);
-}
-
-wchar_t* fgetws_WCECL(wchar_t* w, int count, FILE* file)
-{
-	wchar_t* result = fgetws(w, count, file);
-	if (result == NULL && 
-		file == stdin && count > 2)
-	{
-		result = w;
-		wsprintf(w, L"");
-	}
-	else
-	{
-		return result;
-	}
-	return result;
 }
 
 // Stubs
