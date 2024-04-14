@@ -2,6 +2,8 @@
 #include <assert.h>
 #include <io.h>
 
+static HANDLE ControlEvent = NULL;
+
 /* https://learn.microsoft.com/en-us/windows/console/clearing-the-screen */
 static BOOL WceclConsoleClearScreen(
 	HANDLE hDevice)
@@ -90,6 +92,7 @@ static BOOL WceclConsoleSetMode(
 {
 	if (nInBufSize < sizeof(DWORD))
 	{
+		SetLastError(ERROR_INSUFFICIENT_BUFFER);
 		return FALSE;
 	}
 	return SetConsoleMode(
@@ -107,6 +110,7 @@ static BOOL WceclConsoleGetMode(
 
 	if (nOutBufSize < sizeof(DWORD))
 	{
+		SetLastError(ERROR_INSUFFICIENT_BUFFER);
 		return FALSE;
 	}
 	result = GetConsoleMode(hDevice, &win32ConsoleMode);
@@ -156,6 +160,7 @@ static BOOL WceclConsoleGetRowsCols(
 
 	if (nOutBufSize < sizeof(DWORD))
 	{
+		SetLastError(ERROR_INSUFFICIENT_BUFFER);
 		return FALSE;
 	}
 	
@@ -180,7 +185,38 @@ static BOOL WceclConsoleGetRowsCols(
 	return TRUE;
 }
 
+BOOL WceclConsoleSetControlHandler(PHANDLER_ROUTINE* pInBuffer, DWORD nInBufSize)
+{
+	if (nInBufSize < sizeof(PHANDLER_ROUTINE))
+	{
+		SetLastError(ERROR_INSUFFICIENT_BUFFER);
+		return FALSE;
+	}
+	return SetConsoleCtrlHandler(*pInBuffer, FALSE);
+}
 
+BOOL __stdcall WceclConsoleSignalControlEvent(DWORD ctrlType)
+{
+	if (ControlEvent != NULL)
+	{
+		SetEvent(ControlEvent);
+
+		/* TODO: what should this return? */
+		return TRUE;
+	}
+	return FALSE;
+}
+
+BOOL WceclConsoleSetControlEvent(HANDLE* pInBuffer, DWORD nInBufSize)
+{
+	if (nInBufSize < sizeof(HANDLE))
+	{
+		SetLastError(ERROR_INSUFFICIENT_BUFFER);
+		return FALSE;
+	}
+	ControlEvent = *pInBuffer;
+	return SetConsoleCtrlHandler(WceclConsoleSignalControlEvent, FALSE);
+}
 BOOL WceclConsoleIoControl(
 	HANDLE hDevice,
 	DWORD dwIoControlCode,
@@ -209,9 +245,10 @@ BOOL WceclConsoleIoControl(
 		return WceclConsoleGetRowsCols(hDevice, NULL, (PDWORD)lpOutBuf, nOutBufSize);
 	case IOCTL_CONSOLE_GETSCREENCOLS:
 		return WceclConsoleGetRowsCols(hDevice, (PDWORD)lpOutBuf, NULL, nOutBufSize);
-	default:
-		/* TODO */
-		return FALSE;
+	case IOCTL_CONSOLE_SETCONTROLCHANDLER:
+		return WceclConsoleSetControlHandler((PHANDLER_ROUTINE*)lpInBuf, nInBufSize);
+	case IOCTL_CONSOLE_SETCONTROLCEVENT:
+		return WceclConsoleSetControlEvent((PHANDLE)lpInBuf, nInBufSize);
 	}
 
 	return FALSE;
