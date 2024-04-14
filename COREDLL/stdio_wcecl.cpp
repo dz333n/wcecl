@@ -2,6 +2,47 @@
 #include <assert.h>
 #include <io.h>
 
+/* https://learn.microsoft.com/en-us/windows/console/clearing-the-screen */
+static BOOL WceclConsoleClearScreen(
+	HANDLE hDevice)
+{
+	CHAR_INFO charInfo;
+	COORD scrollTarget;
+	SMALL_RECT scrollRect;
+	CONSOLE_SCREEN_BUFFER_INFO screenInfo;
+
+	if (!GetConsoleScreenBufferInfo(hDevice, &screenInfo))
+	{
+		return FALSE;
+	}
+
+	charInfo.Char.UnicodeChar = L' ';
+	charInfo.Attributes = screenInfo.wAttributes;
+
+	scrollRect.Left = 0;
+	scrollRect.Top = 0;
+	scrollRect.Right = screenInfo.dwSize.X;
+	scrollRect.Bottom = screenInfo.dwSize.Y;
+
+	scrollTarget.X = 0;
+	scrollTarget.Y = -screenInfo.dwSize.Y;
+
+	if (ScrollConsoleScreenBufferW(
+			hDevice,
+			&scrollRect,
+			NULL,
+			scrollTarget,
+			&charInfo) == 0)
+	{
+		return FALSE;
+	}
+
+	screenInfo.dwCursorPosition.X = 0;
+	screenInfo.dwCursorPosition.Y = 0;
+
+	SetConsoleCursorPosition(hDevice, screenInfo.dwCursorPosition);
+}
+
 static DWORD GetWin32ConsoleModeFromWce(DWORD wceConsoleMode)
 {
 	DWORD out = 0;
@@ -102,6 +143,44 @@ static BOOL WceclConsoleGetTitle(
 	return GetConsoleTitleA(lpOutBuf, nOutBufSize);
 }
 
+
+static BOOL WceclConsoleGetRowsCols(
+	HANDLE hDevice,
+	PDWORD lpCols,
+	PDWORD lpRows,
+	DWORD nOutBufSize)
+{
+	CONSOLE_SCREEN_BUFFER_INFO screenInfo;
+	DWORD win32ConsoleMode;
+	BOOL result;
+
+	if (nOutBufSize < sizeof(DWORD))
+	{
+		return FALSE;
+	}
+	
+	if (!GetConsoleScreenBufferInfo(hDevice, &screenInfo))
+	{
+		return FALSE;
+	}
+
+	if (lpRows != NULL)
+	{
+		*lpRows = screenInfo.dwSize.Y;
+	}
+	if (lpCols != NULL)
+	{
+		*lpCols = screenInfo.dwSize.X;
+	}
+	if (lpCols == NULL && lpRows == NULL)
+	{
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
+
 BOOL WceclConsoleIoControl(
 	HANDLE hDevice,
 	DWORD dwIoControlCode,
@@ -123,8 +202,13 @@ BOOL WceclConsoleIoControl(
 	case IOCTL_CONSOLE_GETTITLE:
 		return WceclConsoleGetTitle((LPSTR)lpOutBuf, nOutBufSize);
 	case IOCTL_CONSOLE_CLS:
-		/* TODO */
-		return TRUE;
+		return WceclConsoleClearScreen(hDevice);
+	case IOCTL_CONSOLE_FLUSHINPUT:
+		return FlushConsoleInputBuffer(hDevice);
+	case IOCTL_CONSOLE_GETSCREENROWS:
+		return WceclConsoleGetRowsCols(hDevice, NULL, (PDWORD)lpOutBuf, nOutBufSize);
+	case IOCTL_CONSOLE_GETSCREENCOLS:
+		return WceclConsoleGetRowsCols(hDevice, (PDWORD)lpOutBuf, NULL, nOutBufSize);
 	default:
 		/* TODO */
 		return FALSE;
@@ -182,4 +266,110 @@ BOOL WINAPI GetStdioPathW_WCECL(
 	}
 
 	return FALSE;
+}
+
+static BOOL WceclTryGetStdHandle(FILE* file, PHANDLE handle)
+{
+	if (file == stdin)
+	{
+		*handle = GetStdHandle(STD_INPUT_HANDLE);
+	}
+	else if (file == stdout)
+	{
+		*handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	}
+	else if (file == stderr)
+	{
+		*handle = GetStdHandle(STD_ERROR_HANDLE);
+	}
+	else
+	{
+		return FALSE;
+	}
+	return TRUE;
+}
+
+static BOOL WceclAllocateStdio()
+{
+	HWND hWndConsole;
+	BOOL bConsoleAllocated;
+
+	HANDLE hOldStdIn, hOldStdOut, hOldStdErr;
+
+	hWndConsole = GetConsoleWindow();
+
+	hOldStdIn = GetStdHandle(STD_INPUT_HANDLE);
+	hOldStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	hOldStdErr = GetStdHandle(STD_ERROR_HANDLE);
+
+	if (hWndConsole == NULL)
+	{
+		AllocConsole();
+		hWndConsole = GetConsoleWindow();
+
+		if (hWndConsole == NULL)
+		{
+			return FALSE;
+		}
+
+		bConsoleAllocated = TRUE;
+	}
+	else
+	{
+		bConsoleAllocated = FALSE;
+	}
+
+	assert(hOldStdErr == NULL || hOldStdIn == NULL || hOldStdOut == NULL);
+
+	if (hOldStdIn == NULL)
+	{
+		if (freopen("CONIN$", "r", stdin) == NULL)
+		{
+			goto CLEANUP;
+		}
+	}
+	if (hOldStdOut == NULL)
+	{
+		if(freopen("CONOUT$", "w", stdout) == NULL)
+		{
+			goto CLEANUP;
+		}
+	}
+	if (hOldStdErr == NULL)
+	{
+		if(freopen("CONERR$", "w", stderr) == NULL)
+		{
+			goto CLEANUP;
+		}
+	}
+
+	return TRUE;
+CLEANUP:
+	if (bConsoleAllocated)
+	{
+		FreeConsole();
+	}
+	return FALSE;
+}
+
+/* It seems that CE programs launch a console only when it is about to be
+   used. */
+HANDLE WceclTryGetOrAllocStdHandle(FILE* file)
+{
+	HANDLE hFile;
+
+	if (WceclTryGetStdHandle(file, &hFile) == FALSE)
+	{
+		return NULL;
+	}
+
+	if (hFile == NULL)
+	{
+		if (WceclAllocateStdio() == FALSE)
+		{
+			return FALSE;
+		}
+	}
+
+	return hFile;
 }
