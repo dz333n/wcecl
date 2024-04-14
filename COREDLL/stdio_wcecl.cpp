@@ -302,6 +302,12 @@ static BOOL WceclAllocateStdio()
 	hOldStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	hOldStdErr = GetStdHandle(STD_ERROR_HANDLE);
 
+	if (hWndConsole == NULL &&
+		AttachConsole(ATTACH_PARENT_PROCESS))
+	{
+		hWndConsole = GetConsoleWindow();
+	}
+
 	if (hWndConsole == NULL)
 	{
 		AllocConsole();
