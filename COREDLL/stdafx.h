@@ -85,3 +85,5 @@ BOOL ProgramErrorDialog(LPCWSTR Text, BOOL YesNo);
 VOID DisplayAssert32ErrorDialog(LPCWSTR ExpressionText, LPCWSTR Comment, BOOL ShowLastError);
 DWORD GetBaseAddress(HANDLE pHandle);
 HMODULE GetModule(HANDLE pHandle);
+
+#include "stdio_wcecl.h"
