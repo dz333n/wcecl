@@ -289,6 +289,8 @@ static BOOL WceclTryGetStdHandle(FILE* file, PHANDLE handle)
 	return TRUE;
 }
 
+/* This is only really executed, if the WinCE application has been converted to 
+   Win32 GUI application (WinCE has no distinction between GUI and CUI subsystems) */
 static BOOL WceclAllocateStdio()
 {
 	HWND hWndConsole;
@@ -301,12 +303,6 @@ static BOOL WceclAllocateStdio()
 	hOldStdIn = GetStdHandle(STD_INPUT_HANDLE);
 	hOldStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	hOldStdErr = GetStdHandle(STD_ERROR_HANDLE);
-
-	if (hWndConsole == NULL &&
-		AttachConsole(ATTACH_PARENT_PROCESS))
-	{
-		hWndConsole = GetConsoleWindow();
-	}
 
 	if (hWndConsole == NULL)
 	{
