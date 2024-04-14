@@ -196,7 +196,13 @@ void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
 
 void* _fileno_WCECL(FILE* file)
 {
-	/* https://stackoverflow.com/a/3989842 */
+	void* result = WceclTryGetOrAllocStdHandle(file);
+	if (result != NULL)
+	{
+		return result;
+	}
+
+  /* https://stackoverflow.com/a/3989842 */
 	return (void*)_get_osfhandle(_fileno(file));
 }
 

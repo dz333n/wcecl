@@ -240,6 +240,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="stdio_wcecl.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="winuser_wcecl.h" />
   </ItemGroup>
