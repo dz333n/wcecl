@@ -202,6 +202,7 @@ void* _fileno_WCECL(FILE* file)
 		return result;
 	}
 
+	/* https://stackoverflow.com/a/3989842 */
 	return (void*)_get_osfhandle(_fileno(file));
 }
 
