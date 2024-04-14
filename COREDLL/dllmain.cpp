@@ -69,6 +69,7 @@ static void WceclEntrypointWrapper()
 	}
 
 	memcpy(Entrypoint, EntrypointRepairCode, sizeof(EntrypointRepairCode));
+	FlushInstructionCache(GetCurrentProcess(), Entrypoint, sizeof(EntrypointRepairCode));
 	result = Entrypoint(GetModuleHandleW(NULL), NULL, commandLine, nCmdShow);
 	ExitProcess(result);
 }
@@ -113,7 +114,8 @@ static BOOL WceclPatchEntrypoint()
 
 	memcpy(EntrypointRepairCode, entrypoint, sizeof(EntrypointRepairCode));
 	memcpy(entrypoint, EntrypointHijackCode, sizeof(EntrypointHijackCode));
-	
+	FlushInstructionCache(GetCurrentProcess(), entrypoint, sizeof(EntrypointHijackCode));
+
 	Entrypoint = entrypoint;
 	
 	return TRUE;
@@ -167,7 +169,6 @@ BOOL __stdcall DllMain(HMODULE hModule,
 		WceclPatchEntrypoint();
 		break;
 	};
-	//
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:
