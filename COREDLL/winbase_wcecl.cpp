@@ -487,6 +487,21 @@ BOOL WINAPI DeviceIoControl_WCECL(
 	LPDWORD lpBytesReturned,
 	LPOVERLAPPED lpOverlapped)
 {
+	USHORT type = ((dwIoControlCode & 0xFFFF0000) >> 16);
+
+	if (type == FILE_DEVICE_CONSOLE)
+	{
+		return WceclConsoleIoControl(
+			hDevice, 
+			dwIoControlCode,
+			lpInBuf,
+			nInBufSize,
+			lpOutBuf,
+			nOutBufSize,
+			lpBytesReturned,
+			lpOverlapped);
+	}
+
 	auto result = DeviceIoControl(
 		hDevice,
 		dwIoControlCode,
