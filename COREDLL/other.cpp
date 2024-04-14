@@ -194,59 +194,9 @@ void CeLogSetZones(DWORD dwZoneUser,        // User-defined zones
 	// wtf!?
 }
 
-FILE* WINAPI _getstdfilex_WCECL(DWORD type)
-{
-	switch (type)
-	{
-	case 0:
-		return stdin;
-	case 1:
-		return stdout;
-	case 2:
-		return stderr;
-	default:
-		Assert32(FALSE);
-		return NULL;
-	}
-}
-
-BOOL WINAPI SetStdioPathW_WCECL(
-	DWORD id,
-	PWSTR pwszPath)
-{
-	/* TODO: test */
-	switch (id)
-	{
-	case 0:
-		return (_wfreopen(pwszPath, L"r", stdin) != NULL);
-	case 1:
-		return (_wfreopen(pwszPath, L"w", stdout) != NULL);
-	case 2:
-		return (_wfreopen(pwszPath, L"w", stderr) != NULL);
-	default:
-		Assert32(FALSE);
-		return NULL;
-	}
-}
-
-BOOL WINAPI GetStdioPathW_WCECL(
-	DWORD id,
-	PWSTR pwszBuf,
-	LPDWORD lpdwLen)
-{
-	/* TODO: test */
-	FILE* filePtr = _getstdfilex_WCECL(id);
-	HANDLE hFile = (HANDLE)_get_osfhandle(_fileno(filePtr));
-	if (GetFinalPathNameByHandleW(hFile, pwszBuf, *lpdwLen, 0) < *lpdwLen)
-	{
-		return TRUE;
-	}
-
-	return FALSE;
-}
-
 void* _fileno_WCECL(FILE* file)
 {
+	/* https://stackoverflow.com/a/3989842 */
 	return (void*)_get_osfhandle(_fileno(file));
 }
 
@@ -269,22 +219,6 @@ int WINAPI WideCharToMultiByte_WCECL(
 		cbMultiByte,
 		lpDefaultChar,
 		lpUsedDefaultChar);
-}
-
-wchar_t* fgetws_WCECL(wchar_t* w, int count, FILE* file)
-{
-	wchar_t* result = fgetws(w, count, file);
-	if (result == NULL && 
-		file == stdin && count > 2)
-	{
-		result = w;
-		wsprintf(w, L"");
-	}
-	else
-	{
-		return result;
-	}
-	return result;
 }
 
 // Stubs
