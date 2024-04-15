@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "winuser_wcecl.h"
+#include <map>
 
 #define OK_BUTTON_UNIMPLEMENTED
 
@@ -274,12 +275,102 @@ LRESULT WINAPI DefWindowProcW_WCECL(
 	return result;
 }
 
+static std::map<std::wstring, WNDPROCWCE> WrappedWndProcs;
+
+BOOL GetWstringClassName(HWND hWnd, std::wstring& result)
+{
+	WCHAR wszBuffer[MAX_PATH];
+	if (GetClassNameW(hWnd, wszBuffer, MAX_PATH) != 0)
+	{
+		result = std::wstring(wszBuffer);
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+LRESULT __stdcall WndProcWrapper(
+	HWND hWnd, 
+	UINT uMessage, 
+	WPARAM wParam,
+	LPARAM lParam)
+{
+	std::wstring className;
+
+	if (GetWstringClassName(hWnd, className) == FALSE)
+	{
+		/* Perhaps the program should crash if an invalid classname somehow 
+		   gets to here? */
+		return DefWindowProcW(hWnd, uMessage, wParam, lParam);
+	}
+
+	if (WrappedWndProcs.find(className) != WrappedWndProcs.end())
+	{
+		WNDPROCWCE lpfnWceWndProc = WrappedWndProcs.at(className);
+		return lpfnWceWndProc(hWnd, uMessage, wParam, lParam);
+	}
+	else
+	{
+		Assert32(TRUE);
+	}
+
+	return DefWindowProcW(hWnd, uMessage, wParam, lParam);
+}
+
+LRESULT __cdecl WndProcReverseWrapper(
+	HWND hWnd,
+	UINT uMessage,
+	WPARAM wParam,
+	LPARAM lParam)
+{
+	WNDPROC win32WndProc = (WNDPROC)GetWindowLongPtrW(hWnd, GWLP_WNDPROC);
+	return CallWindowProcW(win32WndProc, hWnd, uMessage, wParam, lParam);
+}
+
+BOOL WINAPI GetClassInfoW_WCECL(HINSTANCE hInstance, LPCWSTR lpClassName, PWNDCLASSW_WCECL lpWceClass)
+{
+	WNDCLASSW win32class;
+	BOOL result;
+
+	result = GetClassInfoW(hInstance, lpClassName, &win32class);
+	lpWceClass->style = win32class.style;
+	if (WrappedWndProcs.count(std::wstring(win32class.lpszClassName)) > 0)
+	{
+		lpWceClass->lpfnWndProc = WrappedWndProcs.at(std::wstring(win32class.lpszClassName));
+	}
+	else
+	{
+		lpWceClass->lpfnWndProc = WndProcReverseWrapper;
+	}
+	lpWceClass->cbClsExtra = win32class.cbClsExtra;
+	lpWceClass->cbWndExtra = win32class.cbWndExtra;
+	lpWceClass->hInstance = win32class.hInstance;
+	lpWceClass->hIcon = win32class.hIcon;
+	lpWceClass->hCursor = win32class.hCursor;
+	lpWceClass->hbrBackground = win32class.hbrBackground;
+	lpWceClass->lpszMenuName = win32class.lpszMenuName;
+	lpWceClass->lpszClassName = win32class.lpszClassName;
+
+	return result;
+}
+
+WNDPROC WceclWrapWndProc(LPCWSTR wszClassName, WNDPROCWCE lpfnWceWndProc)
+{
+	if (WrappedWndProcs.count(std::wstring(wszClassName)) > 0)
+	{
+		return NULL;
+	}
+
+	WrappedWndProcs[wszClassName] = lpfnWceWndProc;
+	return WndProcWrapper;
+}
+
 ATOM WINAPI RegisterClassW_WCECL(CONST WNDCLASSW_WCECL *lpWndClass)
 {
 	WNDCLASSW wndClass = { };
 
 	wndClass.style = lpWndClass->style;
-	wndClass.lpfnWndProc = lpWndClass->lpfnWndProc;
+	wndClass.lpfnWndProc = WceclWrapWndProc(lpWndClass->lpszClassName, lpWndClass->lpfnWndProc);
 	wndClass.cbClsExtra = lpWndClass->cbClsExtra;
 	wndClass.cbWndExtra = lpWndClass->cbWndExtra;
 	wndClass.hInstance = lpWndClass->hInstance;

@@ -249,6 +249,8 @@
     <ClCompile Include="dbgapi_wcecl.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="excpt_wcecl.cpp" />
+    <ClCompile Include="freecell_support_wip.cpp" />
+    <ClCompile Include="imagelist_wcecl.cpp" />
     <ClCompile Include="imm_wcecl.cpp" />
     <ClCompile Include="mmsystem_wcecl.cpp" />
     <ClCompile Include="other.cpp" />
