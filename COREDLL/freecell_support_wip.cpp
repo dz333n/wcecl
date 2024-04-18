@@ -669,3 +669,23 @@ BOOL WINAPI PatBlt_WCECL(HDC hdc, int x, int y, int w, int h, DWORD rop)
 {
     return PatBlt(hdc, x, y, w, h, rop);
 }
+
+HACCEL WINAPI LoadAcceleratorsW_WCECL(HINSTANCE hInstance, LPCWSTR lpTableName)
+{
+    return LoadAcceleratorsW(hInstance, lpTableName);
+}
+
+int WINAPI TranslateAcceleratorW_WCECL(HWND hWnd, HACCEL hAccelTable, LPMSG lpMsg)
+{
+    return TranslateAcceleratorW(hWnd, hAccelTable, lpMsg);
+}
+
+BOOL WINAPI EnableMenuItem_WCECL(HMENU hMenu, UINT uIDEnableItem, UINT uEnable)
+{
+    return EnableMenuItem(hMenu, uIDEnableItem, uEnable);
+}
+
+int WINAPI CombineRgn_WCECL(HRGN hrgnDst, HRGN hrgnSrc1, HRGN hrgnSrc2, int iMode)
+{
+    return CombineRgn(hrgnDst, hrgnSrc1, hrgnSrc2, iMode);
+}

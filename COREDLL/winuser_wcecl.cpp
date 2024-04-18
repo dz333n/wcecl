@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "winuser_wcecl.h"
 #include <map>
+#include <assert.h>
 
 #define OK_BUTTON_UNIMPLEMENTED
 
@@ -107,12 +108,41 @@ BOOL WINAPI IsDialogMessageW_WCECL(
 	return result;
 }
 
+/* Checks if the parameter Param is not in memory occupied by the output 
+   parameter outParam. */
+template<typename T1, typename T2>
+static BOOL CheckOutParam(const T1* outParam, const T2& Param)
+{
+	SIZE_T outParamSize = sizeof(T1);
+	ULONG_PTR outParamPtr = (ULONG_PTR)outParam;
+	ULONG_PTR paramPtr = (ULONG_PTR)&Param;
+
+	if (paramPtr >= outParamPtr && paramPtr < outParamPtr + outParamSize)
+	{
+		assert(FALSE);
+	}
+
+	paramPtr += sizeof(T2) - 1;
+	if (paramPtr >= outParamPtr && paramPtr < outParamPtr + outParamSize)
+	{
+		assert(FALSE);
+	}
+
+	return TRUE;
+}
+
+
 BOOL WINAPI GetMessageW_WCECL(
 	LPMSG lpMsg,
 	HWND hWnd,
 	UINT wMsgFilterMin,
 	UINT wMsgFilterMax)
 {
+	assert(CheckOutParam(lpMsg, lpMsg));
+	assert(CheckOutParam(lpMsg, hWnd));
+	assert(CheckOutParam(lpMsg, wMsgFilterMin));
+	assert(CheckOutParam(lpMsg, wMsgFilterMax));
+
 	auto result = GetMessageW(lpMsg, hWnd, wMsgFilterMin, wMsgFilterMax);
 	return result;
 }
@@ -716,6 +746,13 @@ LRESULT WINAPI SendMessageW_WCECL(
 	WPARAM wParam,
 	LPARAM lParam)
 {
+	if (Msg == WM_USER + 81)
+	{
+		/* TODO */
+		//Msg = TB_SETTOOLTIPS;
+		return 0;
+	}
+
 	auto result = SendMessageW(hWnd, Msg, wParam, lParam);
 	return result;
 }

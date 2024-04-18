@@ -55,7 +55,7 @@ EXPORTS
     EqualRgn @91
     CreateAcceleratorTableW @92
     DestroyAcceleratorTable @93
-    LoadAcceleratorsW @94
+    LoadAcceleratorsW = LoadAcceleratorsW_WCECL @94
     RegisterClassW = RegisterClassW_WCECL @95
     CopyRect = CopyRect_WCECL @96
     EqualRect @97
@@ -427,14 +427,14 @@ EXPORTS
     GetMouseMovePoints = GetMouseMovePoints_WCECL @820
     GetAsyncKeyState = GetAsyncKeyState_WCECL @826
     RegisterHotKey @835
-    TranslateAcceleratorW @838
+    TranslateAcceleratorW = TranslateAcceleratorW_WCECL @838
     InsertMenuW @841
     AppendMenuW = AppendMenuW_WCECL @842
     RemoveMenu @843
     DestroyMenu @844
     TrackPopupMenuEx @845
     LoadMenuW @846
-    EnableMenuItem @847
+    EnableMenuItem = EnableMenuItem_WCECL @847
     CheckMenuItem @848
     CheckMenuRadioItem = CheckMenuRadioItem_WCECL @849
     DeleteMenu @850
@@ -538,7 +538,7 @@ EXPORTS
     StartPage = StartPage_WCECL @964
     EnumFontFamiliesW = EnumFontFamiliesW_WCECL @965
     GetTextFaceW @967
-    CombineRgn @968
+    CombineRgn = CombineRgn_WCECL @968
     CreateRectRgnIndirect = CreateRectRgnIndirect_WCECL @969
     ExcludeClipRect @970
     GetClipBox = GetClipBox_WCECL @971
