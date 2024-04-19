@@ -593,5 +593,87 @@ BOOL WINAPI TerminateProcess_WCECL(
 	auto result = ::TerminateProcess(hProcess, uExitCode);
 	return result;
 }
+
+int WINAPI MulDiv_WCECL(int nNumber, int nNumerator, int nDenominator)
+{
+	return MulDiv(nNumber, nNumber, nDenominator);
+}
+
+ATOM WINAPI GlobalAddAtomW_WCECL(LPCWSTR lpString)
+{
+	return GlobalAddAtomW(lpString);
+}
+
+void WINAPI DeleteCriticalSection_WCECL(LPCRITICAL_SECTION pCriticalSection)
+{
+	DeleteCriticalSection(pCriticalSection);
+}
+
+void WINAPI EnterCriticalSection_WCECL(LPCRITICAL_SECTION pCriticalSection)
+{
+	EnterCriticalSection(pCriticalSection);
+}
+
+void WINAPI LeaveCriticalSection_WCECL(LPCRITICAL_SECTION pCriticalSection)
+{
+	LeaveCriticalSection(pCriticalSection);
+}
+
+void WINAPI InitializeCriticalSection_WCECL(LPCRITICAL_SECTION pCriticalSection)
+{
+	InitializeCriticalSection(pCriticalSection);
+}
+
+BOOL WINAPI UnmapViewOfFile_WCECL(LPCVOID pAddress)
+{
+	return UnmapViewOfFile(pAddress);
+}
+
+LPVOID WINAPI MapViewOfFile_WCECL(
+	HANDLE hFile,
+	DWORD dwDesiredAddress,
+	DWORD dwFileOffsetHigh,
+	DWORD dwFileOffsetLow,
+	DWORD dwBytesToMap)
+{
+	return MapViewOfFile(
+		hFile,
+		dwDesiredAddress,
+		dwFileOffsetHigh,
+		dwFileOffsetLow,
+		dwBytesToMap);
+}
+
+HANDLE WINAPI CreateFileMappingW_WCECL(
+	HANDLE hFile,
+	LPSECURITY_ATTRIBUTES lpFileMappingAttributes,
+	DWORD flProtect,
+	DWORD dwMaximumSizeHigh,
+	DWORD dwMaximumSizeLow,
+	LPCWSTR lpName)
+{
+	return CreateFileMappingW(
+		hFile,
+		lpFileMappingAttributes,
+		flProtect,
+		dwMaximumSizeHigh,
+		dwMaximumSizeLow,
+		lpName);
+}
+
+DWORD WINAPI GetFileSize_WCECL(HANDLE hFile, LPDWORD lpFileSizeHigh)
+{
+	return GetFileSize(hFile, lpFileSizeHigh);
+}
+
+HANDLE WINAPI GetProcessHeap_WCECL()
+{
+	return GetProcessHeap();
+}
+
+int WINAPI HeapFree_WCECL(HANDLE hHeap, DWORD dwFlags, LPVOID lpMem)
+{
+	return HeapFree(hHeap, dwFlags, lpMem);
+}
 // Stubs
 

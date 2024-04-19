@@ -206,25 +206,49 @@ void* _fileno_WCECL(FILE* file)
 	return (void*)_get_osfhandle(_fileno(file));
 }
 
-int WINAPI WideCharToMultiByte_WCECL(
-	UINT CodePage,
-	DWORD dwFlags,
-	LPCWSTR lpWideCharStr,
-	int cchWideChar,
-	LPSTR lpMultiByteStr,
-	int cbMultiByte,
-	LPCSTR lpDefaultChar,
-	LPBOOL lpUsedDefaultChar)
+int WINAPI GetSystemMetrics_WCECL(int i)
 {
-	return WideCharToMultiByte(
-		CodePage,
-		dwFlags,
-		lpWideCharStr,
-		cchWideChar,
-		lpMultiByteStr,
-		cbMultiByte,
-		lpDefaultChar,
-		lpUsedDefaultChar);
+	return GetSystemMetrics(i);
+}
+
+int WINAPI DrawTextW_WCECL(
+	HDC hDc, 
+	LPCWSTR lpchText, 
+	int cchText, 
+	LPRECT lprc, 
+	UINT format)
+{
+	return DrawTextW(hDc, lpchText, cchText, lprc, format);
+}
+
+COLORREF WINAPI SetTextColor_WCECL(HDC hDc, COLORREF color) 
+{
+	return SetTextColor(hDc, color);
+}
+
+DWORD WINAPI GetLastError_WCECL() 
+{
+	return GetLastError();
+}
+
+void WINAPI SetLastError_WCECL(DWORD dwErrorCode)
+{
+	SetLastError(dwErrorCode);
+}
+
+DWORD WINAPI GetSysColor_WCECL(int index) 
+{
+	return GetSysColor(index);
+}
+
+HBRUSH WINAPI GetSysColorBrush_WCECL(int nIndex)
+{
+	return GetSysColorBrush(nIndex);
+}
+
+DWORD GetProcessVersion_WCECL(DWORD ProcessId)
+{
+	return GetProcessVersion(ProcessId);
 }
 
 // Stubs

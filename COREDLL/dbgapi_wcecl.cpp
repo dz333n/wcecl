@@ -4,13 +4,23 @@
 // Functions
 void WINAPIV NKDbgPrintfW(LPCWSTR lpszFmt, ...)
 {
-	ProgramErrorDialog(L"Function NKDbgPrintfW is not implemented yet.", FALSE);
-
 	va_list args;
 	va_start(args, lpszFmt);
-	// todo
+	
+	AllocConsole();
+	freopen("CONOUT$", "w", stdout);
+
+	vwprintf(lpszFmt, args);
+
+	ProgramErrorDialog(L"Function NKDbgPrintfW is not implemented yet.", FALSE);
 	va_end(args);
 }
+
+void WINAPI OutputDebugStringW_WCECL(LPCWSTR str)
+{
+	OutputDebugStringW(str);
+}
+
 
 // Stubs
 

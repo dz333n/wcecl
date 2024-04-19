@@ -26,10 +26,12 @@
 #include <string>      // std::string, std::wstring
 #include <algorithm>   // std::copy 
 
+typedef LRESULT(__cdecl *WNDPROCWCE)(HWND hWnd, UINT uMessage, WPARAM, LPARAM);
+
 // STRUCTS
 typedef struct tagWNDCLASSW_WCECL {
 	UINT        style;
-	WNDPROC     lpfnWndProc;
+	WNDPROCWCE  lpfnWndProc;
 	int         cbClsExtra;
 	int         cbWndExtra;
 	HINSTANCE   hInstance;

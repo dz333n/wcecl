@@ -83,6 +83,12 @@
     <ClCompile Include="stdio_wcecl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="winnls_wcecl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stringapiset_wcecl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Exports.def">

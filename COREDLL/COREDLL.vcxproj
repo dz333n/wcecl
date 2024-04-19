@@ -260,12 +260,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="stdio_wcecl.cpp" />
+    <ClCompile Include="stringapiset_wcecl.cpp" />
     <ClCompile Include="strsafe_wcecl.cpp" />
     <ClCompile Include="wcecl_dialogs.cpp" />
     <ClCompile Include="wcecl_memtools.cpp" />
     <ClCompile Include="winbase_wcecl.cpp" />
     <ClCompile Include="windows_wcecl.cpp" />
     <ClCompile Include="wingdi_wcecl.cpp" />
+    <ClCompile Include="winnls_wcecl.cpp" />
     <ClCompile Include="winreg_wcecl.cpp" />
     <ClCompile Include="winuser_wcecl.cpp" />
   </ItemGroup>

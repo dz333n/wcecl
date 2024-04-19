@@ -135,10 +135,6 @@ BOOL __stdcall DllMain(HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 	{
-		AllocConsole();
-		freopen("CONOUT$", "w", stdout);
-		freopen("CONIN$", "r", stdin);
-
 		if (MessageBoxExW(
 			NULL,
 			L"Attach a debugger now?",
