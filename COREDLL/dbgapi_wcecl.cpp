@@ -16,5 +16,11 @@ void WINAPIV NKDbgPrintfW(LPCWSTR lpszFmt, ...)
 	va_end(args);
 }
 
+void WINAPI OutputDebugStringW_WCECL(LPCWSTR str)
+{
+	OutputDebugStringW(str);
+}
+
+
 // Stubs
 

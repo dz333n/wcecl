@@ -777,5 +777,341 @@ HANDLE WINAPI LoadImageW_WCECL(
 	return result;
 }
 
+BOOL WINAPI EnableMenuItem_WCECL(HMENU hMenu, UINT uIDEnableItem, UINT uEnable)
+{
+	return EnableMenuItem(hMenu, uIDEnableItem, uEnable);
+}
+
+HACCEL WINAPI LoadAcceleratorsW_WCECL(HINSTANCE hInstance, LPCWSTR lpTableName)
+{
+	return LoadAcceleratorsW(hInstance, lpTableName);
+}
+
+int WINAPI TranslateAcceleratorW_WCECL(HWND hWnd, HACCEL hAccelTable, LPMSG lpMsg)
+{
+	return TranslateAcceleratorW(hWnd, hAccelTable, lpMsg);
+}
+
+LPWSTR WINAPI CharUpperW_WCECL(LPWSTR lpString)
+{
+	return CharUpperW(lpString);
+}
+
+BOOL WINAPI CheckMenuRadioItem_WCECL(
+	HMENU hMenu,
+	UINT first,
+	UINT last,
+	UINT check,
+	UINT flags)
+{
+	return CheckMenuRadioItem(hMenu, first, last, check, flags);
+}
+
+
+BOOL WINAPI UnregisterClassW_WCECL(LPCWSTR wszClassName, HINSTANCE hInstance)
+{
+	return UnregisterClassW(wszClassName, hInstance);
+}
+
+BOOL WINAPI AdjustWindowRectEx_WCECL(
+	LPRECT lpRect,
+	DWORD dwStyle,
+	BOOL bMenu,
+	DWORD dwExStyle)
+{
+	return AdjustWindowRectEx(lpRect, dwStyle, bMenu, dwExStyle);
+}
+
+BOOL WINAPI AppendMenuW_WCECL(
+	HMENU hMenu,
+	UINT uFlags,
+	ULONG_PTR uIDNewItem,
+	LPCWSTR lpNewItem)
+{
+	return AppendMenuW(hMenu, uFlags, uIDNewItem, lpNewItem);
+}
+
+BOOL WINAPI UnionRect_WCECL(LPRECT lprcDst, const RECT* lpSrc1, const RECT* lpSrc2)
+{
+	return UnionRect(lprcDst, lpSrc1, lpSrc2);
+}
+
+
+BOOL WINAPI TransparentBlt_WCECL(
+	HDC hdcDest,
+	int xoriginDest,
+	int yoriginDest,
+	int wDest,
+	int hDest,
+	HDC hdcSrc,
+	int xoriginSrc,
+	int yoriginSrc,
+	int wSrc,
+	int hSrc,
+	UINT crTransparent)
+{
+	return TransparentBlt(
+		hdcDest,
+		xoriginDest,
+		yoriginDest,
+		wDest,
+		hDest,
+		hdcSrc,
+		xoriginSrc,
+		yoriginSrc,
+		wSrc,
+		hSrc,
+		crTransparent);
+}
+
+BOOL WINAPI SystemParametersInfoW_WCECL(
+	UINT uiAction,
+	UINT uiParam,
+	PVOID pvParam,
+	UINT fWinIni)
+{
+	return SystemParametersInfoW(uiAction, uiParam, pvParam, fWinIni);
+}
+
+
+LONG WINAPI SetWindowLongW_WCECL(HWND hWnd, int nIndex, LONG dwNewLong)
+{
+	if (nIndex == GWL_WNDPROC)
+	{
+		Assert32Ex(TRUE, L"Unimplemented");
+	}
+	return SetWindowLongW(hWnd, nIndex, dwNewLong);
+}
+
+BOOL WINAPI SetWindowTextW_WCECL(HWND hWnd, LPCWSTR lpString)
+{
+	return SetWindowTextW(hWnd, lpString);
+}
+
+BOOL WINAPI ShowCaret_WCECL(HWND hWnd)
+{
+	return ShowCaret(hWnd);
+}
+
+BOOL WINAPI SetScrollRange_WCECL(
+	HWND hWnd,
+	int nBar,
+	int nMinPos,
+	int nMaxPos,
+	BOOL bRedraw)
+{
+	return SetScrollRange(hWnd, nBar, nMinPos, nMaxPos, bRedraw);
+}
+
+int WINAPI ClientToScreen_WCECL(HWND hWnd, LPPOINT lpPoint)
+{
+	return ClientToScreen(hWnd, lpPoint);
+}
+
+BOOL WINAPI ScreenToClient_WCECL(HWND hWnd, LPPOINT lpPoint)
+{
+	return ScreenToClient(hWnd, lpPoint);
+}
+
+BOOL WINAPI CloseClipboard_WCECL()
+{
+	return CloseClipboard();
+}
+
+BOOL WINAPI OpenClipboard_WCECL(HWND hWndNewOrder)
+{
+	return OpenClipboard(hWndNewOrder);
+}
+
+SHORT WINAPI GetAsyncKeyState_WCECL(int key)
+{
+	return GetAsyncKeyState(key);
+}
+
+HANDLE WINAPI GetClipboardData_WCECL(UINT uFormat)
+{
+	return GetClipboardData(uFormat);
+}
+
+BOOL WINAPI GetClipCursor_WCECL(LPRECT lpRect)
+{
+	return GetClipCursor(lpRect);
+}
+
+int WINAPI GetDlgCtrlID_WCECL(HWND hWnd)
+{
+	return GetDlgCtrlID(hWnd);
+}
+
+HWND WINAPI GetFocus_WCECL()
+{
+	return GetFocus();
+}
+
+HWND WINAPI GetForegroundWindow_WCECL()
+{
+	return GetForegroundWindow();
+}
+
+BOOL WINAPI GetUpdateRect_WCECL(HWND hWnd, LPRECT lpRect, BOOL bErase)
+{
+	return GetUpdateRect(hWnd, lpRect, bErase);
+}
+
+int WINAPI GetUpdateRgn_WCECL(HWND hWnd, HRGN hRgn, BOOL bErase)
+{
+	return GetUpdateRgn(hWnd, hRgn, bErase);
+}
+
+HWND WINAPI GetWindow_WCECL(HWND hWnd, UINT uCmd)
+{
+	return GetWindow(hWnd, uCmd);
+}
+
+LONG WINAPI GetWindowLongW_WCECL(HWND hWnd, int nIndex)
+{
+	return GetWindowLongW(hWnd, nIndex);
+}
+
+int WINAPI GetWindowTextLengthW_WCECL(HWND hWnd)
+{
+	return GetWindowTextLengthW(hWnd);
+}
+
+int WINAPI GetWindowTextW_WCECL(HWND hWnd, LPWSTR lpString, int nMaxCount)
+{
+	return GetWindowTextW(hWnd, lpString, nMaxCount);
+}
+
+BOOL WINAPI HideCaret_WCECL(HWND hWnd)
+{
+	return HideCaret(hWnd);
+}
+
+HANDLE WINAPI GetPropW_WCECL(HWND hWnd, LPCWSTR lpString)
+{
+	return GetPropW(hWnd, lpString);
+}
+
+BOOL WINAPI GetScrollInfo_WCECL(HWND hWnd, int nBar, LPSCROLLINFO lpsi)
+{
+	return GetScrollInfo(hWnd, nBar, lpsi);
+}
+
+DWORD WINAPI GetMessagePos_WCECL()
+{
+	return GetMessagePos();
+}
+
+HWND WINAPI GetNextDlgTabItem_WCECL(HWND hDlg, HWND hCtl, BOOL bPrevious)
+{
+	return GetNextDlgTabItem(hDlg, hCtl, bPrevious);
+}
+
+HWND WINAPI GetParent_WCECL(HWND hWnd)
+{
+	return GetParent(hWnd);
+}
+
+BOOL WINAPI MessageBeep_WCECL(UINT uType)
+{
+	return MessageBeep(uType);
+}
+
+HMONITOR WINAPI MonitorFromPoint_WCECL(POINT pt, DWORD dwFlags)
+{
+	return MonitorFromPoint(pt, dwFlags);
+}
+
+int WINAPI MoveWindow_WCECL(
+	HWND hWnd,
+	int x,
+	int y,
+	int nWidth,
+	int nHeight,
+	BOOL bRepaint)
+{
+	return MoveWindow(hWnd, x, y, nWidth, nHeight, bRepaint);
+}
+
+DWORD WINAPI MsgWaitForMultipleObjectsEx_WCECL(
+	DWORD nCount,
+	const HANDLE* pHandles,
+	DWORD dwMilliseconds,
+	DWORD dwWakeMask,
+	DWORD dwFlags)
+{
+	return MsgWaitForMultipleObjectsEx(
+		nCount,
+		pHandles,
+		dwMilliseconds,
+		dwWakeMask,
+		dwFlags);
+}
+
+BOOL WINAPI OffsetRect_WCECL(LPRECT lpRect, int x, int y)
+{
+	return OffsetRect(lpRect, x, y);
+}
+
+BOOL WINAPI RedrawWindow_WCECL(
+	HWND hWnd,
+	const RECT* lprcUpdate,
+	HRGN hrgnUpdate,
+	UINT flags)
+{
+	return RedrawWindow(hWnd, lprcUpdate, hrgnUpdate, flags);
+}
+
+int WINAPI ScrollWindowEx_WCECL(
+	HWND hWnd,
+	int dx,
+	int dy,
+	const RECT* prcScroll,
+	const RECT* prcClip,
+	HRGN hrgnUpdate,
+	LPRECT prcUpdate,
+	UINT flags)
+{
+	return ScrollWindowEx(
+		hWnd,
+		dx,
+		dy,
+		prcScroll,
+		prcClip,
+		hrgnUpdate,
+		prcUpdate,
+		flags);
+}
+
+LRESULT WINAPI SendDlgItemMessageW_WCECL(
+	HWND hDlg,
+	int nIDDlgItem,
+	UINT Msg,
+	WPARAM wParam,
+	LPARAM lParam)
+{
+	return SendDlgItemMessageW(
+		hDlg,
+		nIDDlgItem,
+		Msg,
+		wParam,
+		lParam);
+}
+
+HCURSOR WINAPI SetCursor_WCECL(HCURSOR hCursor)
+{
+	return SetCursor(hCursor);
+}
+
+BOOL WINAPI SendNotifyMessageW_WCECL(
+	HWND hWnd,
+	UINT uMessage,
+	WPARAM wParam,
+	LPARAM lParam)
+{
+	return SendNotifyMessageW(hWnd, uMessage, wParam, lParam);
+}
+
 // Stubs
 Stub(GetGestureInfo);

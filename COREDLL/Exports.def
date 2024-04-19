@@ -1,10 +1,140 @@
 LIBRARY COREDLL
 EXPORTS
+
+    ; commctrl_wcecl.cpp
+    ImageList_Add = ImageList_Add_WCECL @738
+    ImageList_AddMasked = ImageList_AddMasked_WCECL @739
+    ImageList_BeginDrag = ImageList_BeginDrag_WCECL @740
+    ImageList_Create = ImageList_Create_WCECL @742
+    ImageList_Destroy = ImageList_Destroy_WCECL @743
+    ImageList_DragEnter = ImageList_DragEnter_WCECL @744
+    ImageList_DragLeave = ImageList_DragLeave_WCECL @745
+    ImageList_DragMove = ImageList_DragMove_WCECL @746
+    ImageList_DragShowNolock = ImageList_DragShowNolock_WCECL @747
+    ImageList_Draw = ImageList_Draw_WCECL @748
+    ImageList_DrawEx = ImageList_DrawEx_WCECL @749
+    ImageList_DrawIndirect = ImageList_DrawIndirect_WCECL @750
+    ImageList_EndDrag = ImageList_EndDrag_WCECL @751
+    ImageList_GetBkColor = ImageList_GetBkColor_WCECL @752
+    ImageList_GetDragImage = ImageList_GetDragImage_WCECL @753
+    ImageList_GetIcon = ImageList_GetIcon_WCECL @754
+    ImageList_GetIconSize = ImageList_GetIconSize_WCECL @755
+    ImageList_GetImageCount = ImageList_GetImageCount_WCECL @756
+    ImageList_GetImageInfo = ImageList_GetImageInfo_WCECL @757
+    ImageList_LoadImage = ImageList_LoadImage_WCECL @758
+    ImageList_Merge = ImageList_Merge_WCECL @759
+    ImageList_Remove = ImageList_Remove_WCECL @760
+    ImageList_Replace = ImageList_Replace_WCECL @761
+    ImageList_ReplaceIcon = ImageList_ReplaceIcon_WCECL @762
+    ImageList_SetBkColor = ImageList_SetBkColor_WCECL @763
+    ImageList_SetDragCursorImage = ImageList_SetDragCursorImage_WCECL @764
+    ImageList_SetIconSize = ImageList_SetIconSize_WCECL @765
+    ImageList_SetOverlayImage = ImageList_SetOverlayImage_WCECL @766
+    ImageList_Copy = ImageList_Copy_WCECL @767
+    ImageList_Duplicate = ImageList_Duplicate_WCECL @768
+    ImageList_SetImageCount = ImageList_SetImageCount_WCECL @769
+
+    ; dbgapi_wcecl.cpp
+    OutputDebugStringW = OutputDebugStringW_WCECL @541
+
+    ; excpt_wcecl.cpp
+    _except_handler4_common = _except_handler4_common_WCECL @87
+    _XcptFilter = _XcptFilter_WCECL @1645
+    __report_gsfailure = __report_gsfailure_WCECL @1876
+
+    ; imm_wcecl.cpp
+    ImmAssociateContext = ImmAssociateContext_WCECL @770
+    ImmGetCompositionStringW = ImmGetCompositionStringW_WCECL @781
+    ImmGetContext = ImmGetContext_WCECL @783
+    ImmReleaseContext = ImmReleaseContext_WCECL @803
+    ImmSetHotKey = ImmSetHotKey_WCECL @812
+
+    ; mmsystem_wcecl.cpp
+    sndPlaySoundW = sndPlaySoundW_WCECL @377
+
+    ; other.cpp
+    DeleteAndRenameFile = DeleteAndRenameFile_WCECL @183
+    GetLocaleInfoW = GetLocaleInfoW_WCECL @200
+    GetTimeFormatW = GetTimeFormatW_WCECL @202
+    GetDateFormatW = GetDateFormatW_WCECL @203
+    ConvertDefaultLocale = ConvertDefaultLocale_WCECL @210
+    _wcsicmp = _wcsicmp_WCECL @230
+    RasDial = RasDial_WCECL @342
+    RasHangup = RasHangup_WCECL @343
+    RasHangUp = RasHangUp_WCECL @344
+    EventModify = EventModify_WCECL @494
+    GetLastError = GetLastError_WCECL @516
+    SetLastError = SetLastError_WCECL @517
+    TlsCall = TlsCall_WCECL @520
+    GetProcessVersion = GetProcessVersion_WCECL @536
+    GetOwnerProcess = GetOwnerProcess_WCECL @606
+    sprintf = sprintf_WCECL @719
+    vfwprintf = vfwprintf_WCECL @721
+    fwprintf = fwprintf_WCECL @867
+    GetSystemMetrics = GetSystemMetrics_WCECL @885
+    GetSysColor = GetSysColor_WCECL @889
+    SetTextColor = SetTextColor_WCECL @924
+    GetSysColorBrush = GetSysColorBrush_WCECL @937
+    DrawTextW = DrawTextW_WCECL @945
+    delete = delete_WCECL @1094
+    new = new_WCECL @1095
+    _snwprintf = _snwprintf_WCECL @1096
+    swprintf = swprintf_WCECL @1097
+    swscanf = swscanf_WCECL @1098
+    _fileno = _fileno_WCECL @1124
+    terminate = terminate_WCECL @1556
+    DSA_Clone = DSA_Clone_WCECL @1853
+    __security_gen_cookie = __security_gen_cookie_WCECL @1875
+    _setjmp3 = _setjmp3_WCECL @2000
+    _alldiv = _alldiv_WCECL @2001
+    _allmul = _allmul_WCECL @2002
+    _aulldiv = _aulldiv_WCECL @2006
+    _chkstk = _chkstk_WCECL @2009
+    _CIsqrt = _CIsqrt_WCECL @2011
+    _ftol = _ftol_WCECL @2028
+    _SEH_prolog = _SEH_prolog_WCECL @2037
+    _SEH_epilog = _SEH_epilog_WCECL @2038
+    _ftol2 = _ftol2_WCECL @2039
+    _ftol2_sse = _ftol2_sse_WCECL @2043
+    CloseGestureInfoHandle = CloseGestureInfoHandle_WCECL @2924
+    GetGestureInfo = GetGestureInfo_WCECL @2925
+    GetGestureExtraArguments = GetGestureExtraArguments_WCECL @2926
+    RegisterDefaultGestureHandler = RegisterDefaultGestureHandler_WCECL @2928
+
+    ; shellapi_wcecl.cpp
+    SHGetSpecialFolderPath = SHGetSpecialFolderPath_WCECL @295
+    ShellExecuteEx = ShellExecuteEx_WCECL @480
+    Shell_NotifyIcon = Shell_NotifyIcon_WCECL @481
+    SHGetFileInfo = SHGetFileInfo_WCECL @482
+    SHCreateShortcut = SHCreateShortcut_WCECL @484
+    SHLoadDIBitmap = SHLoadDIBitmap_WCECL @487
+
+    ; stdio_wcecl.cpp
+    _getstdfilex = _getstdfilex_WCECL @1100
+    GetStdioPathW = GetStdioPathW_WCECL @1149
+    SetStdioPathW = SetStdioPathW_WCECL @1150
+
+    ; stringapiset_wcecl.cpp
+    WideCharToMultiByte = WideCharToMultiByte_WCECL @197
+    GetStringTypeExW = GetStringTypeExW_WCECL @217
+
+    ; strsafe_wcecl.cpp
+    StringCchCopyW = StringCchCopyW_WCECL @1689
+    StringCchCopyExW = StringCchCopyExW_WCECL @1691
+    StringCbCopyExW = StringCbCopyExW_WCECL @1692
+    StringCchCatW = StringCchCatW_WCECL @1693
+    StringCchVPrintfW = StringCchVPrintfW_WCECL @1697
+    StringCchPrintfW = StringCchPrintfW_WCECL @1699
+    StringCbPrintfW = StringCbPrintfW_WCECL @1700
+    StringCchPrintfExW = StringCchPrintfExW_WCECL @1701
+    StringCchCopyNW = StringCchCopyNW_WCECL @1742
+    StringCchLengthW = StringCchLengthW_WCECL @1748
+
+    ; winbase_wcecl.cpp
     InitializeCriticalSection = InitializeCriticalSection_WCECL @2
     DeleteCriticalSection = DeleteCriticalSection_WCECL @3
     EnterCriticalSection = EnterCriticalSection_WCECL @4
     LeaveCriticalSection = LeaveCriticalSection_WCECL @5
-    ExitThread @6
     TlsGetValue = TlsGetValue_WCECL @15
     TlsSetValue = TlsSetValue_WCECL @16
     CompareFileTime = CompareFileTime_WCECL @18
@@ -13,20 +143,255 @@ EXPORTS
     FileTimeToLocalFileTime = FileTimeToLocalFileTime_WCECL @21
     GetLocalTime = GetLocalTime_WCECL @23
     SetLocalTime = SetLocalTime_WCECL @24
+    LocalAlloc = LocalAlloc_WCECL @33
+    LocalReAlloc = LocalReAlloc_WCECL @34
+    LocalFree = LocalFree_WCECL @36
+    HeapFree = HeapFree_WCECL @49
+    GetProcessHeap = GetProcessHeap_WCECL @50
+    CreateDirectoryW = CreateDirectoryW_WCECL @160
+    RemoveDirectoryW = RemoveDirectoryW_WCECL @161
+    MoveFileW = MoveFileW_WCECL @163
+    CopyFileW = CopyFileW_WCECL @164
+    DeleteFileW = DeleteFileW_WCECL @165
+    GetFileAttributesW = GetFileAttributesW_WCECL @166
+    FindFirstFileW = FindFirstFileW_WCECL @167
+    CreateFileW = CreateFileW_WCECL @168
+    SetFileAttributesW = SetFileAttributesW_WCECL @169
+    ReadFile = ReadFile_WCECL @170
+    WriteFile = WriteFile_WCECL @171
+    GetFileSize = GetFileSize_WCECL @172
+    SetFilePointer = SetFilePointer_WCECL @173
+    FlushFileBuffers = FlushFileBuffers_WCECL @175
+    GetFileTime = GetFileTime_WCECL @176
+    SetFileTime = SetFileTime_WCECL @177
+    DeviceIoControl = DeviceIoControl_WCECL @179
+    FindClose = FindClose_WCECL @180
+    FindNextFileW = FindNextFileW_WCECL @181
+    GetDiskFreeSpaceExW = GetDiskFreeSpaceExW_WCECL @184
+    FormatMessageW = FormatMessageW_WCECL @234
+    TerminateThread = TerminateThread_WCECL @491
+    CreateThread = CreateThread_WCECL @492
+    CreateProcessW = CreateProcessW_WCECL @493
+    CreateEventW = CreateEventW_WCECL @495
+    Sleep = Sleep_WCECL @496
+    WaitForSingleObject = WaitForSingleObject_WCECL @497
+    WaitForMultipleObjects = WaitForMultipleObjects_WCECL @498
+    OpenProcess = OpenProcess_WCECL @509
+    SetThreadPriority = SetThreadPriority_WCECL @514
+    GetExitCodeProcess = GetExitCodeProcess_WCECL @519
+    VirtualAlloc = VirtualAlloc_WCECL @524
+    VirtualFree = VirtualFree_WCECL @525
+    LoadLibraryW = LoadLibraryW_WCECL @528
+    FreeLibrary = FreeLibrary_WCECL @529
+    GetProcAddressW = GetProcAddressW_WCECL @530
+    FindResourceW = FindResourceW_WCECL @532
+    LoadResource = LoadResource_WCECL @533
+    GetTickCount = GetTickCount_WCECL @535
+    GetModuleFileNameW = GetModuleFileNameW_WCECL @537
+    TerminateProcess = TerminateProcess_WCECL @544
+    CreateFileMappingW = CreateFileMappingW_WCECL @548
+    MapViewOfFile = MapViewOfFile @549
+    UnmapViewOfFile = UnmapViewOfFile_WCECL @550
+    CloseHandle = CloseHandle_WCECL @553
+    LoadStringW = LoadStringW_WCECL @874
+    GetModuleHandleW = GetModuleHandleW_WCECL @1177
+    GlobalAddAtomW = GlobalAddAtomW_WCECL @1519
+    CeGenRandom = CeGenRandom_WCECL @1601
+    MulDiv = MulDiv_WCECL @1877
+
+    ; windows_wcecl.cpp
+    GetMouseMovePoints = GetMouseMovePoints_WCECL @820
+    EnumFontFamiliesW = EnumFontFamiliesW_WCECL @965
+
+    ; wingdi_wcecl.cpp
+    GetTextExtentExPointW = GetTextExtentExPointW_WCECL @897
+    GetTextMetricsW = GetTextMetricsW_WCECL @898
+    CreateBitmap = CreateBitmap_WCECL @901
+    CreateCompatibleBitmap = CreateCompatibleBitmap_WCECL @902
+    BitBlt = BitBlt_WCECL @903
+    RestoreDC = RestoreDC_WCECL @907
+    SaveDC = SaveDC_WCECL @908
+    CreateCompatibleDC = CreateCompatibleDC_WCECL @910
+    DeleteDC = DeleteDC_WCECL @911
+    DeleteObject = DeleteObject_WCECL @912
+    GetDeviceCaps = GetDeviceCaps_WCECL @916
+    GetObjectW = GetObjectW_WCECL @918
+    GetStockObject = GetStockObject_WCECL @919
+    SelectObject = SelectObject_WCECL @921
+    SetBkColor = SetBkColor_WCECL @922
+    SetBkMode = SetBkMode_WCECL @923
+    CreatePen = CreatePen_WCECL @926
+    CreatePenIndirect = CreatePenIndirect_WCECL @930
+    CreateSolidBrush = CreateSolidBrush_WCECL @931
+    DrawFocusRect = DrawFocusRect_WCECL @933
+    FillRect = FillRect_WCECL @935
+    GetPixel = GetPixel_WCECL @936
+    PatBlt = PatBlt_WCECL @938
+    Polygon = Polygon_WCECL @939
+    Polyline = Polyline_WCECL @940
+    Rectangle = Rectangle_WCECL @941
+    SetBrushOrgEx = SetBrushOrgEx_WCECL @943
+    SetPixel = SetPixel_WCECL @944
+    GetNearestColor = GetNearestColor_WCECL @952
+    RealizePalette = RealizePalette_WCECL @953
+    SelectPalette = SelectPalette_WCECL @954
+    EndDoc = EndDoc_WCECL @959
+    EndPage = EndPage_WCECL @960
+    PlayEnhMetaFile = PlayEnhMetaFile_WCECL @961
+    SetAbortProc = SetAbortProc_WCECL @962
+    StartDocW = StartDocW_WCECL @963
+    StartPage = StartPage_WCECL @964
+    CombineRgn = CombineRgn_WCECL @968
+    CreateRectRgnIndirect = CreateRectRgnIndirect_WCECL @969
+    GetClipBox = GetClipBox_WCECL @971
+    IntersectClipRect = IntersectClipRect_WCECL @975
+    SelectClipRgn = SelectClipRgn_WCECL @979
+    CreateRectRgn = CreateRectRgn_WCECL @980
+    SetViewportOrgEx = SetViewportOrgEx_WCECL @983
+    LineTo = LineTo_WCECL @1652
+    SetTextAlign = SetTextAlign_WCECL @1654
+    GetTextAlign = GetTextAlign_WCECL @1655
+    StretchDIBits = StretchDIBits_WCECL @1667
+    GradientFill = GradientFill_WCECL @1763
+    SetLayout = SetLayout_WCECL @1890
+    GetLayout = GetLayout_WCECL @1891
+
+    ; winnls_wcecl.cpp
+    LCMapStringW = LCMapStringW_WCECL @199
+    GetNumberFormatW = GetNumberFormatW_WCECL @204
+    GetSystemDefaultLangID = GetSystemDefaultLangID_WCECL @211
+    GetSystemDefaultLCID = GetSystemDefaultLCID_WCECL @213
+    GetUserDefaultLCID = GetUserDefaultLCID_WCECL @215
+
+    ; winreg_wcecl.cpp
+    RegCloseKey = RegCloseKey_WCECL @455
+    RegCreateKeyExW = RegCreateKeyExW_WCECL @456
+    RegEnumValueW = RegEnumValueW_WCECL @459
+    RegOpenKeyExW = RegOpenKeyExW_WCECL @461
+    RegQueryInfoKeyW = RegQueryInfoKeyW_WCECL @462
+    RegQueryValueExW = RegQueryValueExW_WCECL @463
+    RegSetValueExW = RegSetValueExW_WCECL @464
+
+    ; winuser_wcecl.cpp
+    SystemParametersInfoW = SystemParametersInfoW_WCECL @89
+    LoadAcceleratorsW = LoadAcceleratorsW_WCECL @94
+    RegisterClassW = RegisterClassW_WCECL @95
+    CopyRect = CopyRect_WCECL @96
+    InflateRect = InflateRect_WCECL @98
+    IntersectRect = IntersectRect_WCECL @99
+    OffsetRect = OffsetRect_WCECL @101
+    PtInRect = PtInRect_WCECL @102
+    SetRect = SetRect_WCECL @103
+    UnionRect = UnionRect_WCECL @106
+    CharUpperW = CharUpperW_WCECL @224
+    CreateWindowExW = CreateWindowExW_WCECL @246
+    SetWindowPos = SetWindowPos_WCECL @247
+    GetWindowRect = GetWindowRect_WCECL @248
+    GetClientRect = GetClientRect_WCECL @249
+    InvalidateRect = InvalidateRect_WCECL @250
+    GetWindow = GetWindow_WCECL @251
+    ClientToScreen = ClientToScreen_WCECL @254
+    ScreenToClient = ScreenToClient_WCECL @255
+    SetWindowTextW = SetWindowTextW_WCECL @256
+    GetWindowTextW = GetWindowTextW_WCECL @257
+    SetWindowLongW = SetWindowLongW_WCECL @258
+    GetWindowLongW = GetWindowLongW_WCECL @259
+    BeginPaint = BeginPaint_WCECL @260
+    EndPaint = EndPaint_WCECL @261
+    GetDC = GetDC_WCECL @262
+    ReleaseDC = ReleaseDC_WCECL @263
+    DefWindowProcW = DefWindowProcW_WCECL @264
+    DestroyWindow = DestroyWindow_WCECL @265
+    ShowWindow = ShowWindow_WCECL @266
+    UpdateWindow = UpdateWindow_WCECL @267
+    GetParent = GetParent_WCECL @269
+    MoveWindow = MoveWindow_WCECL @272
+    GetUpdateRgn = GetUpdateRgn_WCECL @273
+    GetUpdateRect = GetUpdateRect_WCECL @274
+    GetWindowTextLengthW = GetWindowTextLengthW_WCECL @276
+    ValidateRect = ValidateRect_WCECL @278
+    SetScrollRange = SetScrollRange_WCECL @281
+    GetScrollInfo = GetScrollInfo_WCECL @282
+    FindWindowW = FindWindowW_WCECL @286
+    EnableWindow = EnableWindow_WCECL @287
+    IsWindowEnabled = IsWindowEnabled_WCECL @288
+    ScrollWindowEx = ScrollWindowEx_WCECL @289
+    HideCaret = HideCaret_WCECL @660
+    ShowCaret = ShowCaret_WCECL @661
+    OpenClipboard = OpenClipboard_WCECL @668
+    CloseClipboard = CloseClipboard_WCECL @669
+    GetClipboardData = GetClipboardData_WCECL @672
+    RegisterClipboardFormat = RegisterClipboardFormat_WCECL @673
+    EnumClipboardFormats = EnumClipboardFormats_WCECL @675
+    EmptyClipboard = EmptyClipboard_WCECL @677
+    IsClipboardFormatAvailable = IsClipboardFormatAvailable_WCECL @678
+    SetCursor = SetCursor_WCECL @682
+    LoadCursorW = LoadCursorW_WCECL @683
+    CheckRadioButton = CheckRadioButton_WCECL @684
+    SendDlgItemMessageW = SendDlgItemMessageW_WCECL @685
+    SetDlgItemTextW = SetDlgItemTextW_WCECL @686
+    CreateDialogIndirectParamW = CreateDialogIndirectParamW_WCECL @688
+    DefDlgProcW = DefDlgProcW_WCECL @689
+    DialogBoxIndirectParamW = DialogBoxIndirectParamW_WCECL @690
+    EndDialog = EndDialog_WCECL @691
+    GetDlgItem = GetDlgItem_WCECL @692
+    GetDlgCtrlID = GetDlgCtrlID_WCECL @693
+    GetNextDlgTabItem = GetNextDlgTabItem_WCECL @696
+    IsDialogMessageW = IsDialogMessageW_WCECL @698
+    GetForegroundWindow = GetForegroundWindow_WCECL @701
+    SetForegroundWindow = SetForegroundWindow_WCECL @702
+    SetFocus = SetFocus_WCECL @704
+    GetFocus = GetFocus_WCECL @705
+    SetCapture = SetCapture_WCECL @708
+    ReleaseCapture = ReleaseCapture_WCECL @709
+    LoadIconW = LoadIconW_WCECL @728
+    LoadImageW = LoadImageW_WCECL @730
+    GetClipCursor = GetClipCursor_WCECL @732
+    GetAsyncKeyState = GetAsyncKeyState_WCECL @826
+    TranslateAcceleratorW = TranslateAcceleratorW_WCECL @838
+    AppendMenuW = AppendMenuW_WCECL @842
+    EnableMenuItem = EnableMenuItem_WCECL @847
+    CheckMenuRadioItem = CheckMenuRadioItem_WCECL @849
+    MessageBeep = MessageBeep_WCECL @857
+    MessageBoxW = MessageBoxW_WCECL @858
+    DispatchMessageW = DispatchMessageW_WCECL @859
+    GetKeyState = GetKeyState_WCECL @860
+    GetMessageW = GetMessageW_WCECL @861
+    GetMessagePos = GetMessagePos_WCECL @862
+    PeekMessageW = PeekMessageW_WCECL @864
+    PostMessageW = PostMessageW_WCECL @865
+    PostQuitMessage = PostQuitMessage_WCECL @866
+    SendMessageW = SendMessageW_WCECL @868
+    SendNotifyMessageW = SendNotifyMessageW_WCECL @869
+    TranslateMessage = TranslateMessage_WCECL @870
+    MsgWaitForMultipleObjectsEx = MsgWaitForMultipleObjectsEx_WCECL @871
+    LoadBitmapW = LoadBitmapW_WCECL @873
+    SetTimer = SetTimer_WCECL @875
+    KillTimer = KillTimer_WCECL @876
+    GetClassInfoW = GetClassInfoW_WCECL @878
+    UnregisterClassW = UnregisterClassW_WCECL @884
+    IsWindowVisible = IsWindowVisible_WCECL @886
+    AdjustWindowRectEx = AdjustWindowRectEx_WCECL @887
+    GetDoubleClickTime = GetDoubleClickTime_WCECL @888
+    TransparentBlt = TransparentBlt_WCECL @906
+    BeginDeferWindowPos = BeginDeferWindowPos_WCECL @1157
+    DeferWindowPos = DeferWindowPos_WCECL @1158
+    EndDeferWindowPos = EndDeferWindowPos_WCECL @1159
+    GetPropW = GetPropW_WCECL @1498
+    MonitorFromPoint = MonitorFromPoint_WCECL @1522
+    RedrawWindow = RedrawWindow_WCECL @1672
+
+    ; Not found in the COREDLL code
+    ExitThread @6
     GetSystemTime @25
     GetTimeZoneInformation @27
     GetAPIAddress @32
-    LocalAlloc = LocalAlloc_WCECL @33
-    LocalReAlloc = LocalReAlloc_WCECL @34
     LocalSize @35
-    LocalFree = LocalFree_WCECL @36
     HeapCreate @44
     HeapDestroy @45
     HeapAlloc @46
     HeapReAlloc @47
     HeapSize @48
-    HeapFree = HeapFree_WCECL @49
-    GetProcessHeap = GetProcessHeap_WCECL @50
     HeapValidate @51
     GetHeapSnapshot @52
     wsprintfW @56
@@ -48,54 +413,22 @@ EXPORTS
     wcstok @77
     _wtol @78
     Random @80
-    _except_handler4_common = _except_handler4_common_WCECL @87
     GlobalMemoryStatus @88
-    SystemParametersInfoW = SystemParametersInfoW_WCECL @89
     CreateDIBSection @90
     EqualRgn @91
     CreateAcceleratorTableW @92
     DestroyAcceleratorTable @93
-    LoadAcceleratorsW = LoadAcceleratorsW_WCECL @94
-    RegisterClassW = RegisterClassW_WCECL @95
-    CopyRect = CopyRect_WCECL @96
     EqualRect @97
-    InflateRect = InflateRect_WCECL @98
-    IntersectRect = IntersectRect_WCECL @99
     IsRectEmpty @100
-    OffsetRect = OffsetRect_WCECL @101
-    PtInRect = PtInRect_WCECL @102
-    SetRect = SetRect_WCECL @103
     SetRectEmpty @104
     SubtractRect @105
-    UnionRect = UnionRect_WCECL @106
     GetCommMask @110
     GetCommModemStatus @111
     GetCommProperties @112
     GetCommState @113
     GetCommTimeouts @114
-    CreateDirectoryW = CreateDirectoryW_WCECL @160
-    RemoveDirectoryW = RemoveDirectoryW_WCECL @161
     GetTempPathW @162
-    MoveFileW = MoveFileW_WCECL @163
-    CopyFileW = CopyFileW_WCECL @164
-    DeleteFileW = DeleteFileW_WCECL @165
-    GetFileAttributesW = GetFileAttributesW_WCECL @166
-    FindFirstFileW = FindFirstFileW_WCECL @167
-    CreateFileW = CreateFileW_WCECL @168
-    SetFileAttributesW = SetFileAttributesW_WCECL @169
-    ReadFile = ReadFile_WCECL @170
-    WriteFile = WriteFile_WCECL @171
-    GetFileSize = GetFileSize_WCECL @172
-    SetFilePointer = SetFilePointer_WCECL @173
     GetFileInformationByHandle @174
-    FlushFileBuffers = FlushFileBuffers_WCECL @175
-    GetFileTime = GetFileTime_WCECL @176
-    SetFileTime = SetFileTime_WCECL @177
-    DeviceIoControl = DeviceIoControl_WCECL @179
-    FindClose = FindClose_WCECL @180
-    FindNextFileW = FindNextFileW_WCECL @181
-    DeleteAndRenameFile = DeleteAndRenameFile_WCECL @183
-    GetDiskFreeSpaceExW = GetDiskFreeSpaceExW_WCECL @184
     GetACP @186
     GetOEMCP @187
     GetCPInfo @188
@@ -103,91 +436,40 @@ EXPORTS
     towlower @194
     towupper @195
     MultiByteToWideChar @196
-    WideCharToMultiByte = WideCharToMultiByte_WCECL @197
     CompareStringW @198
-    LCMapStringW = LCMapStringW_WCECL @199
-    GetLocaleInfoW = GetLocaleInfoW_WCECL @200
     SetLocaleInfoW @201
-    GetTimeFormatW = GetTimeFormatW_WCECL @202
-    GetDateFormatW = GetDateFormatW_WCECL @203
-    GetNumberFormatW = GetNumberFormatW_WCECL @204
     GetCurrencyFormatW @205
     EnumCalendarInfoW @206
-    ConvertDefaultLocale = ConvertDefaultLocale_WCECL @210
-    GetSystemDefaultLangID = GetSystemDefaultLangID_WCECL @211
     GetUserDefaultLangID @212
-    GetSystemDefaultLCID = GetSystemDefaultLCID_WCECL @213
-    GetUserDefaultLCID = GetUserDefaultLCID_WCECL @215
     GetStringTypeW @216
-    GetStringTypeExW = GetStringTypeExW_WCECL @217
     CharLowerW @221
     CharLowerBuffW @222
     CharUpperBuffW @223
-    CharUpperW = CharUpperW_WCECL @224
     CharPrevW @225
     CharNextW @226
     lstrcmpW @227
     lstrcmpiW @228
     _wcsnicmp @229
-    _wcsicmp = _wcsicmp_WCECL @230
     _wcslwr @231
     _wcsupr @232
-    FormatMessageW = FormatMessageW_WCECL @234
-    CreateWindowExW = CreateWindowExW_WCECL @246
-    SetWindowPos = SetWindowPos_WCECL @247
-    GetWindowRect = GetWindowRect_WCECL @248
-    GetClientRect = GetClientRect_WCECL @249
-    InvalidateRect = InvalidateRect_WCECL @250
-    GetWindow = GetWindow_WCECL @251
     WindowFromPoint @252
     ChildWindowFromPoint @253
-    ClientToScreen = ClientToScreen_WCECL @254
-    ScreenToClient = ScreenToClient_WCECL @255
-    SetWindowTextW = SetWindowTextW_WCECL @256
-    GetWindowTextW = GetWindowTextW_WCECL @257
-    SetWindowLongW = SetWindowLongW_WCECL @258
-    GetWindowLongW = GetWindowLongW_WCECL @259
-    BeginPaint = BeginPaint_WCECL @260
-    EndPaint = EndPaint_WCECL @261
-    GetDC = GetDC_WCECL @262
-    ReleaseDC = ReleaseDC_WCECL @263
-    DefWindowProcW = DefWindowProcW_WCECL @264
-    DestroyWindow = DestroyWindow_WCECL @265
-    ShowWindow = ShowWindow_WCECL @266
-    UpdateWindow = UpdateWindow_WCECL @267
     SetParent @268
-    GetParent = GetParent_WCECL @269
     GetWindowDC @270
     IsWindow @271
-    MoveWindow = MoveWindow_WCECL @272
-    GetUpdateRgn = GetUpdateRgn_WCECL @273
-    GetUpdateRect = GetUpdateRect_WCECL @274
     BringWindowToTop @275
-    GetWindowTextLengthW = GetWindowTextLengthW_WCECL @276
     IsChild @277
-    ValidateRect = ValidateRect_WCECL @278
     SetScrollInfo @279
     SetScrollPos @280
-    SetScrollRange = SetScrollRange_WCECL @281
-    GetScrollInfo = GetScrollInfo_WCECL @282
     GetClassNameW @283
     MapWindowPoints @284
     CallWindowProcW @285
-    FindWindowW = FindWindowW_WCECL @286
-    EnableWindow = EnableWindow_WCECL @287
-    IsWindowEnabled = IsWindowEnabled_WCECL @288
-    ScrollWindowEx = ScrollWindowEx_WCECL @289
     PostThreadMessageW @290
     EnumWindows @291
     GetWindowThreadProcessId @292
-    SHGetSpecialFolderPath = SHGetSpecialFolderPath_WCECL @295
     SetAssociatedMenu @299
     GetAssociatedMenu @300
-    RasDial = RasDial_WCECL @342
-    RasHangup = RasHangup_WCECL @343
-    RasHangUp = RasHangUp_WCECL @344
     lineAddProvider @375
-    sndPlaySoundW = sndPlaySoundW_WCECL @377
     waveOutGetNumDevs @379
     waveOutGetVolume @381
     waveOutSetVolume @382
@@ -219,166 +501,58 @@ EXPORTS
     waveInGetID @411
     waveInMessage @412
     waveInOpen @413
-    RegCloseKey = RegCloseKey_WCECL @455
-    RegCreateKeyExW = RegCreateKeyExW_WCECL @456
     RegDeleteKeyW @457
     RegDeleteValueW @458
-    RegEnumValueW = RegEnumValueW_WCECL @459
     RegEnumKeyExW @460
-    RegOpenKeyExW = RegOpenKeyExW_WCECL @461
-    RegQueryInfoKeyW = RegQueryInfoKeyW_WCECL @462
-    RegQueryValueExW = RegQueryValueExW_WCECL @463
-    RegSetValueExW = RegSetValueExW_WCECL @464
-    ShellExecuteEx = ShellExecuteEx_WCECL @480
-    Shell_NotifyIcon = Shell_NotifyIcon_WCECL @481
-    SHGetFileInfo = SHGetFileInfo_WCECL @482
-    SHCreateShortcut = SHCreateShortcut_WCECL @484
-    SHLoadDIBitmap = SHLoadDIBitmap_WCECL @487
     GetOpenFileNameW @488
     GetSaveFileNameW @489
-    TerminateThread = TerminateThread_WCECL @491
-    CreateThread = CreateThread_WCECL @492
-    CreateProcessW = CreateProcessW_WCECL @493
-    EventModify = EventModify_WCECL @494
-    CreateEventW = CreateEventW_WCECL @495
-    Sleep = Sleep_WCECL @496
-    WaitForSingleObject = WaitForSingleObject_WCECL @497
-    WaitForMultipleObjects = WaitForMultipleObjects_WCECL @498
     SuspendThread @499
     ResumeThread @500
     SetThreadContext @502
     ReadProcessMemory @506
     WriteProcessMemory @507
     FlushInstructionCache @508
-    OpenProcess = OpenProcess_WCECL @509
     THCreateSnapshot @511
-    SetThreadPriority = SetThreadPriority_WCECL @514
     GetThreadPriority @515
-    GetLastError = GetLastError_WCECL @516
-    SetLastError = SetLastError_WCECL @517
     GetExitCodeThread @518
-    GetExitCodeProcess = GetExitCodeProcess_WCECL @519
-    TlsCall = TlsCall_WCECL @520
-    VirtualAlloc = VirtualAlloc_WCECL @524
-    VirtualFree = VirtualFree_WCECL @525
-    LoadLibraryW = LoadLibraryW_WCECL @528
-    FreeLibrary = FreeLibrary_WCECL @529
-    GetProcAddressW = GetProcAddressW_WCECL @530
-    FindResourceW = FindResourceW_WCECL @532
-    LoadResource = LoadResource_WCECL @533
     SizeofResource @534
-    GetTickCount = GetTickCount_WCECL @535
-    GetProcessVersion = GetProcessVersion_WCECL @536
-    GetModuleFileNameW = GetModuleFileNameW_WCECL @537
-    OutputDebugStringW = OutputDebugStringW_WCECL @541
     GetSystemInfo @542
     RaiseException @543
-    TerminateProcess = TerminateProcess_WCECL @544
     NKDbgPrintfW @545
-    CreateFileMappingW = CreateFileMappingW_WCECL @548
-    MapViewOfFile @549
-    UnmapViewOfFile = UnmapViewOfFile_WCECL @550
-    CloseHandle = CloseHandle_WCECL @553
     CreateMutexW @555
     ReleaseMutex @556
-    GetOwnerProcess = GetOwnerProcess_WCECL @606
     GetProcessIndexFromID @640
     CreateCaret @658
     DestroyCaret @659
-    HideCaret = HideCaret_WCECL @660
-    ShowCaret = ShowCaret_WCECL @661
     GetCaretPos @663
     GetCaretBlinkTime @665
-    OpenClipboard = OpenClipboard_WCECL @668
-    CloseClipboard = CloseClipboard_WCECL @669
     GetClipboardOwner @670
     SetClipboardData @671
-    GetClipboardData = GetClipboardData_WCECL @672
-    RegisterClipboardFormat = RegisterClipboardFormat_WCECL @673
-    EnumClipboardFormats = EnumClipboardFormats_WCECL @675
     GetClipboardFormatNameW @676
-    EmptyClipboard = EmptyClipboard_WCECL @677
-    IsClipboardFormatAvailable = IsClipboardFormatAvailable_WCECL @678
     GetPriorityClipboardFormat @679
     GetOpenClipboardWindow @680
-    SetCursor = SetCursor_WCECL @682
-    LoadCursorW = LoadCursorW_WCECL @683
-    CheckRadioButton = CheckRadioButton_WCECL @684
-    SendDlgItemMessageW = SendDlgItemMessageW_WCECL @685
-    SetDlgItemTextW = SetDlgItemTextW_WCECL @686
     GetDlgItemTextW @687
-    CreateDialogIndirectParamW = CreateDialogIndirectParamW_WCECL @688
-    DefDlgProcW = DefDlgProcW_WCECL @689
-    DialogBoxIndirectParamW = DialogBoxIndirectParamW_WCECL @690
-    EndDialog = EndDialog_WCECL @691
-    GetDlgItem = GetDlgItem_WCECL @692
-    GetDlgCtrlID = GetDlgCtrlID_WCECL @693
     GetDialogBaseUnits @694
     GetDlgItemInt @695
-    GetNextDlgTabItem = GetNextDlgTabItem_WCECL @696
     GetNextDlgGroupItem @697
-    IsDialogMessageW = IsDialogMessageW_WCECL @698
     MapDialogRect @699
     SetDlgItemInt @700
-    GetForegroundWindow = GetForegroundWindow_WCECL @701
-    SetForegroundWindow = SetForegroundWindow_WCECL @702
     SetActiveWindow @703
-    SetFocus = SetFocus_WCECL @704
-    GetFocus = GetFocus_WCECL @705
     GetActiveWindow @706
     GetCapture @707
-    SetCapture = SetCapture_WCECL @708
-    ReleaseCapture = ReleaseCapture_WCECL @709
     GetVersionExW @717
-    sprintf = sprintf_WCECL @719
-    vfwprintf = vfwprintf_WCECL @721
     CreateCursor @722
     CreateIconIndirect @723
     DestroyCursor @724
     DestroyIcon @725
     DrawIconEx @726
     ExtractIconExW @727
-    LoadIconW = LoadIconW_WCECL @728
-    LoadImageW = LoadImageW_WCECL @730
     ClipCursor @731
-    GetClipCursor = GetClipCursor_WCECL @732
     GetCursor @733
     GetCursorPos @734
     SetCursorPos @736
     ShowCursor @737
-    ImageList_Add = ImageList_Add_WCECL @738
-    ImageList_AddMasked = ImageList_AddMasked_WCECL @739
-    ImageList_BeginDrag = ImageList_BeginDrag_WCECL @740
     ImageList_CopyDitherImage @741
-    ImageList_Create = ImageList_Create_WCECL @742
-    ImageList_Destroy = ImageList_Destroy_WCECL @743
-    ImageList_DragEnter = ImageList_DragEnter_WCECL @744
-    ImageList_DragLeave = ImageList_DragLeave_WCECL @745
-    ImageList_DragMove = ImageList_DragMove_WCECL @746
-    ImageList_DragShowNolock = ImageList_DragShowNolock_WCECL @747
-    ImageList_Draw = ImageList_Draw_WCECL @748
-    ImageList_DrawEx = ImageList_DrawEx_WCECL @749
-    ImageList_DrawIndirect = ImageList_DrawIndirect_WCECL @750
-    ImageList_EndDrag = ImageList_EndDrag_WCECL @751
-    ImageList_GetBkColor = ImageList_GetBkColor_WCECL @752
-    ImageList_GetDragImage = ImageList_GetDragImage_WCECL @753
-    ImageList_GetIcon = ImageList_GetIcon_WCECL @754
-    ImageList_GetIconSize = ImageList_GetIconSize_WCECL @755
-    ImageList_GetImageCount = ImageList_GetImageCount_WCECL @756
-    ImageList_GetImageInfo = ImageList_GetImageInfo_WCECL @757
-    ImageList_LoadImage = ImageList_LoadImage_WCECL @758
-    ImageList_Merge = ImageList_Merge_WCECL @759
-    ImageList_Remove = ImageList_Remove_WCECL @760
-    ImageList_Replace = ImageList_Replace_WCECL @761
-    ImageList_ReplaceIcon = ImageList_ReplaceIcon_WCECL @762
-    ImageList_SetBkColor = ImageList_SetBkColor_WCECL @763
-    ImageList_SetDragCursorImage = ImageList_SetDragCursorImage_WCECL @764
-    ImageList_SetIconSize = ImageList_SetIconSize_WCECL @765
-    ImageList_SetOverlayImage = ImageList_SetOverlayImage_WCECL @766
-    ImageList_Copy = ImageList_Copy_WCECL @767
-    ImageList_Duplicate = ImageList_Duplicate_WCECL @768
-    ImageList_SetImageCount = ImageList_SetImageCount_WCECL @769
-    ImmAssociateContext = ImmAssociateContext_WCECL @770
     ImmConfigureIMEW @771
     ImmCreateIMCC @772
     ImmDestroyIMCC @773
@@ -389,9 +563,7 @@ EXPORTS
     ImmGetCandidateListCountW @778
     ImmGetCandidateWindow @779
     ImmGetCompositionFontW @780
-    ImmGetCompositionStringW = ImmGetCompositionStringW_WCECL @781
     ImmGetCompositionWindow @782
-    ImmGetContext = ImmGetContext_WCECL @783
     ImmGetConversionListW @784
     ImmGetConversionStatus @785
     ImmGetDefaultIMEWnd @786
@@ -409,14 +581,12 @@ EXPORTS
     ImmNotifyIME @800
     ImmReSizeIMCC @801
     ImmRegisterWordW @802
-    ImmReleaseContext = ImmReleaseContext_WCECL @803
     ImmSIPanelState @804
     ImmSetCandidateWindow @807
     ImmSetCompositionFontW @808
     ImmSetCompositionStringW @809
     ImmSetCompositionWindow @810
     ImmSetConversionStatus @811
-    ImmSetHotKey = ImmSetHotKey_WCECL @812
     ImmGetHotKey @813
     ImmSetOpenStatus @814
     ImmSetStatusWindowPos @815
@@ -424,19 +594,13 @@ EXPORTS
     ImmUnlockIMC @817
     ImmUnlockIMCC @818
     ImmUnregisterWordW @819
-    GetMouseMovePoints = GetMouseMovePoints_WCECL @820
-    GetAsyncKeyState = GetAsyncKeyState_WCECL @826
     RegisterHotKey @835
-    TranslateAcceleratorW = TranslateAcceleratorW_WCECL @838
     InsertMenuW @841
-    AppendMenuW = AppendMenuW_WCECL @842
     RemoveMenu @843
     DestroyMenu @844
     TrackPopupMenuEx @845
     LoadMenuW @846
-    EnableMenuItem = EnableMenuItem_WCECL @847
     CheckMenuItem @848
-    CheckMenuRadioItem = CheckMenuRadioItem_WCECL @849
     DeleteMenu @850
     CreateMenu @851
     CreatePopupMenu @852
@@ -444,116 +608,42 @@ EXPORTS
     GetMenuItemInfoW @854
     GetSubMenu @855
     DrawMenuBar @856
-    MessageBeep = MessageBeep_WCECL @857
-    MessageBoxW = MessageBoxW_WCECL @858
-    DispatchMessageW = DispatchMessageW_WCECL @859
-    GetKeyState = GetKeyState_WCECL @860
-    GetMessageW = GetMessageW_WCECL @861
-    GetMessagePos = GetMessagePos_WCECL @862
-    PeekMessageW = PeekMessageW_WCECL @864
-    PostMessageW = PostMessageW_WCECL @865
-    PostQuitMessage = PostQuitMessage_WCECL @866
-    fwprintf = fwprintf_WCECL @867
-    SendMessageW = SendMessageW_WCECL @868
-    SendNotifyMessageW = SendNotifyMessageW_WCECL @869
-    TranslateMessage = TranslateMessage_WCECL @870
-    MsgWaitForMultipleObjectsEx = MsgWaitForMultipleObjectsEx_WCECL @871
     GetMessageSource @872
-    LoadBitmapW = LoadBitmapW_WCECL @873
-    LoadStringW = LoadStringW_WCECL @874
-    SetTimer = SetTimer_WCECL @875
-    KillTimer = KillTimer_WCECL @876
-    GetClassInfoW = GetClassInfoW_WCECL @878
     GetClassLongW @879
     SetClassLongW @880
-    UnregisterClassW = UnregisterClassW_WCECL @884
-    GetSystemMetrics = GetSystemMetrics_WCECL @885
-    IsWindowVisible = IsWindowVisible_WCECL @886
-    AdjustWindowRectEx = AdjustWindowRectEx_WCECL @887
-    GetDoubleClickTime = GetDoubleClickTime_WCECL @888
-    GetSysColor = GetSysColor_WCECL @889
     SetSysColors @890
     RegisterWindowMessageW @891
     AddFontResourceW @893
     CreateFontIndirectW @895
     ExtTextOutW @896
-    GetTextExtentExPointW = GetTextExtentExPointW_WCECL @897
-    GetTextMetricsW = GetTextMetricsW_WCECL @898
-    CreateBitmap = CreateBitmap_WCECL @901
-    CreateCompatibleBitmap = CreateCompatibleBitmap_WCECL @902
-    BitBlt = BitBlt_WCECL @903
     MaskBlt @904
     StretchBlt @905
-    TransparentBlt = TransparentBlt_WCECL @906
-    RestoreDC = RestoreDC_WCECL @907
-    SaveDC = SaveDC_WCECL @908
     CreateDCW @909
-    CreateCompatibleDC = CreateCompatibleDC_WCECL @910
-    DeleteDC = DeleteDC_WCECL @911
-    DeleteObject = DeleteObject_WCECL @912
     GetBkColor @913
     GetBkMode @914
     GetCurrentObject @915
-    GetDeviceCaps = GetDeviceCaps_WCECL @916
     GetObjectType @917
-    GetObjectW = GetObjectW_WCECL @918
-    GetStockObject = GetStockObject_WCECL @919
     GetTextColor @920
-    SelectObject = SelectObject_WCECL @921
-    SetBkColor = SetBkColor_WCECL @922
-    SetBkMode = SetBkMode_WCECL @923
-    SetTextColor = SetTextColor_WCECL @924
     CreatePatternBrush @925
-    CreatePen = CreatePen_WCECL @926
     FillRgn @927
     SetROP2 @928
     CreateDIBPatternBrushPt @929
-    CreatePenIndirect = CreatePenIndirect_WCECL @930
-    CreateSolidBrush = CreateSolidBrush_WCECL @931
     DrawEdge @932
-    DrawFocusRect = DrawFocusRect_WCECL @933
     Ellipse @934
-    FillRect = FillRect_WCECL @935
-    GetPixel = GetPixel_WCECL @936
-    GetSysColorBrush = GetSysColorBrush_WCECL @937
-    PatBlt = PatBlt_WCECL @938
-    Polygon = Polygon_WCECL @939
-    Polyline = Polyline_WCECL @940
-    Rectangle = Rectangle_WCECL @941
     RoundRect @942
-    SetBrushOrgEx = SetBrushOrgEx_WCECL @943
-    SetPixel = SetPixel_WCECL @944
-    DrawTextW = DrawTextW_WCECL @945
     GetNearestPaletteIndex @948
     GetPaletteEntries @949
     GetSystemPaletteEntries @950
-    GetNearestColor = GetNearestColor_WCECL @952
-    RealizePalette = RealizePalette_WCECL @953
-    SelectPalette = SelectPalette_WCECL @954
-    EndDoc = EndDoc_WCECL @959
-    EndPage = EndPage_WCECL @960
-    PlayEnhMetaFile = PlayEnhMetaFile_WCECL @961
-    SetAbortProc = SetAbortProc_WCECL @962
-    StartDocW = StartDocW_WCECL @963
-    StartPage = StartPage_WCECL @964
-    EnumFontFamiliesW = EnumFontFamiliesW_WCECL @965
     GetTextFaceW @967
-    CombineRgn = CombineRgn_WCECL @968
-    CreateRectRgnIndirect = CreateRectRgnIndirect_WCECL @969
     ExcludeClipRect @970
-    GetClipBox = GetClipBox_WCECL @971
     GetClipRgn @972
     GetRegionData @973
     GetRgnBox @974
-    IntersectClipRect = IntersectClipRect_WCECL @975
     OffsetRgn @976
     PtInRegion @977
     RectInRegion @978
-    SelectClipRgn = SelectClipRgn_WCECL @979
-    CreateRectRgn = CreateRectRgn_WCECL @980
     RectVisible @981
     SetRectRgn @982
-    SetViewportOrgEx = SetViewportOrgEx_WCECL @983
     ScrollDC @985
     EnableEUDC @986
     DrawFrameControl @987
@@ -580,16 +670,9 @@ EXPORTS
     strncmp @1070
     wcstol @1082
     _purecall @1092
-    delete = delete_WCECL @1094
-    new = new_WCECL @1095
-    _snwprintf = _snwprintf_WCECL @1096
-    swprintf = swprintf_WCECL @1097
-    swscanf = swscanf_WCECL @1098
-    _getstdfilex = _getstdfilex_WCECL @1100
     fclose @1118
     fread @1120
     fflush @1122
-    _fileno = _fileno_WCECL @1124
     feof @1125
     ferror @1126
     clearerr @1127
@@ -602,13 +685,7 @@ EXPORTS
     fputws @1144
     _wfopen @1145
     GetThreadContext @1148
-    GetStdioPathW = GetStdioPathW_WCECL @1149
-    SetStdioPathW = SetStdioPathW_WCECL @1150
-    BeginDeferWindowPos = BeginDeferWindowPos_WCECL @1157
-    DeferWindowPos = DeferWindowPos_WCECL @1158
-    EndDeferWindowPos = EndDeferWindowPos_WCECL @1159
     GetKeyboardLayoutNameW @1160
-    GetModuleHandleW = GetModuleHandleW_WCECL @1177
     GetDCEx @1185
     GetThreadTimes @1186
     ImmCreateContext @1198
@@ -635,43 +712,21 @@ EXPORTS
     CeLogSetZones @1452
     CeLogReSync @1467
     SetPropW @1497
-    GetPropW = GetPropW_WCECL @1498
     RemovePropW @1499
-    GlobalAddAtomW = GlobalAddAtomW_WCECL @1519
     GlobalDeleteAtom @1520
     GlobalFindAtomW @1521
-    MonitorFromPoint = MonitorFromPoint_WCECL @1522
     MonitorFromRect @1523
     MonitorFromWindow @1524
     GetMonitorInfoA @1525
     EnumDisplayMonitors @1526
     _CxxThrowException @1551
-    terminate = terminate_WCECL @1556
     type_info @1580
     CryptProtectData @1599
     CryptUnprotectData @1600
-    CeGenRandom = CeGenRandom_WCECL @1601
     ChangeDisplaySettingsEx = ChangeDisplaySettingsExW @1611
-    _XcptFilter = _XcptFilter_WCECL @1645
     MoveToEx @1651
-    LineTo = LineTo_WCECL @1652
     GetCurrentPositionEx @1653
-    SetTextAlign = SetTextAlign_WCECL @1654
-    GetTextAlign = GetTextAlign_WCECL @1655
     GetDIBColorTable @1665
-    StretchDIBits = StretchDIBits_WCECL @1667
-    RedrawWindow = RedrawWindow_WCECL @1672
-    StringCchCopyW = StringCchCopyW_WCECL @1689
-    StringCchCopyExW = StringCchCopyExW_WCECL @1691
-    StringCbCopyExW = StringCbCopyExW_WCECL @1692
-    StringCchCatW = StringCchCatW_WCECL @1693
-    StringCchVPrintfW = StringCchVPrintfW_WCECL @1697
-    StringCchPrintfW = StringCchPrintfW_WCECL @1699
-    StringCbPrintfW = StringCbPrintfW_WCECL @1700
-    StringCchPrintfExW = StringCchPrintfExW_WCECL @1701
-    StringCchCopyNW = StringCchCopyNW_WCECL @1742
-    StringCchLengthW = StringCchLengthW_WCECL @1748
-    GradientFill = GradientFill_WCECL @1763
     GetKeyboardLayoutList @1767
     InvertRect @1770
     GetKeyboardType @1771
@@ -694,7 +749,6 @@ EXPORTS
     DPA_SetPtr @1850
     DPA_Sort @1851
     DSA_Create @1852
-    DSA_Clone = DSA_Clone_WCECL @1853
     DSA_DeleteAllItems @1854
     DSA_DeleteItem @1855
     DSA_Destroy @1856
@@ -708,32 +762,16 @@ EXPORTS
     WeirdThing1865 @1865
     WeirdThing1866 @1866
     GetGweApiSetTables @1867
-    __security_gen_cookie = __security_gen_cookie_WCECL @1875
-    __report_gsfailure = __report_gsfailure_WCECL @1876
-    MulDiv = MulDiv_WCECL @1877
     GetCharABCWidthsI @1887
     GetFontData @1888
     GetOutlineTextMetricsW @1889
-    SetLayout = SetLayout_WCECL @1890
-    GetLayout = GetLayout_WCECL @1891
     GetTextCharacterExtra @1963
     GetWindowOrgEx @1985
     GetWindowExtEx @1986
     GetViewportOrgEx @1988
     GetViewportExtEx @1989
     GetROP2 @1990
-    _setjmp3 = _setjmp3_WCECL @2000
-    _alldiv = _alldiv_WCECL @2001
-    _allmul = _allmul_WCECL @2002
-    _aulldiv = _aulldiv_WCECL @2006
-    _chkstk = _chkstk_WCECL @2009
     _alloca_probe @2010
-    _CIsqrt = _CIsqrt_WCECL @2011
-    _ftol = _ftol_WCECL @2028
-    _SEH_prolog = _SEH_prolog_WCECL @2037
-    _SEH_epilog = _SEH_epilog_WCECL @2038
-    _ftol2 = _ftol2_WCECL @2039
-    _ftol2_sse = _ftol2_sse_WCECL @2043
     __GetUserKData @2528
     WaitForAPIReady @2562
     __security_gen_cookie2 @2696
@@ -743,7 +781,3 @@ EXPORTS
     GetWindowAutoGesture @2869
     SetWindowAutoGesture @2870
     GetAnimateMessageInfo @2871
-    CloseGestureInfoHandle = CloseGestureInfoHandle_WCECL @2924
-    GetGestureInfo = GetGestureInfo_WCECL @2925
-    GetGestureExtraArguments = GetGestureExtraArguments_WCECL @2926
-    RegisterDefaultGestureHandler = RegisterDefaultGestureHandler_WCECL @2928

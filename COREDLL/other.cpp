@@ -206,27 +206,6 @@ void* _fileno_WCECL(FILE* file)
 	return (void*)_get_osfhandle(_fileno(file));
 }
 
-int WINAPI WideCharToMultiByte_WCECL(
-	UINT CodePage,
-	DWORD dwFlags,
-	LPCWSTR lpWideCharStr,
-	int cchWideChar,
-	LPSTR lpMultiByteStr,
-	int cbMultiByte,
-	LPCSTR lpDefaultChar,
-	LPBOOL lpUsedDefaultChar)
-{
-	return WideCharToMultiByte(
-		CodePage,
-		dwFlags,
-		lpWideCharStr,
-		cchWideChar,
-		lpMultiByteStr,
-		cbMultiByte,
-		lpDefaultChar,
-		lpUsedDefaultChar);
-}
-
 int WINAPI GetSystemMetrics_WCECL(int i)
 {
 	return GetSystemMetrics(i);

@@ -83,10 +83,10 @@
     <ClCompile Include="stdio_wcecl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="imagelist_wcecl.cpp">
+    <ClCompile Include="winnls_wcecl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="freecell_support_wip.cpp">
+    <ClCompile Include="stringapiset_wcecl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
