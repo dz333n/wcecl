@@ -12,7 +12,7 @@ BOOL SystemTimeToFileTime_WCECL(
 
 BOOL FileTimeToLocalFileTime_WCECL(
 	const FILETIME* lpFileTime,
-	LPFILETIME     lpLocalFileTime)
+	LPFILETIME	 lpLocalFileTime)
 {
 	auto result = ::FileTimeToLocalFileTime(lpFileTime, lpLocalFileTime);
 	return result;
@@ -590,6 +590,11 @@ BOOL WINAPI TerminateProcess_WCECL(
 	HANDLE hProcess,
 	DWORD uExitCode)
 {
+	/* GetCurrentProcess() seems to be inlined to 0x42 for WinCE */
+	if (hProcess == (HANDLE)0x42)
+	{
+		hProcess = GetCurrentProcess();
+	}
 	auto result = ::TerminateProcess(hProcess, uExitCode);
 	return result;
 }
