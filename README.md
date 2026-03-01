@@ -1,3 +1,12 @@
+> [!WARNING]  
+> **This project has been deprecated and archived.**
+>
+> WCECL was originally designed as an x86 Windows CE compatibility layer, but in practice there are virtually no x86 Windows CE applications in existence. The millions of real WinCE apps out there are all ARM binaries, which WCECL was never designed to handle.
+>
+> This project has been succeeded by **[CERF (Windows CE Runtime Foundation)](https://github.com/dz333n/cerf)** — a full ARM CPU emulator and Win32 API compatibility layer that can actually run real Windows CE ARM applications on modern x64 desktop Windows.
+>
+> This repository is kept for historical purposes only and will not receive any further updates.
+
 # Windows CE Compatibility Layer (WCECL)
 
 ![Improvised Logo](logo.png)
